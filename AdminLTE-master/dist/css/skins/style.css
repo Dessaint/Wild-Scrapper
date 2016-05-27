@@ -1,0 +1,41 @@
+@font-face { 
+  font-family: 'alwyn-bold'; 
+  src: url('font/ufonts.com_alwyn-bold.ttf'); 
+}
+
+
+
+/*Entete*/
+
+.app_titre h2 {
+	font-style: alwyn-bold; 
+}
+
+.skin-blue .main-header .logo:hover {
+	color: #f9a02e;
+}
+
+/*Navbar*/
+.skin-blue .main-header .logo{
+	background-color: #fbfbfb;
+}
+
+.titre_head h2 {
+	color: #1fa597;
+	background-color: white;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: -100px;
+	border-radius: 5px;
+}
+
+/*Section latérale gauche*/
+
+.ville_cible  a {
+	color: white;
+}
+
+.langage_prop h3 {
+	font-size: 30px;
+}
