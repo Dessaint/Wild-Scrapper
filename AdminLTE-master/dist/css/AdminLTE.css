@@ -4913,3 +4913,22 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+
+/*-------------------------------------->MON CSS<------------------------------------------------*/
+.chart-legend li span{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+.chart-legend {
+
+}
+
+.box-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}

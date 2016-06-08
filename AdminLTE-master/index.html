@@ -13,7 +13,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
@@ -260,7 +260,7 @@
         <section class="col-lg-7 connectedSortable">
           <!-- Insertion diagramme Excel 1 -->
           <div class="nav-tabs-custom">
-            <div id="myExcelDiv" style="width: 588px; height: 340px"></div>
+
           </div>
           <!-- Insertion diagramme Excel 2 -->
           <div class="box box-success">
@@ -283,7 +283,11 @@
           <!-- Insertion diagramme 5 -->
           <div class="box box-solid bg-light-blue-gradient">
             <div class="box-body">
-              <iframe width="390" height="412" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=18C9C28C8612A00D&resid=18C9C28C8612A00D%2132255&authkey=ADQe_j3tD6J7EuU&em=2&wdAllowInteractivity=False&Item=Graphique%201&wdDownloadButton=True"></iframe>
+                <h2>Répartition des languages sur Paris</h2>
+                <div style="width: 100%; height: 100%;">
+                    <canvas id="myChart" style="width: 100%; height: auto;"></canvas>
+                </div>
+                <div id="js-legend" class="chart-legend"></div>
             </div>
           </div>
 
@@ -548,10 +552,9 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<script type="text/javascript" src="https://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script>
-<script type="text/javascript">
-var fileToken = "SD18C9C28C8612A00D!32248/1786172636029689869/t=0&s=0&v=!ADDWJQ_Ui-wMhEM";
-if (window.attachEvent) { window.attachEvent("onload", loadEwaOnPageLoad); } else { window.addEventListener("DOMContentLoaded", loadEwaOnPageLoad, false); } function loadEwaOnPageLoad() { var props = { item: "Graphique 2", uiOptions: { showParametersTaskPane: false }, interactivityOptions: { allowTypingAndFormulaEntry: false, allowParameterModification: false, allowSorting: false, allowFiltering: false, allowPivotTableInteractivity: false } }; Ewa.EwaControl.loadEwaAsync(fileToken, "myExcelDiv", props, onEwaLoaded); } function onEwaLoaded(result) {  }
-</script>
+<!-- script pour les graphiques -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
+<script src="dist/js/graph.js"></script>
+
 </body>
 </html>
