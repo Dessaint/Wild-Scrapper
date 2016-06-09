@@ -1,6 +1,6 @@
 var data = [
    {
-    value: 48623+11268+6390,
+    value: 48623,
     color: "#f1c40f",
     label: "Javascript"
 }, {
