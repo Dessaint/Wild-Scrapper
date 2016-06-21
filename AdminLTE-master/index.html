@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- Fichier style.css-->
   <link rel="stylesheet" href="dist/css/skins/style.css">
+  <!-- Fichier franck.css-->
+  <link rel="stylesheet" href="dist/css/franck.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -262,13 +264,23 @@
           <div class="nav-tabs-custom">
               <h2 class="text-center">Mots clés les plus utilisés</h2>
               <img src="./img/nuagesmots.svg" alt="Un kiwi en SVG">
-
           </div>
           <!-- Insertion diagramme Excel 2 -->
-          <div class="box box-success">
-
+          <div class="row evol">
+            <!-- Franck -->
+            <h2 class="text-center">Evolution des meetups par langage</h2>
+            <div class="col-md-9">
+              <div class="chart">
+                <!-- Sales Chart Canvas -->
+                <canvas id="salesChart" style="height: 180px;"></canvas>
+              </div>
+              <!-- /.chart-responsive -->
+            </div>
+            <div>
+              <div class="col-md-3 legende1"><img src="./img/legende.png"></div>
+            </div>
           </div>
-          <!-- Insertion diagramme Excel 3 -->
+          
           <div class="box box-primary">
 
           </div>
@@ -284,7 +296,7 @@
 
           <!-- Insertion diagramme 5 -->
           <div class="box box-solid bg-light-blue-gradient">
-            <div class="box-body">
+            <div class="box-body repartition">
                 <h2>Répartition des languages sur Paris</h2>
                 <div style="width: 100%; height: 100%;">
                     <canvas id="myChart" style="width: 100%; height: auto;"></canvas>
@@ -315,9 +327,9 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.3
+      <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong><a href="http://wildcodeschool.fr">Wild Code Schooll</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -551,6 +563,8 @@
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="dist/js/pages/dashboard2.js"></script>
+<!-- Franck: appel du js  -->
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>

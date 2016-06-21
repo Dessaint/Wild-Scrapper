@@ -17,10 +17,10 @@ $(function () {
   var salesChart = new Chart(salesChartCanvas);
 
   var salesChartData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
     datasets: [
       {
-        label: "Electronics",
+        label: "PHP",
         fillColor: "rgb(210, 214, 222)",
         strokeColor: "rgb(210, 214, 222)",
         pointColor: "rgb(210, 214, 222)",
@@ -30,7 +30,7 @@ $(function () {
         data: [65, 59, 80, 81, 56, 55, 40]
       },
       {
-        label: "Digital Goods",
+        label: "JS",
         fillColor: "rgba(60,141,188,0.9)",
         strokeColor: "rgba(60,141,188,0.8)",
         pointColor: "#3b8bba",
@@ -38,6 +38,16 @@ $(function () {
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(60,141,188,1)",
         data: [28, 48, 40, 19, 86, 27, 90]
+      },
+      {
+        label: "RUBY",
+        fillColor: "rgba(80,101,188,0.9)",
+        strokeColor: "rgba(80,101,188,0.8)",
+        pointColor: "#5065BC",
+        pointStrokeColor: "rgba(80,101,188,1)",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(80,101,188,1)",
+        data: [18, 28, 20, 9, 56, 37, 70]
       }
     ]
   };
