@@ -1,6 +1,6 @@
-@font-face { 
-  font-family: 'alwyn-bold'; 
-  src: url('font/ufonts.com_alwyn-bold.ttf'); 
+@font-face {
+  font-family: 'alwyn-bold';
+  src: url('font/ufonts.com_alwyn-bold.ttf');
 }
 
 
@@ -8,7 +8,7 @@
 /*Entete*/
 
 .app_titre h2 {
-	font-style: alwyn-bold; 
+	font-style: alwyn-bold;
 }
 
 .skin-blue .main-header .logo:hover {
