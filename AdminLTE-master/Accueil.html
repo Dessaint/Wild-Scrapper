@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>Wild Scrapper - Dashboard Accueil</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -194,6 +194,7 @@
     <section class="content">
       <!-- Small boxes (Stat box) -->
       <div class="row">
+          <h2 class="titre-dash1">Répartition des villes</h2>
         <div id='dashboard'>
         </div>
 
@@ -208,11 +209,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.3
-    </div>
-    <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+
   </footer>
 
   <!-- Control Sidebar -->
@@ -655,23 +652,23 @@ function dashboard(id, fData){
 
 <script>
 var freqData=[
-{State:'La Loupe',freq:{php:4786, JavaScript:1319, Ruby:249}}
-,{State:'Chartres',freq:{php:1101, JavaScript:412, Ruby:674}}
-,{State:'Fontainebleau',freq:{php:932, JavaScript:2149, Ruby:418}}
-,{State:'Orléans',freq:{php:832, JavaScript:1152, Ruby:1862}}
-,{State:'Lyon',freq:{php:4481, JavaScript:3304, Ruby:948}}
-,{State:'Bordeaux',freq:{php:1619, JavaScript:167, Ruby:1063}}
-,{State:'Toulouse',freq:{php:1819, JavaScript:247, Ruby:1203}}
-,{State:'Paris',freq:{php:4498, JavaScript:3852, Ruby:942}}
-,{State:'Strasbourg',freq:{php:797, JavaScript:1849, Ruby:1534}}
-,{State:'Nantes',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'Nice',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'Montpellier',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'Rennes',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'Lille',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'Bruxelles',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'Luxembourg',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'Genève',freq:{php:162, JavaScript:379, Ruby:471}}
+{State:'LOUP',freq:{php:4786, JavaScript:1319, Ruby:249}}
+,{State:'CHA',freq:{php:1101, JavaScript:412, Ruby:674}}
+,{State:'FON',freq:{php:932, JavaScript:2149, Ruby:418}}
+,{State:'ORL',freq:{php:832, JavaScript:1152, Ruby:1862}}
+,{State:'LYON',freq:{php:4481, JavaScript:3304, Ruby:948}}
+,{State:'BDX',freq:{php:1619, JavaScript:167, Ruby:1063}}
+,{State:'TLS',freq:{php:1819, JavaScript:247, Ruby:1203}}
+,{State:'PAR',freq:{php:4498, JavaScript:3852, Ruby:942}}
+,{State:'STBG',freq:{php:797, JavaScript:1849, Ruby:1534}}
+,{State:'NAN',freq:{php:162, JavaScript:379, Ruby:471}}
+,{State:'NIC',freq:{php:632, JavaScript:459, Ruby:731}}
+,{State:'MTP',freq:{php:862, JavaScript:379, Ruby:471}}
+,{State:'REN',freq:{php:662, JavaScript:379, Ruby:471}}
+,{State:'LIL',freq:{php:162, JavaScript:849, Ruby:471}}
+,{State:'BXL',freq:{php:162, JavaScript:379, Ruby:471}}
+,{State:'LUX',freq:{php:162, JavaScript:349, Ruby:871}}
+,{State:'GEN',freq:{php:393, JavaScript:379, Ruby:271}}
 ];
 
 dashboard('#dashboard',freqData);

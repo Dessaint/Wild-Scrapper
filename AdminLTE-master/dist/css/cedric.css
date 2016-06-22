@@ -30,6 +30,10 @@ rect:hover {  fill:blue; }
 
 #dashboard {
     margin: 0 auto;
-    background-color: rgb(106, 248, 216);
+    background-color: white;
     padding-left: 100px;
+}
+
+.titre-dash1 {
+    text-align: center;
 }
