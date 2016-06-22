@@ -15,14 +15,14 @@ class __TwigTemplate_8e90fd562e8043828971f2d046af29caa2f22bf28c30ea46dac1a960954
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_840fef431fe8749e284caaf53272d34b90d5e7f518a45f71b8ef76af657f1c06 = $this->env->getExtension("native_profiler");
-        $__internal_840fef431fe8749e284caaf53272d34b90d5e7f518a45f71b8ef76af657f1c06->enter($__internal_840fef431fe8749e284caaf53272d34b90d5e7f518a45f71b8ef76af657f1c06_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MeetupBundle:Default:index.html.twig"));
+        $__internal_ce05fe537f1dad5ee3004c746c7d34ed392e32c1898397200cfd42e22c6abf47 = $this->env->getExtension("native_profiler");
+        $__internal_ce05fe537f1dad5ee3004c746c7d34ed392e32c1898397200cfd42e22c6abf47->enter($__internal_ce05fe537f1dad5ee3004c746c7d34ed392e32c1898397200cfd42e22c6abf47_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MeetupBundle:Default:index.html.twig"));
 
         // line 1
-        echo "Hello World!
+        echo "<h1>PAGE INDEX</h1>
 ";
         
-        $__internal_840fef431fe8749e284caaf53272d34b90d5e7f518a45f71b8ef76af657f1c06->leave($__internal_840fef431fe8749e284caaf53272d34b90d5e7f518a45f71b8ef76af657f1c06_prof);
+        $__internal_ce05fe537f1dad5ee3004c746c7d34ed392e32c1898397200cfd42e22c6abf47->leave($__internal_ce05fe537f1dad5ee3004c746c7d34ed392e32c1898397200cfd42e22c6abf47_prof);
 
     }
 
@@ -36,5 +36,5 @@ class __TwigTemplate_8e90fd562e8043828971f2d046af29caa2f22bf28c30ea46dac1a960954
         return array (  22 => 1,);
     }
 }
-/* Hello World!*/
+/* <h1>PAGE INDEX</h1>*/
 /* */
