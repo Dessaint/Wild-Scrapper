@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>Dashboard PARIS</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -67,7 +67,7 @@
 
           <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown tasks-menu">
-            <div class="col-md-12 titre_head app_titre"><h2><b>VEILLE MEETUP</b></h2></div>
+            <div class="col-md-12 titre_head app_titre"><h2><b>WILD SCRAPPER</b></h2></div>
           </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
@@ -184,6 +184,14 @@
         Tableau de bord
         <small>Panneau de contrôle</small>
       </h1>
+    <!-- Liste déroulante : choix de semaine -->
+      <form>
+        <select>
+          <option>Semaine 25 - 2016
+          <option>Semaine 24 - 2016 
+          <option>Semaine 23 - 2016  
+        </select>
+      </form>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
@@ -241,11 +249,11 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-yellow">
+          <div class="small-box bg-yellow group">
             <div class="inner">
-              <h3>Paris</h3>
+              <h3>M'IT UP BNP Paribas</h3>
 
-              <p>Ville la plus dynamique</p>
+              <p>Groupe le plus dynamique</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
@@ -280,9 +288,40 @@
               <div class="col-md-3 legende1"><img src="./img/legende.png"></div>
             </div>
           </div>
-          
-          <div class="box box-primary">
-
+          <div class="row last">
+            <div class="col-md-12">
+                <h2>Dernier meetup crées</h2>            
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Nom du meetup</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                        <td>(Dé-)Coding Paris</td>
+                        <td>20/06/2016</td>
+                      </tr>
+                      <tr>
+                        <td>Hardware Heroes</td>
+                        <td>17/06/2016</td>
+                      </tr>
+                      <tr>
+                        <td>AZUG FR - Azure User Group France</td>
+                        <td>12/06/2016</td>
+                      </tr>
+                      <tr>
+                        <td>Paris Computational Art</td>
+                        <td>10/06/2016</td>
+                      </tr>
+                      <tr>
+                        <td>Unreal Engine Meetup Paris</td>
+                        <td>06/06/2016</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>      
           </div>
           <!-- Insertion diagramme Excel 4 -->
           <div class="box box-info">
@@ -306,16 +345,94 @@
           </div>
 
           <!-- Insertion diagramme 6 -->
-          <div class="box box-solid bg-teal-gradient">
+          <div class="box box-solid bg-green-gradient top">
             <div class="box-body ">
-
+                <h2>Top 5 : Évenements avec le plus de participants</h2>            
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Position</th>
+                        <th>Nom de l'évènement</th>
+                        <th>Nombre de participants</th>
+                        <th>Evolution</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                        <td>1</td>
+                        <td>M'IT UP BNP Paribas</td>
+                        <td>189</td>
+                        <td>+ 17%</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Xamarin - Learn & Code in Paris</td>
+                        <td>163</td>
+                        <td>+ 8%</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Les Off de Partech</td>
+                        <td>156</td>
+                        <td>+ 8%</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>LaFrenchMobile</td>
+                        <td>93</td>
+                        <td>+ 4%</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>Meteor Paris</td>
+                        <td>75</td>
+                        <td>+ 2%</td>
+                      </tr>
+                    </tbody>
+                  </table>
             </div>
           </div>
 
           <!-- Insertion diagramme 7 -->
-          <div class="box box-solid bg-green-gradient">
+          <div class="box box-solid bg-red-gradient top">
             <div class="box-body">
-
+              <h2>Meetup qui perd le plus d'abonnés</h2>            
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Position</th>
+                      <th>Nom du meetup</th>
+                      <th>Perte</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                      <td>1</td>
+                      <td>StartupBlink Paris</td>
+                      <td>-39</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>ClubStartups - Paris</td>
+                      <td>-31</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Paris Ruby Workshop</td>
+                      <td>-23</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Power Hiking Paris</td>
+                      <td>-19</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>ReactJS and React Native Paris</td>
+                      <td>-13</td>
+                    </tr>
+                  </tbody>
+                </table>
             </div>
           </div>
         </section>
