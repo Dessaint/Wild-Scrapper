@@ -37,3 +37,12 @@ rect:hover {  fill:blue; }
 .titre-dash1 {
     text-align: center;
 }
+
+.center {
+    margin: 0px auto;
+    width: 90%;
+}
+
+.dash-sparkline {
+    background-color: white;
+}
