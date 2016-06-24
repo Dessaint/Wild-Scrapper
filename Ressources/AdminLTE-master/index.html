@@ -154,15 +154,25 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-circle-o"></i>Paris</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Lilles</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Bordeaux</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>La Loupe</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Chartres</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Fontainebleau</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Orléans</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Lyon</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Montpellier</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Bordeaux</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Toulouse</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Strasbourg</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Nantes</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Marseille</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Nice</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Montpellier</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Rennes</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Lille</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Bruxelles</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Luxembourg</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Genève</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Toutes les villes</a></li>
             <li><a href="#" class="ville_cible"><i class="fa fa-circle- "></i>Définir une nouvelle ville cible</a></li>
+
 
           </ul>
         </li>
@@ -258,7 +268,7 @@
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">Plus d'infos <i class="fa fa-arrow-circle-right"></i></a>
+            
           </div>
         </div>
         <!-- ./col -->
@@ -276,14 +286,14 @@
           <!-- Insertion diagramme Excel 2 -->
           <div class="row evol">
             <!-- Franck -->
-            <h2 class="text-center">Evolution des meetups par langage</h2>
-            <div class="col-md-9">
-              <div class="chart">
-                <!-- Sales Chart Canvas -->
-                <canvas id="salesChart" style="height: 180px;"></canvas>
+              <h2 class="text-center">Evolution des meetups par langage</h2>
+              <div class="col-lg-7">
+                <div class="chart">
+                  <!-- Sales Chart Canvas -->
+                  <canvas id="salesChart" style="height: 180px;"></canvas>
+                </div>
+                <!-- /.chart-responsive -->
               </div>
-              <!-- /.chart-responsive -->
-            </div>
             <div>
               <div class="col-md-3 legende1"><img src="./img/legende.png"></div>
             </div>
@@ -324,8 +334,16 @@
             </div>      
           </div>
           <!-- Insertion diagramme Excel 4 -->
-          <div class="box box-info">
-
+          <div class="box commentaires">
+            <h2>Votre interprétation des données</h2>
+              <fieldset class="form-group">
+                <label for="com_title">Titre du commentaire :</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Titre">
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="exampleTextarea">Votre commentaire :</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+              </fieldset>
           </div>
 
         </section>
