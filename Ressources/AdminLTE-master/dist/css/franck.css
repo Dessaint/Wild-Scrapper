@@ -1,10 +1,14 @@
+.content-wrapper {
+    background: url(../img/arrPlan.png);
+}
+
 .group h3{
 	font-size: 23px;
+	margin-top: 10px;
 }
 
 .group {
 	height: 129.23px;
-	width: 235.25px;
 }
 
 .repartition {
@@ -57,5 +61,17 @@ p .titre {
 .last h2 {
 	text-align: center;
 	margin-top: 0px;
+}
+
+.commentaires {
+	margin-top: 20px;
+	background-color: #1fa597;
+	color: white;
+}
+
+.commentaires h2 {
+	text-align: center;
+	color: black;
+	font-size: 23px;
 }
 
