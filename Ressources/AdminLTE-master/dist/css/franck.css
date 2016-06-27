@@ -1,3 +1,7 @@
+.content-wrapper {
+    background: url(../img/arrPlan.png);
+}
+
 .group h3{
 	font-size: 23px;
 }
