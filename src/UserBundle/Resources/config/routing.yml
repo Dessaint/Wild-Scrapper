@@ -13,3 +13,7 @@ user_register:
 user_confirmed:
     path:     confirmed
     defaults: { _controller: UserBundle:Registration:confirmed }
+
+user_dashboard:
+    path:     dashboard
+    defaults: { _controller: MeetupBundle:Default:index }

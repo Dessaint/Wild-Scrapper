@@ -1,3 +1,7 @@
 meetup_homepage:
     path:     /
     defaults: { _controller: MeetupBundle:Default:index }
+
+user_dashboard:
+    path:     /user/dashboard
+    defaults: { _controller: MeetupBundle:Default:index }  

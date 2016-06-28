@@ -3102,6 +3102,8 @@ return array(
     'Twig_Util_TemplateDirIterator' => $vendorDir . '/twig/twig/lib/Twig/Util/TemplateDirIterator.php',
     'TypeError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
     'UserBundle\\Controller\\DefaultController' => $baseDir . '/src/UserBundle/Controller/DefaultController.php',
+    'UserBundle\\Controller\\RegistrationController' => $baseDir . '/src/UserBundle/Controller/RegistrationController.php',
+    'UserBundle\\Controller\\SecurityController' => $baseDir . '/src/UserBundle/Controller/SecurityController.php',
     'UserBundle\\Entity\\User' => $baseDir . '/src/UserBundle/Entity/User.php',
     'UserBundle\\Tests\\Controller\\DefaultControllerTest' => $baseDir . '/src/UserBundle/Tests/Controller/DefaultControllerTest.php',
     'UserBundle\\UserBundle' => $baseDir . '/src/UserBundle/UserBundle.php',

@@ -3327,6 +3327,8 @@ class ComposerStaticInit6e39e16d27915b3bf57b5ed4fe59f85a
         'Twig_Util_TemplateDirIterator' => __DIR__ . '/..' . '/twig/twig/lib/Twig/Util/TemplateDirIterator.php',
         'TypeError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
         'UserBundle\\Controller\\DefaultController' => __DIR__ . '/../..' . '/src/UserBundle/Controller/DefaultController.php',
+        'UserBundle\\Controller\\RegistrationController' => __DIR__ . '/../..' . '/src/UserBundle/Controller/RegistrationController.php',
+        'UserBundle\\Controller\\SecurityController' => __DIR__ . '/../..' . '/src/UserBundle/Controller/SecurityController.php',
         'UserBundle\\Entity\\User' => __DIR__ . '/../..' . '/src/UserBundle/Entity/User.php',
         'UserBundle\\Tests\\Controller\\DefaultControllerTest' => __DIR__ . '/../..' . '/src/UserBundle/Tests/Controller/DefaultControllerTest.php',
         'UserBundle\\UserBundle' => __DIR__ . '/../..' . '/src/UserBundle/UserBundle.php',
