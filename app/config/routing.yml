@@ -1,3 +1,15 @@
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /user/
+
 meetup:
     resource: "@MeetupBundle/Resources/config/routing.yml"
     prefix:   /
+
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+user_dashboard:
+    path:     /user/dashboard
+    defaults: { _controller: MeetupBundle:Default:index }
