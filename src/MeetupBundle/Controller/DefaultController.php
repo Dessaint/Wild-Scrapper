@@ -34,7 +34,7 @@ class DefaultController extends Controller
 
 
 
-             var_dump($Data); exit;
+            //  var_dump($Data); exit;
         return $this->render('MeetupBundle:Default:index.html.twig');
     }
 }
