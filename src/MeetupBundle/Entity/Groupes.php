@@ -3,6 +3,9 @@
 namespace MeetupBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use MeetupBundle\Entity\Topics;
+use MeetupBundle\Entity\Event;
 
 /**
  * Groupes
@@ -20,6 +23,13 @@ class Groupes
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_event", type="integer", unique=true)
+     */
+    private $id_event;
 
     /**
      * @var string
@@ -76,6 +86,15 @@ class Groupes
      * @ORM\Column(name="date", type="integer", nullable=true)
      */
     private $date;
+
+    /**
+    *@ORM\ManyToMany(targetEntity="MeetupBundle\Entity\Topics")
+    */
+    private $topics;
+
+    public function __contruct() {
+        $this->topics = new ArrayCollection();
+    }
 
 
     /**
@@ -270,5 +289,72 @@ class Groupes
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Get topics
+     *
+     * @return ArrayCollection
+     */
+    public function getTopics()
+    {
+        return $this->topics;
+    }
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->topics = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set idEvent
+     *
+     * @param integer $idEvent
+     *
+     * @return Groupes
+     */
+    public function setIdEvent($idEvent)
+    {
+        $this->id_event = $idEvent;
+
+        return $this;
+    }
+
+    /**
+     * Get idEvent
+     *
+     * @return integer
+     */
+    public function getIdEvent()
+    {
+        return $this->id_event;
+    }
+
+    /**
+     * Add topic
+     *
+     * @param \MeetupBundle\Entity\Topics $topic
+     *
+     * @return Groupes
+     */
+    public function addTopic(\MeetupBundle\Entity\Topics $topic)
+    {
+        $this->topics[] = $topic;
+
+        return $this;
+    }
+
+    /**
+     * Remove topic
+     *
+     * @param \MeetupBundle\Entity\Topics $topic
+     */
+    public function removeTopic(\MeetupBundle\Entity\Topics $topic)
+    {
+        $this->topics->removeElement($topic);
     }
 }
