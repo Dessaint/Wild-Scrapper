@@ -25,13 +25,6 @@ class Groupes
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_event", type="integer", unique=true)
-     */
-    private $id_event;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255, nullable=true)
