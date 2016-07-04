@@ -47,6 +47,8 @@ class DefaultController extends Controller
                             $topics = new Topics();
 
                             $topics->setName($Data[$ville][$i]['results'][$j]['topics'][$k]['name']);
+                            
+
                             $em->persist($topics);
                         }
 
@@ -60,4 +62,15 @@ class DefaultController extends Controller
 
         return $this->render('MeetupBundle:Default:index.html.twig');
     }
+    public function EventAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $groupes = $em->getRepository('MeetupBundle:Groupes')->findAll();
+
+        return $this->render('MeetupBundle:Default:index.html.twig', array('groupes' => $groupes));
+    }
+
+
+
+
 }

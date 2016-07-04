@@ -85,11 +85,6 @@ class Groupes
     */
     private $topics;
 
-    public function __contruct() {
-        $this->topics = new ArrayCollection();
-    }
-
-
     /**
      * Get id
      *
@@ -301,6 +296,7 @@ class Groupes
     public function __construct()
     {
         $this->topics = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date = new DateTime();
     }
 
     /**
