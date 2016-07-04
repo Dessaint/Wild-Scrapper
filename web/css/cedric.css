@@ -1,0 +1,70 @@
+.content-wrapper {
+    background: url(../img/arrPlan.png);
+}
+
+path {  stroke: #fff; }
+path:hover {  opacity:0.9; }
+rect:hover {  fill:blue; }
+.axis {  font: 10px sans-serif; }
+.legend tr{    border-bottom:1px solid grey; }
+.legend tr:first-child{    border-top:1px solid grey; }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {  display: none; }
+.legend{
+    margin-bottom:76px;
+    display:inline-block;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+.legend td{
+    padding:4px 5px;
+    vertical-align:bottom;
+}
+.legendFreq, .legendPerc{
+    align:right;
+    width:50px;
+}
+
+#dashboard {
+    margin: 0 auto;
+    background-color: white;
+    padding: 10px 50px 0px 50px;
+    -webkit-box-shadow: 0px 0px 69px 0px rgba(0,0,0,0.46);
+    -moz-box-shadow: 0px 0px 69px 0px rgba(0,0,0,0.46);
+    box-shadow: 0px 0px 69px 0px rgba(0,0,0,0.46);
+}
+
+.titre-dash1 {
+    text-align: center;
+    color: white;
+}
+
+.center {
+    margin: 0px auto;
+    width: 90%;
+}
+
+.dash-sparkline {
+    margin-top: 40px;
+    background: white;
+    -webkit-box-shadow: 0px 0px 69px 0px rgba(0,0,0,0.46);
+    -moz-box-shadow: 0px 0px 69px 0px rgba(0,0,0,0.46);
+    box-shadow: 0px 0px 69px 0px rgba(0,0,0,0.46);
+    text-align: center;
+}
+
+.dash-sparkline h2{
+    text-align: center;
+    color: white;
+}
+
+.titre-spark {
+    background-color: #1fa597;
+}
