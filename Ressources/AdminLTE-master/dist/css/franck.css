@@ -2,6 +2,10 @@
     background: url(../img/arrPlan.png);
 }
 
+.main-header .logo {
+	height: 55px;
+}
+
 .logo img {
 	height: 55px;
 }
