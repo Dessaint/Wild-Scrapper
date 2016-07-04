@@ -19,7 +19,7 @@ security:
                 csrf_token_generator: security.csrf.token_manager
                 login_path:     user_login
                 check_path:     user_login_check
-                default_target_path:    user_dashboard
+                default_target_path:    user_accueil
 
             logout:       true
             anonymous:    true
@@ -29,4 +29,4 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/user/accueil, role: ROLE_ADMIN }
+        # - { path: ^/user/accueil, role: ROLE_ADMIN }

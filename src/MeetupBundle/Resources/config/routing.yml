@@ -4,4 +4,8 @@ meetup_homepage:
 
 user_dashboard:
     path:     /user/dashboard
-    defaults: { _controller: MeetupBundle:Default:index }  
+    defaults: { _controller: MeetupBundle:Default:index }
+
+user_accueil:
+    path:     /user/accueil
+    defaults: { _controller: MeetupBundle:Page:show }
