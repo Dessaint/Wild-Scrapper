@@ -47,9 +47,9 @@ class DefaultController extends Controller
                             $topics = new Topics();
 
                             $topics->setName($Data[$ville][$i]['results'][$j]['topics'][$k]['name']);
-
+                            $em->persist($topics);
                         }
-                        $em->persist($topics);
+
                         $em->persist($groupes);
                     }
 
