@@ -20,10 +20,10 @@ class DefaultController extends Controller
                 $jsonData2 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=2");
                 $jsonData3 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=3");
 
-                 $Data0 = json_decode($jsonData0, true);
-                 $Data1 = json_decode($jsonData1, true);
-                 $Data2 = json_decode($jsonData2, true);
-                 $Data3 = json_decode($jsonData3, true);
+                $Data0 = json_decode($jsonData0, true);
+                $Data1 = json_decode($jsonData1, true);
+                $Data2 = json_decode($jsonData2, true);
+                $Data3 = json_decode($jsonData3, true);
 
                 $Data[$ville] = [$Data0, $Data1, $Data2, $Data3];
 
@@ -60,7 +60,7 @@ class DefaultController extends Controller
 
         return $this->render('MeetupBundle:Default:index.html.twig');
     }
-    
+
     public function EventAction()
     {
         $em = $this->getDoctrine()->getManager();
