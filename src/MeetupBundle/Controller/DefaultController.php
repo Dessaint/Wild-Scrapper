@@ -5,6 +5,7 @@ namespace MeetupBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MeetupBundle\Entity\Groupes;
 use MeetupBundle\Entity\Topics;
+use MeetupBundle\Entity\Villes;
 
 class DefaultController extends Controller
 {
@@ -28,7 +29,12 @@ class DefaultController extends Controller
                 $Data[$ville] = [$Data0, $Data1, $Data2, $Data3];
 
                 $em = $this->getDoctrine()->getManager();
+                $villes = new Villes();
+                $villes->setNom($ville);
+
                 for ($i=0, $c = count($Data[$ville]); $i< $c; $i++) {
+
+
                     for($j=0, $c2 = count($Data[$ville][$i]['results']); $j < $c2; $j++) {
 
                         $groupes = new Groupes();
@@ -36,6 +42,7 @@ class DefaultController extends Controller
                         $groupes->setName($Data[$ville][$i]['results'][$j]['name']);
                         $groupes->setCountry($Data[$ville][$i]['results'][$j]['country']);
                         $groupes->setCity($Data[$ville][$i]['results'][$j]['city']);
+
                         $groupes->setCreated($Data[$ville][$i]['results'][$j]['created']);
                         $groupes->setLon($Data[$ville][$i]['results'][$j]['lon']);
                         $groupes->setLat($Data[$ville][$i]['results'][$j]['lat']);
@@ -45,14 +52,14 @@ class DefaultController extends Controller
 
                             $topics = new Topics();
 
-                            $topics->setName($Data[$ville][$i]['results'][$j]['topics'][$k]['name']);
+                            $topics->setName($Data[$ville][$i]['results'][$j]['topics'][$k]['name']);                            
 
                             $em->persist($topics);
                         }
-
+                        $groupes->setVilles($villes);
                         $em->persist($groupes);
                     }
-
+                    $em->persist($villes);
                 }
             }
 

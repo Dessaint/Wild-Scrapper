@@ -4,8 +4,6 @@ namespace MeetupBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use MeetupBundle\Entity\Topics;
-use MeetupBundle\Entity\Event;
 
 /**
  * Groupes
@@ -74,16 +72,15 @@ class Groupes
     private $name;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="date", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Villes", inversedBy="groupes")
+     * @ORM\JoinColumn(name="villes_id", referencedColumnName="id")
      */
-    private $date;
+    private $villes;
 
-    /**
-    *@ORM\ManyToMany(targetEntity="MeetupBundle\Entity\Topics")
-    */
-    private $topics;
+     public function __construct() {
+
+    }
+
 
     /**
      * Get id
@@ -99,6 +96,7 @@ class Groupes
      * Set country
      *
      * @param string $country
+     *
      * @return Groupes
      */
     public function setCountry($country)
@@ -122,6 +120,7 @@ class Groupes
      * Set city
      *
      * @param string $city
+     *
      * @return Groupes
      */
     public function setCity($city)
@@ -145,6 +144,7 @@ class Groupes
      * Set created
      *
      * @param integer $created
+     *
      * @return Groupes
      */
     public function setCreated($created)
@@ -167,7 +167,8 @@ class Groupes
     /**
      * Set lon
      *
-     * @param integer $lon
+     * @param string $lon
+     *
      * @return Groupes
      */
     public function setLon($lon)
@@ -180,7 +181,7 @@ class Groupes
     /**
      * Get lon
      *
-     * @return integer
+     * @return string
      */
     public function getLon()
     {
@@ -190,7 +191,8 @@ class Groupes
     /**
      * Set lat
      *
-     * @param integer $lat
+     * @param string $lat
+     *
      * @return Groupes
      */
     public function setLat($lat)
@@ -203,7 +205,7 @@ class Groupes
     /**
      * Get lat
      *
-     * @return integer
+     * @return string
      */
     public function getLat()
     {
@@ -213,7 +215,8 @@ class Groupes
     /**
      * Set members
      *
-     * @param string $members
+     * @param integer $members
+     *
      * @return Groupes
      */
     public function setMembers($members)
@@ -226,7 +229,7 @@ class Groupes
     /**
      * Get members
      *
-     * @return string
+     * @return integer
      */
     public function getMembers()
     {
@@ -237,6 +240,7 @@ class Groupes
      * Set name
      *
      * @param string $name
+     *
      * @return Groupes
      */
     public function setName($name)
@@ -257,70 +261,27 @@ class Groupes
     }
 
     /**
-     * Set date
+     * Set villes
      *
-     * @param integer $date
+     * @param \MeetupBundle\Entity\Villes $villes
+     *
      * @return Groupes
      */
-    public function setDate($date)
+    public function setVilles(\MeetupBundle\Entity\Villes $villes = null)
     {
-        $this->date = $date;
+        $this->villes = $villes;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get villes
      *
-     * @return integer
+     * @return \MeetupBundle\Entity\Villes
      */
-    public function getDate()
+    public function getVilles()
     {
-        return $this->date;
-    }
-
-    /**
-     * Get topics
-     *
-     * @return ArrayCollection
-     */
-    public function getTopics()
-    {
-        return $this->topics;
-    }
-
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->topics = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->date = new DateTime();
-    }
-
-    /**
-     * Set idEvent
-     *
-     * @param integer $idEvent
-     *
-     * @return Groupes
-     */
-    public function setIdEvent($idEvent)
-    {
-        $this->id_event = $idEvent;
-
-        return $this;
-    }
-
-    /**
-     * Get idEvent
-     *
-     * @return integer
-     */
-    public function getIdEvent()
-    {
-        return $this->id_event;
+        return $this->villes;
     }
 
     /**
@@ -345,5 +306,15 @@ class Groupes
     public function removeTopic(\MeetupBundle\Entity\Topics $topic)
     {
         $this->topics->removeElement($topic);
+    }
+
+    /**
+     * Get topics
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTopics()
+    {
+        return $this->topics;
     }
 }
