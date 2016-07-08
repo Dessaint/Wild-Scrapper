@@ -2,6 +2,14 @@
     background: url(../img/arrPlan.png);
 }
 
+.main-header .logo {
+	height: 55px;
+}
+
+.logo img {
+	height: 55px;
+}
+
 .group h3{
 	font-size: 23px;
 	margin-top: 10px;
