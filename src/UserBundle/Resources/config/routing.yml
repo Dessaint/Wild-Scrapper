@@ -14,6 +14,17 @@ user_confirmed:
     path:     confirmed
     defaults: { _controller: UserBundle:Registration:confirmed }
 
+user_espace:
+    path:     espace
+    defaults: { _controller: UserBundle:Espace:espace }
+
+user_espacemodif:
+    path:     espacemodif
+    defaults: { _controller: UserBundle:Espace:espacemodif }
+
 user_dashboard:
     path:     dashboard
     defaults: { _controller: MeetupBundle:Default:index }
+
+
+
