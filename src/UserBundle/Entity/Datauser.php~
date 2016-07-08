@@ -1,0 +1,69 @@
+<?php
+
+namespace UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Datauser
+ *
+ * @ORM\Table(name="datauser")
+ * @ORM\Entity(repositoryClass="UserBundle\Repository\DatauserRepository")
+ */
+class Datauser
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userNom", type="string", length=255, nullable=true)
+     */
+    private $userNom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userPrenom", type="string", length=255, nullable=true)
+     */
+    private $userPrenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userVille", type="string", length=255, nullable=true)
+     */
+    private $userVille;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userFonction", type="string", length=255, nullable=true)
+     */
+    private $userFonction;
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Please, upload the product brochure as a JPEG file.")
+     * @Assert\File(maxSize = "5M", mimeTypes={ "image/jpeg" })
+     */
+    private $userImage;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="userId", type="integer", unique=true)
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"})
+     */
+    private $userId;
+
+}
