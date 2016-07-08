@@ -13,7 +13,6 @@ class DefaultController extends Controller
             // J'initie un tableau et je place mes villes
             $tabVilles = ["paris", "chartres", "la+loupe", "fontainebleau", "orleans", "lyon", "bordeaux", "toulouse", "strasbourg", "nantes", "nice", "montpellier", "rennes", "lille"];
 
-
             foreach ($tabVilles as $ville) {
 
                 $jsonData0 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=0");
@@ -47,7 +46,6 @@ class DefaultController extends Controller
                             $topics = new Topics();
 
                             $topics->setName($Data[$ville][$i]['results'][$j]['topics'][$k]['name']);
-                            
 
                             $em->persist($topics);
                         }
@@ -62,6 +60,7 @@ class DefaultController extends Controller
 
         return $this->render('MeetupBundle:Default:index.html.twig');
     }
+    
     public function EventAction()
     {
         $em = $this->getDoctrine()->getManager();
