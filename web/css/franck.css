@@ -1,3 +1,19 @@
+/*navbar*/
+
+.boite_nav {
+	height: 55px;
+}
+
+.skin-blue .main-header .navbar .nav > li > a:hover {
+	background: #f9a02e;	
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+	background: #f9a02e; 
+}
+
+/*Content*/
+
 .content-wrapper {
     background: url(../img/arrPlan.png);
 }
@@ -59,13 +75,15 @@ p .titre {
 	margin-top: 20px;
 	margin-left: 0px;
 	width: 590px;
-	background-color: #e6ee9c;
+	background-color: ;
 }
 
 .last h2 {
 	text-align: center;
 	margin-top: 0px;
 }
+
+/*Commentaires*/
 
 .commentaires {
 	margin-top: 20px;
@@ -78,6 +96,8 @@ p .titre {
 	color: black;
 	font-size: 23px;
 }
+
+/*login*/
  
 .accueil-background {
 	margin-left: -140px;
@@ -117,5 +137,47 @@ p .titre {
 	color: white;
 }
 
+/*Espace*/
 
+.btn_espace {
+	margin-top: 20px;
+	margin-left: 25px;
+}
 
+.skin-blue .main-header li.user-header {
+	background: #f9a02e;
+}
+
+.titre_espace h1 {
+	text-align: center;
+}
+
+.form_espace label {
+	width: 150px;
+	display:block;
+	float: left;
+}
+
+.form_espace input {
+	width: 350px;
+	margin-bottom: 10px;
+}
+
+.form_espace {
+	margin-top: 30px;
+	background: white;
+	padding: 20px;
+	padding-right: 0px;
+}
+
+.form_espace button {
+	background: #f9a02e;
+	height: 30px; 
+	margin-top: 20px;
+	margin-left: 150px;
+	border-radius: 5px;
+}
+
+.breadcrumb {
+	margin-left: -20px;
+}
