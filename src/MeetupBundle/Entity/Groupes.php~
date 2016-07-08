@@ -77,7 +77,12 @@ class Groupes
      */
     private $villes;
 
-     public function __construct() {
+    /**
+     * @ORM\OneToOne(targetEntity="Groupes_Topics", mappedBy="groupes")
+     */
+    private $groupes_topics;
+
+    public function __construct() {
 
     }
 

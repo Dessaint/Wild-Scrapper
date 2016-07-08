@@ -34,7 +34,6 @@ class DefaultController extends Controller
 
                 for ($i=0, $c = count($Data[$ville]); $i< $c; $i++) {
 
-
                     for($j=0, $c2 = count($Data[$ville][$i]['results']); $j < $c2; $j++) {
 
                         $groupes = new Groupes();
@@ -52,7 +51,7 @@ class DefaultController extends Controller
 
                             $topics = new Topics();
 
-                            $topics->setName($Data[$ville][$i]['results'][$j]['topics'][$k]['name']);                            
+                            $topics->setName($Data[$ville][$i]['results'][$j]['topics'][$k]['name']);
 
                             $em->persist($topics);
                         }

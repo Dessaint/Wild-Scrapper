@@ -29,6 +29,11 @@ class Topics
      */
     private $name;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Groupes_Topics", mappedBy="topics")
+     */
+    private $groupes_topics;
+
     public function __construct() {
 
     }
@@ -98,5 +103,29 @@ class Topics
     public function getGroupes()
     {
         return $this->groupes;
+    }
+
+    /**
+     * Set groupesTopics
+     *
+     * @param \MeetupBundle\Entity\Groupes_Topics $groupesTopics
+     *
+     * @return Topics
+     */
+    public function setGroupesTopics(\MeetupBundle\Entity\Groupes_Topics $groupesTopics = null)
+    {
+        $this->groupes_topics = $groupesTopics;
+    
+        return $this;
+    }
+
+    /**
+     * Get groupesTopics
+     *
+     * @return \MeetupBundle\Entity\Groupes_Topics
+     */
+    public function getGroupesTopics()
+    {
+        return $this->groupes_topics;
     }
 }

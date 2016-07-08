@@ -29,6 +29,11 @@ class Topics
      */
     private $name;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Groupes_Topics", mappedBy="topics")
+     */
+    private $groupes_topics;
+
     public function __construct() {
 
     }

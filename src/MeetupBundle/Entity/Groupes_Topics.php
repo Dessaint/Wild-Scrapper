@@ -22,20 +22,16 @@ class Groupes_Topics
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_groupes", type="integer")
-     * @ORM\OneToOne(targetEntity="Groupes", inversedBy="Groupes_Topics", cascade={"persist", "merge", "remove"}))
-     * @ORM\JoinColumn(name="Groupe_idGroupes", referencedColumnName="idGroupes")
+     * @ORM\OneToOne(targetEntity="Groupes", inversedBy="groupes_topics")
+     * @ORM\JoinColumn(name="groupe_id", referencedColumnName="id")
      */
-    private $idGroupes;
+    private $groupes;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_topics", type="integer")
+     * @ORM\OneToOne(targetEntity="Topics", inversedBy="groupes_topics")
+     * @ORM\JoinColumn(name="topic_id", referencedColumnName="id")
      */
-    private $idTopics;
+    private $topics;
 
 
     /**
@@ -94,5 +90,53 @@ class Groupes_Topics
     public function getIdTopics()
     {
         return $this->idTopics;
+    }
+
+    /**
+     * Set groupes
+     *
+     * @param \MeetupBundle\Entity\Groupes $groupes
+     *
+     * @return Groupes_Topics
+     */
+    public function setGroupes(\MeetupBundle\Entity\Groupes $groupes = null)
+    {
+        $this->groupes = $groupes;
+    
+        return $this;
+    }
+
+    /**
+     * Get groupes
+     *
+     * @return \MeetupBundle\Entity\Groupes
+     */
+    public function getGroupes()
+    {
+        return $this->groupes;
+    }
+
+    /**
+     * Set topics
+     *
+     * @param \MeetupBundle\Entity\Topics $topics
+     *
+     * @return Groupes_Topics
+     */
+    public function setTopics(\MeetupBundle\Entity\Topics $topics = null)
+    {
+        $this->topics = $topics;
+    
+        return $this;
+    }
+
+    /**
+     * Get topics
+     *
+     * @return \MeetupBundle\Entity\Topics
+     */
+    public function getTopics()
+    {
+        return $this->topics;
     }
 }
