@@ -12,6 +12,12 @@
 	background: #f9a02e; 
 }
 
+/*Navbar latérale*/
+
+.skin-blue .sidebar-menu > li:hover > a {
+	border-left-color: #f9a02e;
+}
+
 /*Content*/
 
 .content-wrapper {
