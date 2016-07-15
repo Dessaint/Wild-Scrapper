@@ -72,6 +72,20 @@ class Groupes
     private $name;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="meetupid", type="integer", nullable=true)
+     */
+    private $meetupid;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="meetuptopicid", type="integer", nullable=true)
+     */
+    private $meetuptopicid;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Villes", inversedBy="groupes")
      * @ORM\JoinColumn(name="villes_id", referencedColumnName="id")
      */
@@ -85,7 +99,6 @@ class Groupes
     public function __construct() {
 
     }
-
 
     /**
      * Get id
@@ -290,36 +303,50 @@ class Groupes
     }
 
     /**
-     * Add topic
+     * Set groupesTopics
      *
-     * @param \MeetupBundle\Entity\Topics $topic
+     * @param \MeetupBundle\Entity\Groupes_Topics $groupesTopics
      *
      * @return Groupes
      */
-    public function addTopic(\MeetupBundle\Entity\Topics $topic)
+    public function setGroupesTopics(\MeetupBundle\Entity\Groupes_Topics $groupesTopics = null)
     {
-        $this->topics[] = $topic;
+        $this->groupes_topics = $groupesTopics;
 
         return $this;
     }
 
     /**
-     * Remove topic
+     * Get groupesTopics
      *
-     * @param \MeetupBundle\Entity\Topics $topic
+     * @return \MeetupBundle\Entity\Groupes_Topics
      */
-    public function removeTopic(\MeetupBundle\Entity\Topics $topic)
+    public function getGroupesTopics()
     {
-        $this->topics->removeElement($topic);
+        return $this->groupes_topics;
     }
 
     /**
-     * Get topics
+     * Set meetupid
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param integer $meetupid
+     *
+     * @return Groupes
      */
-    public function getTopics()
+    public function setMeetupid($meetupid)
     {
-        return $this->topics;
+        $this->meetupid = $meetupid;
+
+        return $this;
+    }
+
+    /**
+     * Get meetupid
+     *
+     * @return integer
+     */
+    public function getMeetupid()
+    {
+        return $this->meetupid;
     }
 }

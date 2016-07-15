@@ -2,9 +2,17 @@ event:
     path:     /event
     defaults: { _controller: MeetupBundle:Default:event }
 
-user_dashboard:
-    path:     /user/dashboard
-    defaults: { _controller: MeetupBundle:Default:index }
+groupe:
+    path:     /groupe
+    defaults: { _controller: MeetupBundle:Default:groupe }
+
+topic:
+    path:     /topic
+    defaults: { _controller: MeetupBundle:Default:topic }
+
+groupeTopic:
+    path:     /groupesTopics
+    defaults: { _controller: MeetupBundle:Default:groupesTopics }
 
 user_accueil:
     path:     /user/accueil

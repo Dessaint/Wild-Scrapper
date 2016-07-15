@@ -54,6 +54,8 @@ class Villes
         $this->createdAt = new \DateTime('now');
     }
 
+
+
     /**
      * Get id
      *
@@ -74,7 +76,7 @@ class Villes
     public function setNom($nom)
     {
         $this->nom = $nom;
-
+    
         return $this;
     }
 
@@ -98,7 +100,7 @@ class Villes
     public function setLongitude($longitude)
     {
         $this->longitude = $longitude;
-
+    
         return $this;
     }
 
@@ -122,7 +124,7 @@ class Villes
     public function setLatitude($latitude)
     {
         $this->latitude = $latitude;
-
+    
         return $this;
     }
 
@@ -146,7 +148,7 @@ class Villes
     public function addGroupe(\MeetupBundle\Entity\Groupes $groupe)
     {
         $this->groupes[] = $groupe;
-
+    
         return $this;
     }
 

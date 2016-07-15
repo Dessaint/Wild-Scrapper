@@ -50,10 +50,12 @@ class Event
     private $created;
 
 
+
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -70,14 +72,14 @@ class Event
     public function setIdGroupes($idGroupes)
     {
         $this->idGroupes = $idGroupes;
-
+    
         return $this;
     }
 
     /**
      * Get idGroupes
      *
-     * @return int
+     * @return integer
      */
     public function getIdGroupes()
     {
@@ -94,7 +96,7 @@ class Event
     public function setName($name)
     {
         $this->name = $name;
-
+    
         return $this;
     }
 
@@ -111,21 +113,21 @@ class Event
     /**
      * Set rsvp
      *
-     * @param string $rsvp
+     * @param integer $rsvp
      *
      * @return Event
      */
     public function setRsvp($rsvp)
     {
         $this->rsvp = $rsvp;
-
+    
         return $this;
     }
 
     /**
      * Get rsvp
      *
-     * @return string
+     * @return integer
      */
     public function getRsvp()
     {
@@ -142,14 +144,14 @@ class Event
     public function setCreated($created)
     {
         $this->created = $created;
-
+    
         return $this;
     }
 
     /**
      * Get created
      *
-     * @return int
+     * @return integer
      */
     public function getCreated()
     {

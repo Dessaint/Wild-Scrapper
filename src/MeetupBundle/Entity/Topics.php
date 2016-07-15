@@ -30,13 +30,18 @@ class Topics
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity="Groupes_Topics", mappedBy="topics")
+     * @var int
+     *
+     * @ORM\Column(name="meetupgroupeid", type="integer", nullable=true)
      */
-    private $groupes_topics;
+    private $meetupgroupeid;
 
-    public function __construct() {
-
-    }
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="meetuptopicid", type="integer", nullable=true)
+     */
+    private $meetuptopicid;
 
     /**
      * Get id
@@ -52,6 +57,7 @@ class Topics
      * Set name
      *
      * @param string $name
+     *
      * @return Topics
      */
     public function setName($name)
@@ -72,40 +78,6 @@ class Topics
     }
 
     /**
-     * Add groupe
-     *
-     * @param \MeetupBundle\Entity\Groupes $groupe
-     *
-     * @return Topics
-     */
-    public function addGroupe(\MeetupBundle\Entity\Groupes $groupe)
-    {
-        $this->groupes[] = $groupe;
-
-        return $this;
-    }
-
-    /**
-     * Remove groupe
-     *
-     * @param \MeetupBundle\Entity\Groupes $groupe
-     */
-    public function removeGroupe(\MeetupBundle\Entity\Groupes $groupe)
-    {
-        $this->groupes->removeElement($groupe);
-    }
-
-    /**
-     * Get groupes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getGroupes()
-    {
-        return $this->groupes;
-    }
-
-    /**
      * Set groupesTopics
      *
      * @param \MeetupBundle\Entity\Groupes_Topics $groupesTopics
@@ -115,7 +87,7 @@ class Topics
     public function setGroupesTopics(\MeetupBundle\Entity\Groupes_Topics $groupesTopics = null)
     {
         $this->groupes_topics = $groupesTopics;
-    
+
         return $this;
     }
 
@@ -127,5 +99,53 @@ class Topics
     public function getGroupesTopics()
     {
         return $this->groupes_topics;
+    }
+
+    /**
+     * Set meetupgroupeid
+     *
+     * @param integer $meetupgroupeid
+     *
+     * @return Topics
+     */
+    public function setMeetupgroupeid($meetupgroupeid)
+    {
+        $this->meetupgroupeid = $meetupgroupeid;
+
+        return $this;
+    }
+
+    /**
+     * Get meetupgroupeid
+     *
+     * @return integer
+     */
+    public function getMeetupgroupeid()
+    {
+        return $this->meetupgroupeid;
+    }
+
+    /**
+     * Set meetuptopicid
+     *
+     * @param integer $meetuptopicid
+     *
+     * @return Topics
+     */
+    public function setMeetuptopicid($meetuptopicid)
+    {
+        $this->meetuptopicid = $meetuptopicid;
+
+        return $this;
+    }
+
+    /**
+     * Get meetuptopicid
+     *
+     * @return integer
+     */
+    public function getMeetuptopicid()
+    {
+        return $this->meetuptopicid;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace MeetupBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -72,20 +73,42 @@ class Groupes
     private $name;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="meetupid", type="integer", nullable=true)
+     */
+    private $meetupid;
+    
+    /**
+     * @var \DateTime $creation
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $creation;
+
+    /**
+     * @var \DateTime $updated
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
+
+    /**
+     * @var \DateTime $contentChanged
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="change", field={"title", "body"})
+     */
+    private $contentChanged;
+
+
+    /**
      * @ORM\ManyToOne(targetEntity="Villes", inversedBy="groupes")
      * @ORM\JoinColumn(name="villes_id", referencedColumnName="id")
      */
     private $villes;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Groupes_Topics", mappedBy="groupes")
-     */
-    private $groupes_topics;
-
-    public function __construct() {
-
-    }
-
 
     /**
      * Get id
@@ -290,40 +313,6 @@ class Groupes
     }
 
     /**
-     * Add topic
-     *
-     * @param \MeetupBundle\Entity\Topics $topic
-     *
-     * @return Groupes
-     */
-    public function addTopic(\MeetupBundle\Entity\Topics $topic)
-    {
-        $this->topics[] = $topic;
-
-        return $this;
-    }
-
-    /**
-     * Remove topic
-     *
-     * @param \MeetupBundle\Entity\Topics $topic
-     */
-    public function removeTopic(\MeetupBundle\Entity\Topics $topic)
-    {
-        $this->topics->removeElement($topic);
-    }
-
-    /**
-     * Get topics
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTopics()
-    {
-        return $this->topics;
-    }
-
-    /**
      * Set groupesTopics
      *
      * @param \MeetupBundle\Entity\Groupes_Topics $groupesTopics
@@ -333,7 +322,7 @@ class Groupes
     public function setGroupesTopics(\MeetupBundle\Entity\Groupes_Topics $groupesTopics = null)
     {
         $this->groupes_topics = $groupesTopics;
-    
+
         return $this;
     }
 
@@ -345,5 +334,53 @@ class Groupes
     public function getGroupesTopics()
     {
         return $this->groupes_topics;
+    }
+
+    /**
+     * Set meetupid
+     *
+     * @param integer $meetupid
+     *
+     * @return Groupes
+     */
+    public function setMeetupid($meetupid)
+    {
+        $this->meetupid = $meetupid;
+
+        return $this;
+    }
+
+    /**
+     * Get meetupid
+     *
+     * @return integer
+     */
+    public function getMeetupid()
+    {
+        return $this->meetupid;
+    }
+
+    /**
+     * Set meetuptopicid
+     *
+     * @param integer $meetuptopicid
+     *
+     * @return Groupes
+     */
+    public function setMeetuptopicid($meetuptopicid)
+    {
+        $this->meetuptopicid = $meetuptopicid;
+
+        return $this;
+    }
+
+    /**
+     * Get meetuptopicid
+     *
+     * @return integer
+     */
+    public function getMeetuptopicid()
+    {
+        return $this->meetuptopicid;
     }
 }
