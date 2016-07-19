@@ -1,0 +1,38 @@
+<?php
+
+namespace MeetupBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Groupes_Topics
+ *
+ * @ORM\Table(name="groupes__topics")
+ * @ORM\Entity(repositoryClass="MeetupBundle\Repository\Groupes_TopicsRepository")
+ */
+class Groupes_Topics
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Groupes", inversedBy="groupes_topics")
+     * @ORM\JoinColumn(name="groupe_id", referencedColumnName="id")
+     */
+    private $groupes;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Topics", inversedBy="groupes_topics")
+     * @ORM\JoinColumn(name="topic_id", referencedColumnName="id")
+     */
+    private $topics;
+
+
+
+}
