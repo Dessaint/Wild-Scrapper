@@ -4,7 +4,7 @@ event:
 
 groupe:
     path:     /groupe
-    defaults: { _controller: MeetupBundle:Default:groupe }
+    defaults: { _controller: MeetupBundle:Default:groupes }
 
 topic:
     path:     /topic
@@ -13,6 +13,10 @@ topic:
 groupeTopic:
     path:     /groupesTopics
     defaults: { _controller: MeetupBundle:Default:groupesTopics }
+
+groupePHP:
+    path:     /groupePHP
+    defaults: { _controller: MeetupBundle:Default:groupesPHP }
 
 user_accueil:
     path:     /user/accueil

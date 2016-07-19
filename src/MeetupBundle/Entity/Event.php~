@@ -51,4 +51,110 @@ class Event
 
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set idGroupes
+     *
+     * @param integer $idGroupes
+     *
+     * @return Event
+     */
+    public function setIdGroupes($idGroupes)
+    {
+        $this->idGroupes = $idGroupes;
+    
+        return $this;
+    }
+
+    /**
+     * Get idGroupes
+     *
+     * @return integer
+     */
+    public function getIdGroupes()
+    {
+        return $this->idGroupes;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Event
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set rsvp
+     *
+     * @param integer $rsvp
+     *
+     * @return Event
+     */
+    public function setRsvp($rsvp)
+    {
+        $this->rsvp = $rsvp;
+    
+        return $this;
+    }
+
+    /**
+     * Get rsvp
+     *
+     * @return integer
+     */
+    public function getRsvp()
+    {
+        return $this->rsvp;
+    }
+
+    /**
+     * Set created
+     *
+     * @param integer $created
+     *
+     * @return Event
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return integer
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
 }

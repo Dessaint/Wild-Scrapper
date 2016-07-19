@@ -44,15 +44,6 @@ class Topics
     private $meetuptopicid;
 
     /**
-     * @ORM\OneToOne(targetEntity="Groupes_Topics", mappedBy="topics")
-     */
-    private $groupes_topics;
-
-    public function __construct() {
-
-    }
-
-    /**
      * Get id
      *
      * @return integer
@@ -132,5 +123,29 @@ class Topics
     public function getMeetupgroupeid()
     {
         return $this->meetupgroupeid;
+    }
+
+    /**
+     * Set meetuptopicid
+     *
+     * @param integer $meetuptopicid
+     *
+     * @return Topics
+     */
+    public function setMeetuptopicid($meetuptopicid)
+    {
+        $this->meetuptopicid = $meetuptopicid;
+
+        return $this;
+    }
+
+    /**
+     * Get meetuptopicid
+     *
+     * @return integer
+     */
+    public function getMeetuptopicid()
+    {
+        return $this->meetuptopicid;
     }
 }

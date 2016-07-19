@@ -3,6 +3,7 @@
 namespace MeetupBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * GroupesRepository
@@ -12,4 +13,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class GroupesRepository extends EntityRepository
 {
+    public function getMembresWithTopics(array $topicsNames)
+    {
+        $query = $em->createQuery(
+        'SELECT g, t
+         FROM MeetupBundle:Groupes g
+         JOIN g.topics t
+         ON 
+         WHERE t.name = \'PHP\'
+         ORDER BY g.members DESC'
+        );
+
+
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

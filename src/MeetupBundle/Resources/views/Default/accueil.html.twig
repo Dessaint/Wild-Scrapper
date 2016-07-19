@@ -41,11 +41,99 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <!-- jQuery 2.2.0 -->
-	<script src="{{ asset('plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
-  <!-- Mon script pour la Sparkline -->
-	<script src="{{ asset('/js/sparkline.js') }}"></script>
-	
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script type="text/JavaScript">
+  $(function () {
+    $('#container').highcharts({
+        title: {
+            text: 'Evolution par ville',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: Meetup',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+            title: {
+                text: 'Membres'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'La Loupe',
+            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+        }, {
+            name: 'Chartres',
+            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+        }, {
+            name: 'Fontainebleau',
+            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+        }, {
+            name: 'Orléans',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Lyon',
+            data: [3.9, 4.2, 16.6, 14.2, 10.3, 6.6, 4.8, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Bordeaux',
+            data: [3.9, 16.6, 14.2, 10.3, 6.6, 4.8, 16.6, 14.2, 10.3, 6.6, 10.3, 4.8]
+        }, {
+            name: 'Toulouse',
+            data: [4.2, 6.6, 4.8, 16.6, 6.6, 4.8, 16.6, 14.2, 10.3, 6.6, 14.2, 4.8]
+        }, {
+            name: 'Paris',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Strasbourg',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Nantes',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Nice',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Montpellier',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Rennes',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Lille',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Bruxelles',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Luxembourg',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }, {
+            name: 'Genève',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }]
+    });
+});
+</script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -92,7 +180,7 @@
                 </p>
               </li>
               <!-- Menu Body -->
-  
+
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
@@ -105,7 +193,7 @@
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          
+
         </ul>
       </div>
     </nav>
@@ -204,36 +292,7 @@
       </div>
       <!-- /.row -->
       <!-- Main row -->
-      <div class="dash-sparkline">
-	      <div class="row center">
-	      	<div class="titre-spark">
-	      		<h2>Evolution du nombre de membre par villes</h2>
-      		</div>
-	      	<div class="col-md-2"><h3>La Lou: <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Chart : <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Fonta : <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Orléa : <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Lyon &nbsp;: <span class="dynamicPar">&nbsp;</span></h3></div>
-		  </div>
-		  <div class="row center">
-		  	<div class="col-md-2"><h3>Bordea: <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Toulou: <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Paris : <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Stras : <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Nantes: <span class="dynamicPar">&nbsp;</span></h3></div>
-	      </div>
-	      <div class="row center">
-		  	<div class="col-md-2"><h3>Nice &nbsp;: &nbsp; &nbsp; <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Montpe: <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Rennes: <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Lille : <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Bruxe : <span class="dynamicPar">&nbsp;</span></h3></div>
-	      </div>
-	      <div class="row center">
-		  	<div class="col-md-2"><h3>Luxem : <span class="dynamicPar">&nbsp;</span></h3></div>
-	      	<div class="col-md-2"><h3>Genev : <span class="dynamicPar">&nbsp;</span></h3></div>
-	      </div>
-      </div>
+      <div id="container" class="spark" style="min-width: 310px; height: 400px;"></div>
 
     </section>
     <!-- /.content -->
@@ -244,7 +303,7 @@
   </footer>
 
   <!-- Control Sidebar -->
- 
+
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->

@@ -3,15 +3,14 @@
 namespace MeetupBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Groupes
+ * GroupesPHP
  *
- * @ORM\Table(name="groupes")
- * @ORM\Entity(repositoryClass="MeetupBundle\Repository\GroupesRepository")
+ * @ORM\Table(name="groupes_p_h_p")
+ * @ORM\Entity(repositoryClass="MeetupBundle\Repository\GroupesPHPRepository")
  */
-class Groupes
+class GroupesPHP
 {
     /**
      * @var int
@@ -72,17 +71,18 @@ class Groupes
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="topic", type="string", length=255, nullable=true)
+     */
+    private $topic;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="meetupid", type="integer", nullable=true)
      */
     private $meetupid;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Villes", inversedBy="groupes")
-     * @ORM\JoinColumn(name="villes_id", referencedColumnName="id")
-     */
-    private $villes;
 
     /**
      * Get id
@@ -99,7 +99,7 @@ class Groupes
      *
      * @param string $country
      *
-     * @return Groupes
+     * @return GroupesPHP
      */
     public function setCountry($country)
     {
@@ -123,7 +123,7 @@ class Groupes
      *
      * @param string $city
      *
-     * @return Groupes
+     * @return GroupesPHP
      */
     public function setCity($city)
     {
@@ -147,7 +147,7 @@ class Groupes
      *
      * @param integer $created
      *
-     * @return Groupes
+     * @return GroupesPHP
      */
     public function setCreated($created)
     {
@@ -171,7 +171,7 @@ class Groupes
      *
      * @param string $lon
      *
-     * @return Groupes
+     * @return GroupesPHP
      */
     public function setLon($lon)
     {
@@ -195,7 +195,7 @@ class Groupes
      *
      * @param string $lat
      *
-     * @return Groupes
+     * @return GroupesPHP
      */
     public function setLat($lat)
     {
@@ -219,7 +219,7 @@ class Groupes
      *
      * @param integer $members
      *
-     * @return Groupes
+     * @return GroupesPHP
      */
     public function setMembers($members)
     {
@@ -243,7 +243,7 @@ class Groupes
      *
      * @param string $name
      *
-     * @return Groupes
+     * @return GroupesPHP
      */
     public function setName($name)
     {
@@ -263,59 +263,11 @@ class Groupes
     }
 
     /**
-     * Set villes
-     *
-     * @param \MeetupBundle\Entity\Villes $villes
-     *
-     * @return Groupes
-     */
-    public function setVilles(\MeetupBundle\Entity\Villes $villes = null)
-    {
-        $this->villes = $villes;
-
-        return $this;
-    }
-
-    /**
-     * Get villes
-     *
-     * @return \MeetupBundle\Entity\Villes
-     */
-    public function getVilles()
-    {
-        return $this->villes;
-    }
-
-    /**
-     * Set groupesTopics
-     *
-     * @param \MeetupBundle\Entity\Groupes_Topics $groupesTopics
-     *
-     * @return Groupes
-     */
-    public function setGroupesTopics(\MeetupBundle\Entity\Groupes_Topics $groupesTopics = null)
-    {
-        $this->groupes_topics = $groupesTopics;
-
-        return $this;
-    }
-
-    /**
-     * Get groupesTopics
-     *
-     * @return \MeetupBundle\Entity\Groupes_Topics
-     */
-    public function getGroupesTopics()
-    {
-        return $this->groupes_topics;
-    }
-
-    /**
      * Set meetupid
      *
      * @param integer $meetupid
      *
-     * @return Groupes
+     * @return GroupesPHP
      */
     public function setMeetupid($meetupid)
     {
@@ -335,26 +287,26 @@ class Groupes
     }
 
     /**
-     * Set meetuptopicid
+     * Set topic
      *
-     * @param integer $meetuptopicid
+     * @param string $topic
      *
-     * @return Groupes
+     * @return GroupesPHP
      */
-    public function setMeetuptopicid($meetuptopicid)
+    public function setTopic($topic)
     {
-        $this->meetuptopicid = $meetuptopicid;
+        $this->topic = $topic;
 
         return $this;
     }
 
     /**
-     * Get meetuptopicid
+     * Get topic
      *
-     * @return integer
+     * @return string
      */
-    public function getMeetuptopicid()
+    public function getTopic()
     {
-        return $this->meetuptopicid;
+        return $this->topic;
     }
 }

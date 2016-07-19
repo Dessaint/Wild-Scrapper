@@ -7,6 +7,7 @@ use MeetupBundle\Entity\Groupes;
 use MeetupBundle\Entity\Topics;
 use MeetupBundle\Entity\Villes;
 use MeetupBundle\Entity\GroupesTopics;
+use MeetupBundle\Entity\GroupesPHP;
 
 class DefaultController extends Controller
 {
@@ -150,6 +151,8 @@ class DefaultController extends Controller
         return $this->render('MeetupBundle:Default:index.html.twig');
     }
 
+
+
     public function EventAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -157,6 +160,58 @@ class DefaultController extends Controller
 
         return $this->render('MeetupBundle:Default:index.html.twig', array('groupes' => $groupes));
     }
+
+    public function groupesPHPAction()
+    {
+            ini_set('max_execution_time', 1200);
+            // J'initie un tableau et je place mes villes
+            $tabVilles = ["paris", "chartres", "la+loupe", "fontainebleau", "orleans", "lyon", "bordeaux", "toulouse", "strasbourg", "nantes", "nice", "montpellier", "rennes", "lille"];
+
+            foreach ($tabVilles as $ville) {
+
+                $jsonData0 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&topic=ios&city=".$ville."&key=17662761a2d418394102b53502864&offset=0");
+                $jsonData1 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&topic=ios&city=".$ville."&key=17662761a2d418394102b53502864&offset=1");
+                $jsonData2 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&topic=ios&city=".$ville."&key=17662761a2d418394102b53502864&offset=2");
+                $jsonData3 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&topic=ios&city=".$ville."&key=17662761a2d418394102b53502864&offset=3");
+
+                $Data0 = json_decode($jsonData0, true);
+                $Data1 = json_decode($jsonData1, true);
+                $Data2 = json_decode($jsonData2, true);
+                $Data3 = json_decode($jsonData3, true);
+
+                $Data[$ville] = [$Data0, $Data1, $Data2, $Data3];
+
+                $em = $this->getDoctrine()->getManager();
+
+                for ($i=0, $c = count($Data[$ville]); $i< $c; $i++) {
+
+                    for($j=0, $c2 = count($Data[$ville][$i]['results']); $j < $c2; $j++) {
+
+                        $groupesPHP = new GroupesPHP();
+
+                        $groupesPHP->setName($Data[$ville][$i]['results'][$j]['name']);
+                        $groupesPHP->setCountry($Data[$ville][$i]['results'][$j]['country']);
+                        $groupesPHP->setCity($Data[$ville][$i]['results'][$j]['city']);
+                        $groupesPHP->setTopic('Ruby');
+                        $groupesPHP->setCreated($Data[$ville][$i]['results'][$j]['created']);
+                        $groupesPHP->setLon($Data[$ville][$i]['results'][$j]['lon']);
+                        $groupesPHP->setLat($Data[$ville][$i]['results'][$j]['lat']);
+                        $groupesPHP->setMembers($Data[$ville][$i]['results'][$j]['members']);
+                        $groupesPHP->setMeetupid($Data[$ville][$i]['results'][$j]['id']);
+
+                        $em->persist($groupesPHP);
+                    }
+
+                }
+
+            }
+
+            $em->flush();
+
+        return $this->render('MeetupBundle:Default:index.html.twig');
+    }
+
+
 
 
 
