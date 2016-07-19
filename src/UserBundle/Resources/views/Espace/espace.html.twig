@@ -205,8 +205,143 @@
           </a>
         </div>
 
+      <!-- Gestion des utilisateurs -->
+      <div class="row">
+        <div class="col-md-12 user_gest">
+          <h3>Gestion des utilisateurs</h3>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Pseudo</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Fonction</th>
+                    <th>Adresse email</th>
+                    <th>Villes</th>
+                  </tr>
+                </thead>
+                    {% for user in users %}
+                <tbody>
+                  <tr>
+                    <td>{{ user.username }}</td> 
+                    <td>{{ requete.userNom }}</td>
+                    <td>{{ requete.userPrenom }}</td>
+                    <td>{{ requete.userFonction }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ requete.userVille }}</td>
+                  </tr>
+                </tbody>
+                     {% endfor %}           
+            </table> 
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Créer un nouvel utilisateur</button>
+            
+            <!-- Trigger the modal with a button -->
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Création d'un nouvel utilisateur</h4>
+                  </div>
+                  <div class="modal-body">
+                    {% block register %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+<div class="col-md-12 form-register">
+
+  {{ form_start(form, {'method': 'post', 'action': path('user_espace'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+  <div class="col-md-7 col-md-offset-3 form-global">
+    <div class="col-md-12 form-title">
+      
+    </div>
+
+    <div class="col-md-12 ">
+        <div class="col-md-12 form-title">
+          Pseudo :
+        </div>
+      <div class="col-md-12 form-title">
+        {{ form_widget(form.username) }}
+        {{ form_errors(form.username) }}
+        </div>
+    </div>
+
+     <div class="col-md-12">
+        <div class="col-md-12 form-title">
+          Adresse E-mail :
+        </div>
+      <div class="col-md-12 form-title">
+        {{ form_widget(form.email) }}
+        {{ form_errors(form.email) }}
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="col-md-12 form-title">
+          Mot de passe :
+        </div>
+      <div class="col-md-12 form-title">
+        {{ form_widget(form.plainPassword.first) }}
+        {{ form_errors(form.plainPassword.first) }}
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="col-md-12 form-title">
+          Confirmation :
+        </div>
+      <div class="col-md-12 form-title">
+        {{ form_widget(form.plainPassword.second) }}
+        {{ form_errors(form.plainPassword.second) }}
+        </div>
+    </div>
+
+    <div class="col-md-12 form_user">
+        <label for="requete.userNom">Nom :</label></br>
+        <input type="text" id="requete.userNom" name="requete.userNom" value=""/>
+    </div>
+
+    <div class="col-md-12 form_user">
+        <label for="requete.userPrenom">Prenom :</label><br>
+        <input type="text" id="requete.userPrenom" name="requete.userPrenom" value=""/>
+    </div>
+
+    <div class="col-md-12 form_user">
+        <label for="requete.userFonction">Fonction :</label></br>
+        <input type="text" id="requete.userFonction" name="requete.userFonction" value=""/>
+    </div>
+
+    <div class="col-md-12 form_user">
+        <label for="requete.userVille">Ville :</label></br>
+        <input type="text" id="requete.userVille" name="requete.userVille" value=""/>
+    </div>
+
+      <div class="col-md-12 form-title">
+          <input class="btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}" />
       </div>
-      <!-- /.row -->
+  </div>
+  {{ form_end(form) }}
+</div>
+
+{% endblock %}
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        </div>
+      </div>
+
       <!-- Main row -->
      
     </section>

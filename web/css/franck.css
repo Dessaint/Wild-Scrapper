@@ -187,3 +187,21 @@ p .titre {
 .breadcrumb {
 	margin-left: -20px;
 }
+
+/*Gestion des utilisateurs*/
+
+.user_gest {
+	margin-left: 10px;
+}
+
+.form-register label{
+	margin-left: 16px;
+}
+
+.form_user input{
+	margin-left: 16px;
+}
+
+.form_user label {
+	font-weight: 400;
+}

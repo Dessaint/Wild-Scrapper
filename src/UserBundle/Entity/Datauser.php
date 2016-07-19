@@ -51,7 +51,7 @@ class Datauser
     private $userFonction;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @Assert\NotBlank(message="Please, upload the product brochure as a JPEG file.")
      * @Assert\File(maxSize = "5M", mimeTypes={ "image/jpeg" })
