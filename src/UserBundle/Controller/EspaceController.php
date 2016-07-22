@@ -64,6 +64,7 @@ class EspaceController extends Controller
             $userPrenom = $request->request->get('userPrenom');
             $userFonction = $request->request->get('userFonction');
             $userVille = $request->request->get('userVille');
+            $userImage = $request->request->get('userImage');
 
 
             $thisData->setUserId($user->getId());
@@ -90,6 +91,7 @@ class EspaceController extends Controller
                 'prenom' => $thisUser->getUserPrenom(),
                 'fonction' => $thisUser->getUserFonction(),
                 'ville' => $thisUser->getUserVille(),
+                'image' => $thisUser->getUserImage(),
             );
         }
 
@@ -147,7 +149,7 @@ class EspaceController extends Controller
             'form' => $form->createView(),
             'datauser' => $datauser,
         )); 
-var_dump($user);
+
     }
 
 }

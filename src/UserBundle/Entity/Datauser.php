@@ -66,6 +66,12 @@ class Datauser
      */
     private $userId;
 
+    /**
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $selection;
+
 
     /**
      * Get id
@@ -219,5 +225,29 @@ class Datauser
     public function getUserId()
     {
         return $this->userId;
+    }
+
+    /**
+     * Set selection
+     *
+     * @param boolean $selection
+     *
+     * @return Datauser
+     */
+    public function setSelection($selection)
+    {
+        $this->selection = $selection;
+
+        return $this;
+    }
+
+    /**
+     * Get selection
+     *
+     * @return boolean
+     */
+    public function getSelection()
+    {
+        return $this->selection;
     }
 }

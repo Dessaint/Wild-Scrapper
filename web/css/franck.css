@@ -191,7 +191,13 @@ p .titre {
 /*Gestion des utilisateurs*/
 
 .user_gest {
+	margin-top: 10px;
+	background: white;
+}
+
+.user_gest button {
 	margin-left: 10px;
+	margin-bottom: 10px;
 }
 
 .form-register label{
@@ -204,4 +210,11 @@ p .titre {
 
 .form_user label {
 	font-weight: 400;
+}
+
+.photoid {
+	width: 30px;
+	height: 30px;
+	margin-top: 0px;
+	margin-left: 20px;
 }

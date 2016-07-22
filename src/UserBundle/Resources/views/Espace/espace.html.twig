@@ -180,7 +180,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Votre espace utilisateur
+        Bienvenu sur votre espace utilisateur {{ app.user.username }}
         <small>Panneau de contrôle</small>
       </h1>
       <ol class="breadcrumb">
@@ -194,7 +194,7 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-md-12">
-          <h1><b>{{ app.user.username }}</b></br></h1>
+          <p><img src="{{ asset('uploads/datausers/' ~ requete.userImage ~ '')}}" class="img-circle photoid"></p>
           <p>{{ app.user.email }} 
           <p>{{ requete.userNom }} {{ requete.userPrenom }}</br>
           {{ requete.userVille }}</br>
@@ -213,23 +213,27 @@
             <table class="table table-hover">
                 <thead>
                   <tr>
+                    <th></th>
                     <th>Pseudo</th>
                     <th>Adresse email</th>
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Fonction</th>
                     <th>Villes</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                     {% for allUser in allUsers %}
                 <tbody>
                   <tr>
+                    <td><img src="{{ asset('uploads/datausers/' ~ allUser.image ~ '')}}" class="img-circle photoid"></td>
                     <td>{{ allUser.pseudo }}</td>
                     <td>{{ allUser.email }}</td> 
                     <td>{{ allUser.nom }}</td>
                     <td>{{ allUser.prenom }}</td>
                     <td>{{ allUser.fonction }}</td> 
                     <td>{{ allUser.ville }}</td>
+                    <td><a href=""><img src="{{ asset('./img/edit.png') }}"></a>  <a href=""><img src="{{ asset('./img/delete.png') }}"></a></td>
                     
                   </tr>
                 </tbody>   
