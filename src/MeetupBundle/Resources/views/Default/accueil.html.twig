@@ -357,10 +357,10 @@
 <script>
 function dashboard(id, fData){
     var barColor = 'steelblue';
-    function segColor(c){ return {php:"#807dba", JavaScript:"#e08214",Ruby:"#41ab5d"}[c]; }
+    function segColor(c){ return {php:"#8694D1", JavaScript:"#F0DB4F",Ruby:"#EC1622", Ios:"#97C024"}[c]; }
 
     // compute total for each state.
-    fData.forEach(function(d){d.total=d.freq.php+d.freq.JavaScript+d.freq.Ruby;});
+    fData.forEach(function(d){d.total=d.freq.php+d.freq.JavaScript+d.freq.Ruby+d.freq.Ios;});
 
     // function to handle histogram.
     function histoGram(fD){
@@ -540,7 +540,7 @@ function dashboard(id, fData){
     }
 
     // calculate total frequency by segment for all state.
-    var tF = ['php','JavaScript','Ruby'].map(function(d){
+    var tF = ['php','JavaScript','Ruby', 'Ios'].map(function(d){
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))};
     });
 
@@ -555,23 +555,23 @@ function dashboard(id, fData){
 
 <script>
 var freqData=[
-{State:'LOUP',freq:{php:4786, JavaScript:1319, Ruby:249}}
-,{State:'CHA',freq:{php:1101, JavaScript:412, Ruby:674}}
-,{State:'FON',freq:{php:932, JavaScript:2149, Ruby:418}}
-,{State:'ORL',freq:{php:832, JavaScript:1152, Ruby:1862}}
-,{State:'LYON',freq:{php:4481, JavaScript:3304, Ruby:948}}
-,{State:'BDX',freq:{php:1619, JavaScript:167, Ruby:1063}}
-,{State:'TLS',freq:{php:1819, JavaScript:247, Ruby:1203}}
-,{State:'PAR',freq:{php:512, JavaScript:3852, Ruby:942}}
-,{State:'STBG',freq:{php:797, JavaScript:1849, Ruby:1534}}
-,{State:'NAN',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'NIC',freq:{php:632, JavaScript:459, Ruby:731}}
-,{State:'MTP',freq:{php:862, JavaScript:379, Ruby:471}}
-,{State:'REN',freq:{php:662, JavaScript:379, Ruby:471}}
-,{State:'LIL',freq:{php:162, JavaScript:849, Ruby:471}}
-,{State:'BXL',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'LUX',freq:{php:162, JavaScript:349, Ruby:871}}
-,{State:'GEN',freq:{php:393, JavaScript:379, Ruby:271}}
+{State:'LOUP',freq:{php:4786, JavaScript:1319, Ruby:249, Ios:754}}
+,{State:'CHA',freq:{php:1101, JavaScript:412, Ruby:674, Ios:754}}
+,{State:'FON',freq:{php:932, JavaScript:2149, Ruby:418, Ios:754}}
+,{State:'ORL',freq:{php:832, JavaScript:1152, Ruby:1862, Ios:754}}
+,{State:'LYON',freq:{php:4481, JavaScript:3304, Ruby:948, Ios:754}}
+,{State:'BDX',freq:{php:1619, JavaScript:167, Ruby:1063, Ios:754}}
+,{State:'TLS',freq:{php:1819, JavaScript:247, Ruby:1203, Ios:754}}
+,{State:'PAR',freq:{php:512, JavaScript:3852, Ruby:942, Ios:754}}
+,{State:'STBG',freq:{php:797, JavaScript:1849, Ruby:1534, Ios:754}}
+,{State:'NAN',freq:{php:162, JavaScript:379, Ruby:471, Ios:754}}
+,{State:'NIC',freq:{php:632, JavaScript:459, Ruby:731, Ios:754}}
+,{State:'MTP',freq:{php:862, JavaScript:379, Ruby:471, Ios:754}}
+,{State:'REN',freq:{php:662, JavaScript:379, Ruby:471, Ios:754}}
+,{State:'LIL',freq:{php:162, JavaScript:849, Ruby:471, Ios:754}}
+,{State:'BXL',freq:{php:162, JavaScript:379, Ruby:471, Ios:754}}
+,{State:'LUX',freq:{php:162, JavaScript:349, Ruby:871, Ios:754}}
+,{State:'GEN',freq:{php:393, JavaScript:379, Ruby:271, Ios:754}}
 ];
 
 dashboard('#dashboard',freqData);

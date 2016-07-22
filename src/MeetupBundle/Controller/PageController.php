@@ -16,29 +16,42 @@ class PageController extends Controller
             ->getRepository('MeetupBundle:GroupesPHP')
             ;
 
-            // $membresPHPParis = $repository->MembersByCity('PHP', 'paris');
-            // $membresJavaScriptParis = $repository->MembersByCity('JavaScript', 'paris');
-            // $membresRubyParis = $repository->MembersByCity('Ruby', 'paris');
-            // $membresIOSParis = $repository->MembersByCity('IOS', 'paris');
-            //
-            // $membresPHPParis = $membresPHPParis[0];
-            // $membresJavaScriptParis = $membresJavaScriptParis[0];
-            // $membresRubyParis = $membresRubyParis[0];
-            // $membresIOSParis = $membresIOSParis[0];
-            $graph = $repository->Graph();
+            $membresPHPParis = $repository->MembersByCity('PHP', 'paris');
+            $membresJavaScriptParis = $repository->MembersByCity('JavaScript', 'paris');
+            $membresRubyParis = $repository->MembersByCity('Ruby', 'paris');
+            $membresIOSParis = $repository->MembersByCity('IOS', 'paris');
 
-            $response = new Response();
-            $response->setContent(json_encode($graph));
-            $response->headers->set('Content-Type', 'application/json');
-            var_dump($response); exit;
+            $membresPHPParis = $membresPHPParis[0];
+            $membresJavaScriptParis = $membresJavaScriptParis[0];
+            $membresRubyParis = $membresRubyParis[0];
+            $membresIOSParis = $membresIOSParis[0];
 
-        return $this->render('MeetupBundle:Default:accueil.html.twig'
-        // array(
-        //     'membresPHPParis'       =>$membresPHPParis,
-        //     'membresJavaScriptParis'=>$membresJavaScriptParis,
-        //     'membresRubyParis'      =>$membresRubyParis,
-        //     'membresIOSParis'    =>$membresIOSParis
-        // )
+            $membresParis = [$membresPHPParis, $membresJavaScriptParis, $membresRubyParis, $membresIOSParis];
+
+            //var_dump($membresParis); exit;
+
+            $membresPHPLoupe = $repository->MembersByCity('PHP', 'la+loupe');
+            $membresJavaScriptLoupe = $repository->MembersByCity('JavaScript', 'la+loupe');
+            $membresRubyLoupe = $repository->MembersByCity('Ruby', 'la+loupe');
+            $membresIOSLoupe = $repository->MembersByCity('IOS', 'la+loupe');
+
+            $membresPHPLoupe = $membresPHPLoupe[0];
+            $membresJavaScriptLoupe = $membresJavaScriptLoupe[0];
+            $membresRubyLoupe = $membresRubyLoupe[0];
+            $membresIOSLoupe = $membresIOSLoupe[0];
+
+        return $this->render('MeetupBundle:Default:accueil.html.twig',
+        array(
+            'membresPHPParis'       =>$membresPHPParis,
+            'membresJavaScriptParis'=>$membresJavaScriptParis,
+            'membresRubyParis'      =>$membresRubyParis,
+            'membresIOSParis'       =>$membresIOSParis,
+
+            'membresPHPLoupe'       =>$membresPHPLoupe,
+            'membresJavaScriptLoupe'=>$membresJavaScriptLoupe,
+            'membresRubyLoupe'      =>$membresRubyLoupe,
+            'membresIOSLoupe'       =>$membresIOSLoupe
+        )
     );
     }
 }
