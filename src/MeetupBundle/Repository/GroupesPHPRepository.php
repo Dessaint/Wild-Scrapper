@@ -15,7 +15,7 @@ class GroupesPHPRepository extends \Doctrine\ORM\EntityRepository
        $qb = $this->createQueryBuilder('g');
 
        $qb->select('SUM(g.members) AS membresTotal')
-           ->addSelect('g.members')
+           ->addSelect('g.topic')
            ->where('g.topic = ?1')
            ->andwhere('g.city = ?2')
            ->groupBy('g.topic')
