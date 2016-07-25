@@ -2167,6 +2167,7 @@
         ]
     },
     {
+<<<<<<< HEAD
         "name": "symfony/phpunit-bridge",
         "version": "v2.8.8",
         "version_normalized": "2.8.8.0",
@@ -2192,15 +2193,67 @@
         "extra": {
             "branch-alias": {
                 "dev-master": "2.8-dev"
+=======
+        "name": "symfony/serializer",
+        "version": "v3.1.2",
+        "version_normalized": "3.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/serializer.git",
+            "reference": "e8621c273575617e132d582983d5d14ce0c2b76c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/serializer/zipball/e8621c273575617e132d582983d5d14ce0c2b76c",
+            "reference": "e8621c273575617e132d582983d5d14ce0c2b76c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "conflict": {
+            "symfony/property-access": ">=3.0,<3.0.4|>=2.8,<2.8.4"
+        },
+        "require-dev": {
+            "doctrine/annotations": "~1.0",
+            "doctrine/cache": "~1.0",
+            "symfony/cache": "~3.1",
+            "symfony/config": "~2.8|~3.0",
+            "symfony/http-foundation": "~2.8|~3.0",
+            "symfony/property-access": "~2.8|~3.0",
+            "symfony/property-info": "~2.8|~3.0",
+            "symfony/yaml": "~2.8|~3.0"
+        },
+        "suggest": {
+            "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
+            "doctrine/cache": "For using the default cached annotation reader and metadata cache.",
+            "psr/cache-implementation": "For using the metadata cache.",
+            "symfony/config": "For using the XML mapping loader.",
+            "symfony/http-foundation": "To use the DataUriNormalizer.",
+            "symfony/property-access": "For using the ObjectNormalizer.",
+            "symfony/property-info": "To deserialize relations.",
+            "symfony/yaml": "For using the default YAML mapping loader."
+        },
+        "time": "2016-06-29 05:41:56",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1-dev"
+>>>>>>> de87a498747897e2a7a2d0eff529c6cb481e0684
             }
         },
         "installation-source": "dist",
         "autoload": {
+<<<<<<< HEAD
             "files": [
                 "bootstrap.php"
             ],
             "psr-4": {
                 "Symfony\\Bridge\\PhpUnit\\": ""
+=======
+            "psr-4": {
+                "Symfony\\Component\\Serializer\\": ""
+>>>>>>> de87a498747897e2a7a2d0eff529c6cb481e0684
             },
             "exclude-from-classmap": [
                 "/Tests/"
@@ -2212,14 +2265,20 @@
         ],
         "authors": [
             {
+<<<<<<< HEAD
                 "name": "Nicolas Grekas",
                 "email": "p@tchwork.com"
+=======
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+>>>>>>> de87a498747897e2a7a2d0eff529c6cb481e0684
             },
             {
                 "name": "Symfony Community",
                 "homepage": "https://symfony.com/contributors"
             }
         ],
+<<<<<<< HEAD
         "description": "Symfony PHPUnit Bridge",
         "homepage": "https://symfony.com"
     },
@@ -2357,5 +2416,9 @@
             "mail",
             "mailer"
         ]
+=======
+        "description": "Symfony Serializer Component",
+        "homepage": "https://symfony.com"
+>>>>>>> de87a498747897e2a7a2d0eff529c6cb481e0684
     }
 ]
