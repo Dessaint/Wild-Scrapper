@@ -1,54 +1,135 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Wild Scrapper - Login</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css') }}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('css/AdminLTE.css') }}">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="{{ asset('css/skins/_all-skins.min.css') }}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{{ asset('plugins/iCheck/flat/blue.css') }}">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="{{ asset('plugins/morris/morris.css') }}">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="{{ asset('plugins/datepicker/datepicker3.css') }}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+  <!-- Fichier style.css-->
+  <link rel="stylesheet" href="{{ asset('css/skins/style.css') }}">
+  <!-- Mon fichier Css-->
+  <link rel="stylesheet" href="{{ asset('css/cedric.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/franck.css') }}">
 
-{% block body %}
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <!-- jQuery 2.2.0 -->
+	<script src="{{ asset('plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
+  <!-- Mon script pour la Sparkline -->
+</head>
 
-<div class="col-md-1"></div>
-<div class="col-md-4">
-    <img class="wilderr" src="{{ asset('img/wilderlog.png') }}">
+{% block navbar %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><img src="{{ asset('img/logo_wild.png') }}"></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="dropdown tasks-menu">
+            <div class="col-md-12 titre_head app_titre"><h2><b>VEILLE MEETUP</b></h2></div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 </div>
-<div class="col-md-3 col-md-offset-2 logform">
-	<div class="col-md-12 loglog padd ecartt">
-		<h3 class="colog">CONNECTION</h3>
-	</div>
-	<div class="col-md-12 loglog">
-		{% if error %}
-		    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
-	</div>
-		<form action="{{ path("user_login_check") }}" method="post">
-		    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-	<div class="col-md-12 loglog ecartt">
-		<div class="col-md-5 tilti">
-		    <label for="username"><span>Pseudo :</span></label>
-		</div>
-		<div class="col-md-6">
-		    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-		</div>
-	</div>
-	<div class"col-md-12 loglog ecartt">
-		<div class="col-md-5 tilti">
-		    <label for="password"><span>Mot de Passe :</span></label>
-		</div>
-		<div class="col-md-6">
-		    <input type="password" id="password" name="_password" required="required" />
-		</div>
-	</div>
-	<div class="col-md-12 loglog ecartt">
-		<div class="col-md-2"></div>
-		<div class="col-md-6">
-		    <label for="remember_me"><span>Se souvenir de moi :</span></label>
-		</div>
-		<div class="col-md-1">
-		    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-		</div>
-	</div>
-	<div class="col-md-12 loglog">
-		<div class="col-md-4"></div>
-		<div class="col-md-4">
-		    <input type="submit" class="btnlogin" id="_submit" name="_submit" value="Envoyer" />
-		</div>
-	</div>
-		</form>
+<!-- ./wrapper -->
+<div class="bg">
+  <div class="connexion">
+    <div class="col-md-12 ">
+      <div class="col-md-12 ">
+        <h3 class=""><b>CONNECTION</b></h3>
+      </div>
+      <div class="col-md-12 ">
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+      </div>
+        <form action="{{ path("user_login_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+      <div class="col-md-12 loglog ecartt">
+        <div class="col-md-6 tilti">
+            <label for="username"><span>Pseudo :</span></label>
+        </div>
+        <div class="col-md-6">
+            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        </div>
+      </div>
+      <div class"col-md-12">
+        <div class="col-md-6">
+            <label for="password"><span>Mot de Passe :</span></label>
+        </div>
+        <div class="col-md-6">
+            <input type="password" id="password" name="_password" required="required" />
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="col-md-6">
+            <label for="remember_me"><span>Se souvenir de moi :</span></label>
+        </div>
+        <div class="col-md-1">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <input type="submit" class="btn" id="_submit" name="_submit" value="Envoyer" />
+        </div>
+      </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  </div>
 </div>
-<div class="col-md-4"></div>
-{% endblock %}
+  {% endblock %}
+
+  <footer>
+    <div class="col-md-12"></div>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -4,8 +4,6 @@ namespace MeetupBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use MeetupBundle\Entity\Topics;
-use MeetupBundle\Entity\Event;
 
 /**
  * Groupes
@@ -25,13 +23,6 @@ class Groupes
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_event", type="integer", unique=true)
-     */
-    private $id_event;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255, nullable=true)
@@ -48,21 +39,21 @@ class Groupes
     /**
      * @var int
      *
-     * @ORM\Column(name="created", type="integer", nullable=true)
+     * @ORM\Column(name="created", type="bigint", nullable=true)
      */
     private $created;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="lon", type="decimal", nullable=true, scale=10)
+     * @ORM\Column(name="lon", type="float", nullable=true)
      */
     private $lon;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="lat", type="decimal", nullable=true, scale=10)
+     * @ORM\Column(name="lat", type="float", nullable=true)
      */
     private $lat;
 
@@ -83,19 +74,15 @@ class Groupes
     /**
      * @var int
      *
-     * @ORM\Column(name="date", type="integer", nullable=true)
+     * @ORM\Column(name="meetupid", type="integer", nullable=true)
      */
-    private $date;
+    private $meetupid;
 
     /**
-    *@ORM\ManyToMany(targetEntity="MeetupBundle\Entity\Topics")
-    */
-    private $topics;
-
-    public function __contruct() {
-        $this->topics = new ArrayCollection();
-    }
-
+     * @ORM\ManyToOne(targetEntity="Villes", inversedBy="groupes")
+     * @ORM\JoinColumn(name="villes_id", referencedColumnName="id")
+     */
+    private $villes;
 
     /**
      * Get id
@@ -111,6 +98,7 @@ class Groupes
      * Set country
      *
      * @param string $country
+     *
      * @return Groupes
      */
     public function setCountry($country)
@@ -134,6 +122,7 @@ class Groupes
      * Set city
      *
      * @param string $city
+     *
      * @return Groupes
      */
     public function setCity($city)
@@ -157,6 +146,7 @@ class Groupes
      * Set created
      *
      * @param integer $created
+     *
      * @return Groupes
      */
     public function setCreated($created)
@@ -179,7 +169,8 @@ class Groupes
     /**
      * Set lon
      *
-     * @param integer $lon
+     * @param string $lon
+     *
      * @return Groupes
      */
     public function setLon($lon)
@@ -192,7 +183,7 @@ class Groupes
     /**
      * Get lon
      *
-     * @return integer
+     * @return string
      */
     public function getLon()
     {
@@ -202,7 +193,8 @@ class Groupes
     /**
      * Set lat
      *
-     * @param integer $lat
+     * @param string $lat
+     *
      * @return Groupes
      */
     public function setLat($lat)
@@ -215,7 +207,7 @@ class Groupes
     /**
      * Get lat
      *
-     * @return integer
+     * @return string
      */
     public function getLat()
     {
@@ -225,7 +217,8 @@ class Groupes
     /**
      * Set members
      *
-     * @param string $members
+     * @param integer $members
+     *
      * @return Groupes
      */
     public function setMembers($members)
@@ -238,7 +231,7 @@ class Groupes
     /**
      * Get members
      *
-     * @return string
+     * @return integer
      */
     public function getMembers()
     {
@@ -249,6 +242,7 @@ class Groupes
      * Set name
      *
      * @param string $name
+     *
      * @return Groupes
      */
     public function setName($name)
@@ -269,92 +263,98 @@ class Groupes
     }
 
     /**
-     * Set date
+     * Set villes
      *
-     * @param integer $date
+     * @param \MeetupBundle\Entity\Villes $villes
+     *
      * @return Groupes
      */
-    public function setDate($date)
+    public function setVilles(\MeetupBundle\Entity\Villes $villes = null)
     {
-        $this->date = $date;
+        $this->villes = $villes;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get villes
+     *
+     * @return \MeetupBundle\Entity\Villes
+     */
+    public function getVilles()
+    {
+        return $this->villes;
+    }
+
+    /**
+     * Set groupesTopics
+     *
+     * @param \MeetupBundle\Entity\Groupes_Topics $groupesTopics
+     *
+     * @return Groupes
+     */
+    public function setGroupesTopics(\MeetupBundle\Entity\Groupes_Topics $groupesTopics = null)
+    {
+        $this->groupes_topics = $groupesTopics;
+
+        return $this;
+    }
+
+    /**
+     * Get groupesTopics
+     *
+     * @return \MeetupBundle\Entity\Groupes_Topics
+     */
+    public function getGroupesTopics()
+    {
+        return $this->groupes_topics;
+    }
+
+    /**
+     * Set meetupid
+     *
+     * @param integer $meetupid
+     *
+     * @return Groupes
+     */
+    public function setMeetupid($meetupid)
+    {
+        $this->meetupid = $meetupid;
+
+        return $this;
+    }
+
+    /**
+     * Get meetupid
      *
      * @return integer
      */
-    public function getDate()
+    public function getMeetupid()
     {
-        return $this->date;
+        return $this->meetupid;
     }
 
     /**
-     * Get topics
+     * Set meetuptopicid
      *
-     * @return ArrayCollection
-     */
-    public function getTopics()
-    {
-        return $this->topics;
-    }
-
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->topics = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Set idEvent
-     *
-     * @param integer $idEvent
+     * @param integer $meetuptopicid
      *
      * @return Groupes
      */
-    public function setIdEvent($idEvent)
+    public function setMeetuptopicid($meetuptopicid)
     {
-        $this->id_event = $idEvent;
+        $this->meetuptopicid = $meetuptopicid;
 
         return $this;
     }
 
     /**
-     * Get idEvent
+     * Get meetuptopicid
      *
      * @return integer
      */
-    public function getIdEvent()
+    public function getMeetuptopicid()
     {
-        return $this->id_event;
-    }
-
-    /**
-     * Add topic
-     *
-     * @param \MeetupBundle\Entity\Topics $topic
-     *
-     * @return Groupes
-     */
-    public function addTopic(\MeetupBundle\Entity\Topics $topic)
-    {
-        $this->topics[] = $topic;
-
-        return $this;
-    }
-
-    /**
-     * Remove topic
-     *
-     * @param \MeetupBundle\Entity\Topics $topic
-     */
-    public function removeTopic(\MeetupBundle\Entity\Topics $topic)
-    {
-        $this->topics->removeElement($topic);
+        return $this->meetuptopicid;
     }
 }

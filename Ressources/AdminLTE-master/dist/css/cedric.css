@@ -2,6 +2,10 @@
     background: url(../img/arrPlan.png);
 }
 
+.main-header .logo {
+    height: 55px;
+}
+
 path {  stroke: #fff; }
 path:hover {  opacity:0.9; }
 rect:hover {  fill:blue; }

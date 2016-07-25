@@ -3,6 +3,7 @@
 namespace MeetupBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * GroupesRepository
@@ -12,4 +13,5 @@ use Doctrine\ORM\EntityRepository;
  */
 class GroupesRepository extends EntityRepository
 {
+    
 }
