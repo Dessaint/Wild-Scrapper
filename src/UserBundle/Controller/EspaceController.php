@@ -149,7 +149,6 @@ class EspaceController extends Controller
             'form' => $form->createView(),
             'datauser' => $datauser,
         )); 
-
     }
 
 }

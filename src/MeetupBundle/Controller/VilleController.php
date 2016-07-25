@@ -9,7 +9,14 @@ class VilleController extends Controller
 {
     public function showAction()
     {
-        // replace this example code with whatever you need
-        return $this->render('MeetupBundle:Default:ville.html.twig');
+        
+    	 $em = $this->getDoctrine()->getManager();
+
+    	 $user = $this->container->get('security.context')->getToken()->getUser();
+
+    	 $request = $em->getRepository('UserBundle:Datauser')->findOneByUserId($user->getId());
+    	return $this->render('MeetupBundle:Default:ville.html.twig', array(
+    	     'requete' => $request,
+    	 ));
     }
 }
