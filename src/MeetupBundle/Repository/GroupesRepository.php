@@ -13,22 +13,5 @@ use Doctrine\ORM\QueryBuilder;
  */
 class GroupesRepository extends EntityRepository
 {
-    public function getMembresWithTopics(array $topicsNames)
-    {
-        $query = $em->createQuery(
-        'SELECT g, t
-         FROM MeetupBundle:Groupes g
-         JOIN g.topics t
-         ON 
-         WHERE t.name = \'PHP\'
-         ORDER BY g.members DESC'
-        );
-
-
-
-        return $qb
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    
 }
