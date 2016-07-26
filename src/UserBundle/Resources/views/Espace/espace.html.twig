@@ -27,7 +27,7 @@
           {{ requete.userVille }}</br>
           {{ requete.userFonction }} 
           </p>
-          <a href="{{ path('user_espacemodif') }}">
+          <a href="{{ path('user_espacemodif', {'id': app.user.id }) }}">
           <button type="button" class="btn btn-warning">Modifier mes informations</button>
           </a>
         </div>
@@ -60,7 +60,7 @@
                     <td>{{ allUser.prenom }}</td>
                     <td>{{ allUser.fonction }}</td> 
                     <td>{{ allUser.ville }}</td>
-                    <td><a href=""><img src="{{ asset('./img/edit.png') }}"></a>  <a href=""><img src="{{ asset('./img/delete.png') }}"></a></td>
+                    <td><a href="{{ path('user_espacemodif', {'id': allUser.id } ) }}"><img src="{{ asset('./img/edit.png') }}"></a>  <a href="{{ path('user_espace_delete', { 'id': allUser.id }) }}"><img src="{{ asset('./img/delete.png') }}"></a></td>
                     
                   </tr>
                 </tbody>   

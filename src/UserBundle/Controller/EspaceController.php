@@ -104,14 +104,15 @@ class EspaceController extends Controller
         ));
     }
 
-    public function espacemodifAction(Request $request)
+    public function espacemodifAction(Request $request, $id)
     {
         
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
         // create a task and give it some dummy data for this example
+
        
-        $datauser = $em->getRepository('UserBundle:Datauser')->findOneByUserId($user->getId());
+        $datauser = $em->getRepository('UserBundle:Datauser')->findOneByUserId($id);
 
         $form = $this->createForm(DatauserType::class, $datauser);
         $form->handleRequest($request);
@@ -121,7 +122,6 @@ class EspaceController extends Controller
         /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
         $file = $datauser->getUserImage();
 
-        $id = $user->getId();
         $datauser->setUserId($id);
 
 
@@ -142,13 +142,29 @@ class EspaceController extends Controller
         $em->flush();
 
         // ... persist the $product variable or any other work
-        return $this->redirect($this->generateUrl('user_espacemodif'));
+        return $this->redirect($this->generateUrl('user_espacemodif', array('id'=>$id)));
         }
 
+        $request = $em->getRepository('UserBundle:Datauser')->findOneByUserId($user->getId());
         return $this->render('UserBundle:Espace:espacemodif.html.twig', array(
             'form' => $form->createView(),
             'datauser' => $datauser,
+            'requete' => $request,
         )); 
+    }
+
+    public function espacedeleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $supp = $em->getRepository('UserBundle:User')->findOneById($id);
+
+        $em->remove($supp);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('user_espace'));
+
     }
 
 }
