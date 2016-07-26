@@ -19,8 +19,16 @@ user_espace:
     defaults: { _controller: UserBundle:Espace:espace }
 
 user_espacemodif:
-    path:     espacemodif
+    path:     espacemodif/{id}
     defaults: { _controller: UserBundle:Espace:espacemodif }
+
+user_espacemodif_admin:
+    path:     espacemodif/admin
+    defaults: { _controller: UserBundle:Espace:espacemodif_admin }
+
+user_espace_delete:
+    path:     espace/delete/{id}
+    defaults: { _controller: UserBundle:Espace:espacedelete }
 
 user_dashboard:
     path:     dashboard

@@ -1,0 +1,127 @@
+
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><img src="{{ asset('img/logo_wild_small.png') }}"></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><img src="{{ asset('img/logo_wild.png') }}"></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle boite_nav" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+
+          <!-- Notifications: style can be found in dropdown.less -->
+
+          <!-- Tasks: style can be found in dropdown.less -->
+          <li class="dropdown tasks-menu">
+            <div class="col-md-12 titre_head app_titre"><h2><b>VEILLE MEETUP</b></h2></div>
+          </li>
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle boite_nav" data-toggle="dropdown">
+              <img src="{{ asset('./img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+              <span class="hidden-xs">Lucie Coulon</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="{{ asset('./img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+
+                <p>
+                  Lucie Coulon - Chargée de développement
+                  <small>lucie@wildcodeschool.fr</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+  
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="{{ path('user_espace') }}" class="btn btn-default btn-flat">Profil</a>
+                </div>
+                <div class="pull-right">
+                  <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Me déconnecter</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Lucie Coulon</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> En ligne</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">NAVIGATION PRINCIPALE</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Ville ciblée</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+              <li><a href="{{ path('user_ville') }}"><i class="fa fa-circle-o"></i>Paris</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>La Loupe</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Chartres</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Fontainebleau</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Orléans</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Lyon</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Bordeaux</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Toulouse</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Strasbourg</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Nantes</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Nice</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Montpellier</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Rennes</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Lille</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Bruxelles</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Luxembourg</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Genève</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Toutes les villes</a></li>
+              <li><a href="#" class="ville_cible"><i class="fa fa-circle- "></i>Définir une nouvelle ville cible</a></li>
+          </ul>
+        </li>
+        <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">Marqueurs</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Niveau 1</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Niveau 2</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Niveau 3</span></a></li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
