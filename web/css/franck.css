@@ -18,6 +18,12 @@
 	border-left-color: #f9a02e;
 }
 
+.app_titre h2 {
+	margin-top: 2px;
+	background: #1fa597;
+	color: white;
+}
+
 /*Content*/
 
 .content-wrapper {
@@ -191,6 +197,35 @@ p .titre {
 /*Gestion des utilisateurs*/
 
 .user_gest {
+	margin-top: 10px;
+	background: white;
+	margin-left: 60px;
+	width: 90%;
+}
+
+.user_gest button {
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.esp-utilisateur {
+	background: white;
+	margin-left: 45px;
+	width: 93%;
+}
+
+.esp-utilisateur button {
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.esp-utilisateur img {
+	margin-top: 10px;
+	width: 80px;
+	height: 80px;
+}
+
+.esp-utilisateur p {
 	margin-left: 10px;
 }
 
@@ -204,4 +239,17 @@ p .titre {
 
 .form_user label {
 	font-weight: 400;
+}
+
+.photoid {
+	width: 30px;
+	height: 30px;
+	margin-top: 0px;
+	margin-left: 20px;
+}
+
+/*FOOTER*/
+
+.footer a {
+	color: #1fa597 ;
 }

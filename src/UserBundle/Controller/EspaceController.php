@@ -37,7 +37,6 @@ class EspaceController extends Controller
 
         $user = $userManager->createUser();
         $user->setEnabled(true);
-        $users = $em->getRepository('UserBundle:User')->findAll();
 
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
@@ -57,13 +56,6 @@ class EspaceController extends Controller
 
             $userManager->updateUser($user);
 
-            if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_registration_confirmed');
-                $response = new RedirectResponse($url);
-            }
-
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
             $thisData = new Datauser();
 
             $thisData->setUserId($user->getId());
@@ -72,8 +64,10 @@ class EspaceController extends Controller
             $userPrenom = $request->request->get('userPrenom');
             $userFonction = $request->request->get('userFonction');
             $userVille = $request->request->get('userVille');
+            $userImage = $request->request->get('userImage');
 
 
+            $thisData->setUserId($user->getId());
             $thisData->setUserNom($userNom);
             $thisData->setUserPrenom($userPrenom);
             $thisData->setUserFonction($userFonction);
@@ -81,28 +75,44 @@ class EspaceController extends Controller
         
             $em->persist($thisData);
             $em->flush();
-        
-            return $response;
+        }
+
+        $allUser = [];
+
+        $users = $em->getRepository('UserBundle:User')->findAll();
+        foreach ($users as $utilisateur)
+        {
+            $thisUser = $em->getRepository('UserBundle:Datauser')->findOneByUserId($utilisateur->getId());
+            $allUser[] = array(
+                'id' => $utilisateur->getId(),
+                'pseudo' => $utilisateur->getUsername(),
+                'email' => $utilisateur->getEmail(),
+                'nom' => $thisUser->getUserNom(),
+                'prenom' => $thisUser->getUserPrenom(),
+                'fonction' => $thisUser->getUserFonction(),
+                'ville' => $thisUser->getUserVille(),
+                'image' => $thisUser->getUserImage(),
+            );
         }
 
         $user = $this->container->get('security.context')->getToken()->getUser();
         $request = $em->getRepository('UserBundle:Datauser')->findOneByUserId($user->getId());
-
        return $this->render('UserBundle:Espace:espace.html.twig', array(
             'requete' => $request,
             'form' => $form->createView(),
-            'users' => $users,
+            'allUsers' => $allUser,
         ));
     }
 
-    public function espacemodifAction(Request $request)
+    public function espacemodifAction(Request $request, $id)
     {
         
         $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
         // create a task and give it some dummy data for this example
+
        
-        $datauser = $em->getRepository('UserBundle:Datauser')->findOneByUserId($user->getId());
+        $datauser = $em->getRepository('UserBundle:Datauser')->findOneByUserId($id);
 
         $form = $this->createForm(DatauserType::class, $datauser);
         $form->handleRequest($request);
@@ -112,7 +122,6 @@ class EspaceController extends Controller
         /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
         $file = $datauser->getUserImage();
 
-        $id = $user->getId();
         $datauser->setUserId($id);
 
 
@@ -133,14 +142,29 @@ class EspaceController extends Controller
         $em->flush();
 
         // ... persist the $product variable or any other work
-        return $this->redirect($this->generateUrl('user_espacemodif'));
+        return $this->redirect($this->generateUrl('user_espacemodif', array('id'=>$id)));
         }
 
+        $request = $em->getRepository('UserBundle:Datauser')->findOneByUserId($user->getId());
         return $this->render('UserBundle:Espace:espacemodif.html.twig', array(
             'form' => $form->createView(),
             'datauser' => $datauser,
+            'requete' => $request,
         )); 
-var_dump($user);
+    }
+
+    public function espacedeleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $supp = $em->getRepository('UserBundle:User')->findOneById($id);
+
+        $em->remove($supp);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('user_espace'));
+
     }
 
 }

@@ -40,8 +40,8 @@ class RegistrationController extends Controller
         $dispatcher = $this->get('event_dispatcher');
 
         $user = $userManager->createUser();
-        $user->setEnabled(true);
-
+        // $user->setEnabled(true);
+        echo('toto');
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
 
@@ -60,13 +60,14 @@ class RegistrationController extends Controller
 
             $userManager->updateUser($user);
 
-            if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_registration_confirmed');
+            // if (null === $response = $event->getResponse()) {
+            //     $url = $this->generateUrl('fos_user_registration_confirmed');
+            //     $response = new RedirectResponse($url);
+            // }
+
+            // $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+                $url = $this->generateUrl('user_confirmed');
                 $response = new RedirectResponse($url);
-            }
-
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
             return $response;
         }
 
@@ -119,7 +120,7 @@ class RegistrationController extends Controller
         $userManager->updateUser($user);
 
         if (null === $response = $event->getResponse()) {
-            $url = $this->generateUrl('fos_user_registration_confirmed');
+            $url = $this->generateUrl('user_espace');
             $response = new RedirectResponse($url);
         }
 
@@ -138,7 +139,7 @@ class RegistrationController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('FOSUserBundle:Registration:confirmed.html.twig', array(
+        return $this->render('UserBundle:Espace:espace.html.twig', array(
             'user' => $user,
             'targetUrl' => $this->getTargetUrlFromSession(),
         ));
