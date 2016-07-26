@@ -1,144 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Wild Scrapper - Login</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css') }}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('css/AdminLTE.css') }}">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{ asset('css/skins/_all-skins.min.css') }}">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset('plugins/iCheck/flat/blue.css') }}">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="{{ asset('plugins/morris/morris.css') }}">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="{{ asset('plugins/datepicker/datepicker3.css') }}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
-  <!-- Fichier style.css-->
-  <link rel="stylesheet" href="{{ asset('css/skins/style.css') }}">
-  <!-- Mon fichier Css-->
-  <link rel="stylesheet" href="{{ asset('css/cedric.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/franck.css') }}">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  <script type="text/JavaScript">
-  $(function () {
-    $('#container').highcharts({
-        title: {
-            text: 'Evolution du nombre de membres IT par ville',
-            x: -20 //center
-        },
-        subtitle: {
-            text: 'Source: Meetup',
-            x: -20
-        },
-        xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        },
-        yAxis: {
-            title: {
-                text: 'Membres'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
-        },
-        tooltip: {
-            valueSuffix: 'Meetups Créés'
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        series: [{
-            name: 'La Loupe',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-        }, {
-            name: 'Chartres',
-            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
-        }, {
-            name: 'Fontainebleau',
-            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-        }, {
-            name: 'Orléans',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Lyon',
-            data: [3.9, 4.2, 16.6, 14.2, 10.3, 6.6, 4.8, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Bordeaux',
-            data: [3.9, 16.6, 14.2, 10.3, 6.6, 4.8, 16.6, 14.2, 10.3, 6.6, 10.3, 4.8]
-        }, {
-            name: 'Toulouse',
-            data: [4.2, 6.6, 4.8, 16.6, 6.6, 4.8, 16.6, 14.2, 10.3, 6.6, 14.2, 4.8]
-        }, {
-            name: 'Paris',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Strasbourg',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Nantes',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Nice',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Montpellier',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Rennes',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Lille',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Bruxelles',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Luxembourg',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Genève',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }]
-    });
-});
-</script>
-=======
+
 {% extends 'base.html.twig' %}
->>>>>>> 2c123eeb122ac38e0a72bf804b8dcf5e125cd720
 
 
-{% block body %}
+
   {% block section %}
 
   <!-- Content Wrapper. Contains page content -->
@@ -186,7 +51,7 @@
 </div>
 
 {% endblock section %}
-{% endblock body %}
+
 
 
 <!-- jQuery UI 1.11.4 -->
@@ -229,7 +94,7 @@
 <script src="{{ asset('js/graph.js') }}"></script>
 
 
-{% block javascript_end%}
+{% block javascript_end %}
 
 
 <!-- Mon script pour le graphique d'acceuil -->
