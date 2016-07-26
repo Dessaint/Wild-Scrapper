@@ -1,5 +1,37 @@
+/*navbar*/
+
+.boite_nav {
+	height: 55px;
+}
+
+.skin-blue .main-header .navbar .nav > li > a:hover {
+	background: #f9a02e;	
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+	background: #f9a02e; 
+}
+
+/*Navbar latérale*/
+
+.skin-blue .sidebar-menu > li:hover > a {
+	border-left-color: #f9a02e;
+}
+
+.app_titre h2 {
+	margin-top: 2px;
+	background: #1fa597;
+	color: white;
+}
+
+/*Content*/
+
 .content-wrapper {
     background: url(../img/arrPlan.png);
+}
+
+.main-header .logo {
+	height: 55px;
 }
 
 .group h3{
@@ -55,13 +87,15 @@ p .titre {
 	margin-top: 20px;
 	margin-left: 0px;
 	width: 590px;
-	background-color: #e6ee9c;
+	background-color: ;
 }
 
 .last h2 {
 	text-align: center;
 	margin-top: 0px;
 }
+
+/*Commentaires*/
 
 .commentaires {
 	margin-top: 20px;
@@ -75,3 +109,147 @@ p .titre {
 	font-size: 23px;
 }
 
+/*login*/
+ 
+.accueil-background {
+	margin-left: -140px;
+	width: 1300px;
+}
+
+.bg {
+	background-image: url(../img/arrPlan1.jpeg);
+	background-size: cover;
+	background-position: center;
+	height: 960px;
+	width: 100%;
+	position: absolute;
+	
+}
+
+.connexion {
+	background: rgba(255, 255, 255, 0.8);
+	width: 400px;
+	padding-left: -30px;
+	padding-bottom: 15px;
+	margin-top: 200px;
+	margin-left: 400px;
+	position: absolute;
+	border: 2px solid #1fa597;
+	border-radius: 30px;
+
+}
+
+.connexion h3 {
+	text-align: center;
+	color: #1fa597;
+}
+
+.btn {
+	background: #1fa597;
+	color: white;
+}
+
+/*Espace*/
+
+.btn_espace {
+	margin-top: 20px;
+	margin-left: 25px;
+}
+
+.skin-blue .main-header li.user-header {
+	background: #f9a02e;
+}
+
+.titre_espace h1 {
+	text-align: center;
+}
+
+.form_espace label {
+	width: 150px;
+	display:block;
+	float: left;
+}
+
+.form_espace input {
+	width: 350px;
+	margin-bottom: 10px;
+}
+
+.form_espace {
+	margin-top: 30px;
+	background: white;
+	padding: 20px;
+	padding-right: 0px;
+}
+
+.form_espace button {
+	background: #f9a02e;
+	height: 30px; 
+	margin-top: 20px;
+	margin-left: 150px;
+	border-radius: 5px;
+}
+
+.breadcrumb {
+	margin-left: -20px;
+}
+
+/*Gestion des utilisateurs*/
+
+.user_gest {
+	margin-top: 10px;
+	background: white;
+	margin-left: 60px;
+	width: 90%;
+}
+
+.user_gest button {
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.esp-utilisateur {
+	background: white;
+	margin-left: 45px;
+	width: 93%;
+}
+
+.esp-utilisateur button {
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.esp-utilisateur img {
+	margin-top: 10px;
+	width: 80px;
+	height: 80px;
+}
+
+.esp-utilisateur p {
+	margin-left: 10px;
+}
+
+.form-register label{
+	margin-left: 16px;
+}
+
+.form_user input{
+	margin-left: 16px;
+}
+
+.form_user label {
+	font-weight: 400;
+}
+
+.photoid {
+	width: 30px;
+	height: 30px;
+	margin-top: 0px;
+	margin-left: 20px;
+}
+
+/*FOOTER*/
+
+.footer a {
+	color: #1fa597 ;
+}

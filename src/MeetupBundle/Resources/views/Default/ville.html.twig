@@ -1,0 +1,292 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  {% block section %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Tableau de bord
+        <small>Ville de Paris</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="{{ path('user_accueil') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+    <!-- Liste déroulante : choix de semaine -->
+      <form>
+        <select>
+          <option>Semaine 25 - 2016
+          <option>Semaine 24 - 2016
+          <option>Semaine 23 - 2016
+        </select>
+      </form>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua group">
+            <div class="inner">
+              <h3>Javascript<sup style="font-size: 20px"></sup></h3>
+
+              <p>Langage le mieux représenté</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">Plus d'infos <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green group">
+            <div class="inner">
+              <h3>+90 membres</h3>
+
+              <p>Croissance membres: Le Wagon </p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">Plus d'infos <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red group">
+            <div class="inner">
+              <h3>-44 membres</h3>
+
+              <p>Perte membres: Prestatshop</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">Plus dinfos <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow group">
+            <div class="inner">
+              <h3>M'IT UP BNP Paribas</h3>
+
+              <p>Groupe le plus dynamique</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-7 connectedSortable">
+          <!-- Insertion diagramme Excel 1 -->
+          <div class="nav-tabs-custom">
+              <h2 class="text-center">Mots clés les plus utilisés</h2>
+              <img src="{{ asset('img/nuagesmots.svg') }}" alt="Un kiwi en SVG">
+          </div>
+          <!-- Insertion diagramme Excel 2 -->
+          <div class="row evol">
+            <!-- Franck -->
+              <h2 class="text-center">Evolution des meetups par langage</h2>
+              <div class="col-lg-7">
+                <div class="chart">
+                  <!-- Sales Chart Canvas -->
+                  <canvas id="salesChart" style="height: 180px;"></canvas>
+                </div>
+                <!-- /.chart-responsive -->
+              </div>
+            <div>
+              <div class="col-md-3 legende1"><img src="{{ asset('img/legende.png') }}"></div>
+            </div>
+          </div>
+          <div class="box box-solid bg-yellow-gradient top">
+            <div class="box-body ">
+                <h2>Dernier meetup crées</h2>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Nom du meetup</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                        <td>(Dé-)Coding Paris</td>
+                        <td>20/06/2016</td>
+                      </tr>
+                      <tr>
+                        <td>Hardware Heroes</td>
+                        <td>17/06/2016</td>
+                      </tr>
+                      <tr>
+                        <td>AZUG FR - Azure User Group France</td>
+                        <td>12/06/2016</td>
+                      </tr>
+                      <tr>
+                        <td>Paris Computational Art</td>
+                        <td>10/06/2016</td>
+                      </tr>
+                      <tr>
+                        <td>Unreal Engine Meetup Paris</td>
+                        <td>06/06/2016</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+          <!-- Insertion diagramme Excel 4 -->
+          <div class="box commentaires">
+            <h2>Votre interprétation des données</h2>
+              <fieldset class="form-group">
+                <label for="com_title">Titre du commentaire :</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Titre">
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="exampleTextarea">Votre commentaire :</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+              </fieldset>
+          </div>
+
+        </section>
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-5 connectedSortable">
+
+          <!-- Insertion diagramme 5 -->
+          <div class="box box-solid bg-light-blue-gradient">
+            <div class="box-body repartition">
+                <h2>Répartition des languages sur Paris</h2>
+                <div style="width: 100%; height: 100%;">
+                    <canvas id="myChart" style="width: 100%; height: auto;"></canvas>
+                </div>
+                <div id="js-legend" class="chart-legend"></div>
+            </div>
+          </div>
+
+          <!-- Insertion diagramme 6 -->
+          <div class="box box-solid bg-green-gradient top">
+            <div class="box-body ">
+                <h2>Top 5 : Évenements avec le plus de participants (M/M-1)</h2>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Position</th>
+                        <th>Nom de l'évènement</th>
+                        <th>Nombre de participants</th>
+                        <th>Evolution</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                        <td>1</td>
+                        <td>M'IT UP BNP Paribas</td>
+                        <td>189</td>
+                        <td>+ 17%</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Xamarin - Learn & Code in Paris</td>
+                        <td>163</td>
+                        <td>+ 8%</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Les Off de Partech</td>
+                        <td>156</td>
+                        <td>+ 8%</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>LaFrenchMobile</td>
+                        <td>93</td>
+                        <td>+ 4%</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>Meteor Paris</td>
+                        <td>75</td>
+                        <td>+ 2%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+
+          <!-- Insertion diagramme 7 -->
+          <div class="box box-solid bg-red-gradient top">
+            <div class="box-body">
+              <h2>Meetup qui perd le plus d'abonnés (M/M-1)</h2>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Position</th>
+                      <th>Nom de l'évènement</th>
+                      <th>Nombre de participants</th>
+                      <th>Evolution</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                      <td>1</td>
+                      <td>StartupBlink Paris</td>
+                      <td>-39</td>
+                      <td>-12%</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>ClubStartups - Paris</td>
+                      <td>-31</td>
+                      <td>-10%</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Paris Ruby Workshop</td>
+                      <td>-23</td>
+                      <td>-8%</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Power Hiking Paris</td>
+                      <td>-19</td>
+                      <td>-8%</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>ReactJS and React Native Paris</td>
+                      <td>-13</td>
+                      <td>-6%</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </section>
+    <!-- /.content -->
+  </div>
+  </div>
+  {% endblock section %}
+  {% endblock body %}
+
+
+
+
