@@ -513,6 +513,13 @@ class PageController extends Controller
 
             $membresGeneve = [$membresPHPGeneve, $membresJavaScriptGeneve, $membresRubyGeneve, $membresIOSGeneve];
 
+            //Franck
+
+            $em = $this->getDoctrine()->getManager();
+        	$user = $this->container->get('security.context')->getToken()->getUser();
+        	 $request = $em->getRepository('UserBundle:Datauser')->findOneByUserId($user->getId());
+
+
         return $this->render('MeetupBundle:Default:accueil.html.twig',
         array(
             'membresParis'            =>$membresParis,
@@ -547,18 +554,16 @@ class PageController extends Controller
 
             'membresLuxembourg'       =>$membresLuxembourg,
 
-            'membresGeneve'           =>$membresGeneve
+            'membresGeneve'           =>$membresGeneve,
+
+            'requete' => $request,
         )
     );
 
-        $em = $this->getDoctrine()->getManager();
+       
 
-        $user = $this->container->get('security.context')->getToken()->getUser();
-
-        $request = $em->getRepository('UserBundle:Datauser')->findOneByUserId($user->getId());
-       return $this->render('MeetupBundle:Default:accueil.html.twig', array(
-            'requete' => $request,
-        ));
+       
+      
 
     }
 }
