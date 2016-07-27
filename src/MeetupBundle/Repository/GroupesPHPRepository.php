@@ -10,4 +10,29 @@ namespace MeetupBundle\Repository;
  */
 class GroupesPHPRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function MembersByCity($topic, $ville)
+   {
+       $qb = $this->createQueryBuilder('g');
+
+       $qb->select('SUM(g.members) AS membresTotal')
+           ->addSelect('g.topic')
+           ->where('g.topic = ?1')
+           ->andwhere('g.city = ?2')
+           ->groupBy('g.topic')
+           ->setParameters(array( 1 => $topic, 2 => $ville));
+
+       return $qb->getQuery()->getResult();
+   }
+   public function Graph()
+  {
+      $qb = $this->createQueryBuilder('g');
+
+      $qb->select('SUM(g.members) AS membresTotal')
+         ->addSelect('g.city')
+         ->addSelect('g.topic')
+         ->groupBy('g.topic')
+          ;
+
+      return $qb->getQuery()->getResult();
+  }
 }

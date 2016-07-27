@@ -85,6 +85,18 @@ class GroupesPHP
     private $meetupid;
 
     /**
+     * @var datetime $date
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $date;
+
+    public function __construct()
+    {
+    $this->date = new \DateTime('now');    
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -308,5 +320,29 @@ class GroupesPHP
     public function getTopic()
     {
         return $this->topic;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return GroupesPHP
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

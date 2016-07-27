@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
 
-{% block body %}
-  {% block section %}
+  {% block body %}
+
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
+
         Tableau de bord
         <small>Panneau de contrôle</small>
       </h1>
@@ -47,26 +49,69 @@
   <div class="control-sidebar-bg"></div>
 </div>
 
-{% endblock section %}
-{% endblock body %}
+ {% endblock body %}
 
 
 {% block javascript_end%}
 
+{# <!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.6 -->
+<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+<!-- Morris.js charts -->
+<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js') }}"></script>
+<script src="{{ asset('plugins/morris/morris.min.js') }}"></script>
+<!-- Sparkline -->
+<script src="{{ asset('plugins/sparkline/jquery.sparkline.min.js') }}"></script>
+<!-- jvectormap -->
+<script src="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+<script src="{{ asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script>
+<!-- daterangepicker -->
+<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js') }}"></script>
+<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+<!-- datepicker -->
+<script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+<!-- Slimscroll -->
+<script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+<!-- FastClick -->
+<script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('js/app.min.js') }}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{ asset('js/pages/dashboard.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('js/demo.js') }}"></script>
+<!-- script pour les graphiques -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
+<script src="{{ asset('js/graph.js') }}"></script>
+ #}
+
+
+
+
+
 <!-- Mon script pour le graphique d'acceuil -->
-<script src="{{ asset('http://d3js.org/d3.v3.min.js') }}"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 function dashboard(id, fData){
     var barColor = 'steelblue';
-    function segColor(c){ return {php:"#807dba", JavaScript:"#e08214",Ruby:"#41ab5d"}[c]; }
+    function segColor(c){ return {php:"#8694D1", JavaScript:"#F0DB4F",Ruby:"#EC1622", Ios:"#97C024"}[c]; }
 
     // compute total for each state.
-    fData.forEach(function(d){d.total=d.freq.php+d.freq.JavaScript+d.freq.Ruby;});
+    fData.forEach(function(d){d.total=d.freq.php+d.freq.JavaScript+d.freq.Ruby+d.freq.Ios;});
 
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 500 - hGDim.l - hGDim.r,
+        hGDim.w = 600 - hGDim.l - hGDim.r,
         hGDim.h = 300 - hGDim.t - hGDim.b;
 
         //create svg for histogram.
@@ -106,7 +151,9 @@ function dashboard(id, fData){
         bars.append("text").text(function(d){ return d3.format(",")(d[1])})
             .attr("x", function(d) { return x(d[0])+x.rangeBand()/2; })
             .attr("y", function(d) { return y(d[1])-5; })
-            .attr("text-anchor", "middle");
+            .attr("text-anchor", "middle")
+            .on("mouseover",mouseover)// mouseover is defined below.
+            .on("mouseout",mouseout);
 
         function mouseover(d){  // utility function to be called on mouseover.
             // filter for selected state.
@@ -241,7 +288,7 @@ function dashboard(id, fData){
     }
 
     // calculate total frequency by segment for all state.
-    var tF = ['php','JavaScript','Ruby'].map(function(d){
+    var tF = ['php','JavaScript','Ruby', 'Ios'].map(function(d){
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))};
     });
 
@@ -256,31 +303,31 @@ function dashboard(id, fData){
 
 <script>
 var freqData=[
-{State:'LOUP',freq:{php:4786, JavaScript:1319, Ruby:249}}
-,{State:'CHA',freq:{php:1101, JavaScript:412, Ruby:674}}
-,{State:'FON',freq:{php:932, JavaScript:2149, Ruby:418}}
-,{State:'ORL',freq:{php:832, JavaScript:1152, Ruby:1862}}
-,{State:'LYON',freq:{php:4481, JavaScript:3304, Ruby:948}}
-,{State:'BDX',freq:{php:1619, JavaScript:167, Ruby:1063}}
-,{State:'TLS',freq:{php:1819, JavaScript:247, Ruby:1203}}
-,{State:'PAR',freq:{php:4498, JavaScript:3852, Ruby:942}}
-,{State:'STBG',freq:{php:797, JavaScript:1849, Ruby:1534}}
-,{State:'NAN',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'NIC',freq:{php:632, JavaScript:459, Ruby:731}}
-,{State:'MTP',freq:{php:862, JavaScript:379, Ruby:471}}
-,{State:'REN',freq:{php:662, JavaScript:379, Ruby:471}}
-,{State:'LIL',freq:{php:162, JavaScript:849, Ruby:471}}
-,{State:'BXL',freq:{php:162, JavaScript:379, Ruby:471}}
-,{State:'LUX',freq:{php:162, JavaScript:349, Ruby:871}}
-,{State:'GEN',freq:{php:393, JavaScript:379, Ruby:271}}
+{State:'LOUP',freq:{php:{{ membresLoupe[0].membresTotal }}, JavaScript:{{ membresLoupe[1].membresTotal }}, Ruby:{{ membresLoupe[2].membresTotal }}, Ios:{{ membresLoupe[3].membresTotal }}}}
+,{State:'CHA',freq:{php:{{ membresChartres[0].membresTotal }}, JavaScript:{{ membresChartres[1].membresTotal }}, Ruby:{{ membresChartres[2].membresTotal }}, Ios:{{ membresChartres[3].membresTotal }}}}
+,{State:'FON',freq:{php:{{membresFontainebleau[0].membresTotal}}, JavaScript:{{membresFontainebleau[1].membresTotal}}, Ruby:{{membresFontainebleau[2].membresTotal}}, Ios:{{membresFontainebleau[3].membresTotal}}}}
+,{State:'ORL',freq:{php:{{membresOrleans[0].membresTotal}}, JavaScript:{{membresOrleans[1].membresTotal}}, Ruby:{{membresOrleans[2].membresTotal}}, Ios:{{membresOrleans[3].membresTotal}}}}
+,{State:'LYON',freq:{php:{{membresLyon[0].membresTotal}}, JavaScript:{{membresLyon[1].membresTotal}}, Ruby:{{membresLyon[2].membresTotal}}, Ios:{{membresLyon[3].membresTotal}}}}
+,{State:'BDX',freq:{php:{{membresBordeaux[0].membresTotal}}, JavaScript:{{membresBordeaux[1].membresTotal}}, Ruby:{{membresBordeaux[2].membresTotal}}, Ios:{{membresBordeaux[3].membresTotal}}}}
+,{State:'TLS',freq:{php:{{membresToulouse[0].membresTotal}}, JavaScript:{{membresToulouse[1].membresTotal}}, Ruby:{{membresToulouse[2].membresTotal}}, Ios:{{membresToulouse[3].membresTotal}}}}
+//,{State:'PAR',freq:{php:{{ membresParis[0].membresTotal }}, JavaScript: {{membresParis[1].membresTotal}}, Ruby:{{membresParis[2].membresTotal}}, Ios:{{membresParis[3].membresTotal}}}}
+,{State:'STBG',freq:{php:{{ membresStrasbourg[0].membresTotal }}, JavaScript: {{membresStrasbourg[1].membresTotal}}, Ruby:{{membresStrasbourg[2].membresTotal}}, Ios:{{membresStrasbourg[3].membresTotal}}}}
+,{State:'NAN',freq:{php:{{ membresNantes[0].membresTotal }}, JavaScript: {{membresNantes[1].membresTotal}}, Ruby:{{membresNantes[2].membresTotal}}, Ios:{{membresNantes[3].membresTotal}}}}
+,{State:'NIC',freq:{php:{{ membresNice[0].membresTotal }}, JavaScript: {{membresNice[1].membresTotal}}, Ruby:{{membresNice[2].membresTotal}}, Ios:{{membresNice[3].membresTotal}}}}
+,{State:'MTP',freq:{php:{{ membresMontpellier[0].membresTotal }}, JavaScript: {{membresMontpellier[1].membresTotal}}, Ruby:{{membresMontpellier[2].membresTotal}}, Ios:{{membresMontpellier[3].membresTotal}}}}
+,{State:'REN',freq:{php:{{ membresRennes[0].membresTotal }}, JavaScript: {{membresRennes[1].membresTotal}}, Ruby:{{membresRennes[2].membresTotal}}, Ios:{{membresRennes[3].membresTotal}}}}
+,{State:'LIL',freq:{php:{{ membresLille[0].membresTotal }}, JavaScript: {{membresLille[1].membresTotal}}, Ruby:{{membresLille[2].membresTotal}}, Ios:{{membresLille[3].membresTotal}}}}
+,{State:'BXL',freq:{php:{{ membresBrussels[0].membresTotal }}, JavaScript: {{membresBrussels[1].membresTotal}}, Ruby:{{membresBrussels[2].membresTotal}}, Ios:{{membresBrussels[3].membresTotal}}}}
+,{State:'LUX',freq:{php:{{ membresLuxembourg[0].membresTotal }}, JavaScript: {{membresLuxembourg[1].membresTotal}}, Ruby:{{membresLuxembourg[2].membresTotal}}, Ios:{{membresLuxembourg[3].membresTotal}}}}
+,{State:'GEN',freq:{php:{{ membresGeneve[0].membresTotal }}, JavaScript: {{membresGeneve[1].membresTotal}}, Ruby:{{membresGeneve[2].membresTotal}}, Ios:{{membresGeneve[3].membresTotal}}}}
 ];
 
 dashboard('#dashboard',freqData);
 </script>
 
-{% endblock %}
 
-  {% block javascript %}
+
+
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script type="text/JavaScript">
