@@ -68,3 +68,8 @@ rect:hover {  fill:blue; }
 .titre-spark {
     background-color: #1fa597;
 }
+
+
+.highcharts-title tspan {
+    background-color: #1fa597;
+}

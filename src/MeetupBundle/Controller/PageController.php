@@ -33,6 +33,7 @@ class PageController extends Controller
             $membresParis = [$membresPHPParis, $membresJavaScriptParis, $membresRubyParis, $membresIOSParis];
 
 
+
             //Ville de la Loupe
             $membresPHPLoupe = $repository->MembersByCity('PHP', 'la+loupe');
             $membresJavaScriptLoupe = $repository->MembersByCity('JavaScript', 'la+loupe');
@@ -513,6 +514,397 @@ class PageController extends Controller
 
             $membresGeneve = [$membresPHPGeneve, $membresJavaScriptGeneve, $membresRubyGeneve, $membresIOSGeneve];
 
+            //Evolution Paris
+
+            $evolutionParis1 = $repository->MeetupCreatedByYear('1', 'paris');
+            $evolutionParis2 = $repository->MeetupCreatedByYear('2', 'paris');
+            $evolutionParis3 = $repository->MeetupCreatedByYear('3', 'paris');
+            $evolutionParis4 = $repository->MeetupCreatedByYear('4', 'paris');
+            $evolutionParis5 = $repository->MeetupCreatedByYear('5', 'paris');
+            $evolutionParis6 = $repository->MeetupCreatedByYear('6', 'paris');
+            $evolutionParis7 = $repository->MeetupCreatedByYear('7', 'paris');
+            $evolutionParis8 = $repository->MeetupCreatedByYear('8', 'paris');
+            $evolutionParis9 = $repository->MeetupCreatedByYear('9', 'paris');
+            $evolutionParis10 = $repository->MeetupCreatedByYear('10', 'paris');
+            $evolutionParis11 = $repository->MeetupCreatedByYear('11', 'paris');
+            $evolutionParis12 = $repository->MeetupCreatedByYear('12', 'paris');
+
+            $evolutionParis = [$evolutionParis1, $evolutionParis2, $evolutionParis3, $evolutionParis4, $evolutionParis5, $evolutionParis6, $evolutionParis7, $evolutionParis8, $evolutionParis9, $evolutionParis10, $evolutionParis11, $evolutionParis12];
+
+            $evoParis = [];
+
+            for ($i=0; $i < count($evolutionParis) ; $i++) {
+                array_push($evoParis, $evolutionParis[$i][0]['create']);
+            }
+
+            //Evolution Bordeaux
+
+            $evolutionBordeaux1 = $repository->MeetupCreatedByYear('1', 'Bordeaux');
+            $evolutionBordeaux2 = $repository->MeetupCreatedByYear('2', 'Bordeaux');
+            $evolutionBordeaux3 = $repository->MeetupCreatedByYear('3', 'Bordeaux');
+            $evolutionBordeaux4 = $repository->MeetupCreatedByYear('4', 'Bordeaux');
+            $evolutionBordeaux5 = $repository->MeetupCreatedByYear('5', 'Bordeaux');
+            $evolutionBordeaux6 = $repository->MeetupCreatedByYear('6', 'Bordeaux');
+            $evolutionBordeaux7 = $repository->MeetupCreatedByYear('7', 'Bordeaux');
+            $evolutionBordeaux8 = $repository->MeetupCreatedByYear('8', 'Bordeaux');
+            $evolutionBordeaux9 = $repository->MeetupCreatedByYear('9', 'Bordeaux');
+            $evolutionBordeaux10 = $repository->MeetupCreatedByYear('10', 'Bordeaux');
+            $evolutionBordeaux11 = $repository->MeetupCreatedByYear('11', 'Bordeaux');
+            $evolutionBordeaux12 = $repository->MeetupCreatedByYear('12', 'Bordeaux');
+
+            $evolutionBordeaux = [$evolutionBordeaux1, $evolutionBordeaux2, $evolutionBordeaux3, $evolutionBordeaux4, $evolutionBordeaux5, $evolutionBordeaux6, $evolutionBordeaux7, $evolutionBordeaux8, $evolutionBordeaux9, $evolutionBordeaux10, $evolutionBordeaux11, $evolutionBordeaux12];
+
+            $evoBordeaux = [];
+
+            for ($i=0; $i < count($evolutionBordeaux) ; $i++) {
+                array_push($evoBordeaux, $evolutionBordeaux[$i][0]['create']);
+            }
+
+            //Evolution Chartres
+
+            $evolutionChartres1 = $repository->MeetupCreatedByYear('1', 'Chartres');
+            $evolutionChartres2 = $repository->MeetupCreatedByYear('2', 'Chartres');
+            $evolutionChartres3 = $repository->MeetupCreatedByYear('3', 'Chartres');
+            $evolutionChartres4 = $repository->MeetupCreatedByYear('4', 'Chartres');
+            $evolutionChartres5 = $repository->MeetupCreatedByYear('5', 'Chartres');
+            $evolutionChartres6 = $repository->MeetupCreatedByYear('6', 'Chartres');
+            $evolutionChartres7 = $repository->MeetupCreatedByYear('7', 'Chartres');
+            $evolutionChartres8 = $repository->MeetupCreatedByYear('8', 'Chartres');
+            $evolutionChartres9 = $repository->MeetupCreatedByYear('9', 'Chartres');
+            $evolutionChartres10 = $repository->MeetupCreatedByYear('10', 'Chartres');
+            $evolutionChartres11 = $repository->MeetupCreatedByYear('11', 'Chartres');
+            $evolutionChartres12 = $repository->MeetupCreatedByYear('12', 'Chartres');
+
+            $evolutionChartres = [$evolutionChartres1, $evolutionChartres2, $evolutionChartres3, $evolutionChartres4, $evolutionChartres5, $evolutionChartres6, $evolutionChartres7, $evolutionChartres8, $evolutionChartres9, $evolutionChartres10, $evolutionChartres11, $evolutionChartres12];
+
+            $evoChartres = [];
+
+            for ($i=0; $i < count($evolutionChartres) ; $i++) {
+                array_push($evoChartres, $evolutionChartres[$i][0]['create']);
+            }
+
+            //Evolution La loupe
+
+            $evolutionLoupe1 = $repository->MeetupCreatedByYear('1', 'Loupe');
+            $evolutionLoupe2 = $repository->MeetupCreatedByYear('2', 'Loupe');
+            $evolutionLoupe3 = $repository->MeetupCreatedByYear('3', 'Loupe');
+            $evolutionLoupe4 = $repository->MeetupCreatedByYear('4', 'Loupe');
+            $evolutionLoupe5 = $repository->MeetupCreatedByYear('5', 'Loupe');
+            $evolutionLoupe6 = $repository->MeetupCreatedByYear('6', 'Loupe');
+            $evolutionLoupe7 = $repository->MeetupCreatedByYear('7', 'Loupe');
+            $evolutionLoupe8 = $repository->MeetupCreatedByYear('8', 'Loupe');
+            $evolutionLoupe9 = $repository->MeetupCreatedByYear('9', 'Loupe');
+            $evolutionLoupe10 = $repository->MeetupCreatedByYear('10', 'Loupe');
+            $evolutionLoupe11 = $repository->MeetupCreatedByYear('11', 'Loupe');
+            $evolutionLoupe12 = $repository->MeetupCreatedByYear('12', 'Loupe');
+
+            $evolutionLoupe = [$evolutionLoupe1, $evolutionLoupe2, $evolutionLoupe3, $evolutionLoupe4, $evolutionLoupe5, $evolutionLoupe6, $evolutionLoupe7, $evolutionLoupe8, $evolutionLoupe9, $evolutionLoupe10, $evolutionLoupe11, $evolutionLoupe12];
+
+            $evoLoupe = [];
+
+            for ($i=0; $i < count($evolutionLoupe) ; $i++) {
+                array_push($evoLoupe, $evolutionLoupe[$i][0]['create']);
+            }
+
+            //Evolution Fontainebleau
+
+            $evolutionFontainebleau1 = $repository->MeetupCreatedByYear('1', 'Fontainebleau');
+            $evolutionFontainebleau2 = $repository->MeetupCreatedByYear('2', 'Fontainebleau');
+            $evolutionFontainebleau3 = $repository->MeetupCreatedByYear('3', 'Fontainebleau');
+            $evolutionFontainebleau4 = $repository->MeetupCreatedByYear('4', 'Fontainebleau');
+            $evolutionFontainebleau5 = $repository->MeetupCreatedByYear('5', 'Fontainebleau');
+            $evolutionFontainebleau6 = $repository->MeetupCreatedByYear('6', 'Fontainebleau');
+            $evolutionFontainebleau7 = $repository->MeetupCreatedByYear('7', 'Fontainebleau');
+            $evolutionFontainebleau8 = $repository->MeetupCreatedByYear('8', 'Fontainebleau');
+            $evolutionFontainebleau9 = $repository->MeetupCreatedByYear('9', 'Fontainebleau');
+            $evolutionFontainebleau10 = $repository->MeetupCreatedByYear('10', 'Fontainebleau');
+            $evolutionFontainebleau11 = $repository->MeetupCreatedByYear('11', 'Fontainebleau');
+            $evolutionFontainebleau12 = $repository->MeetupCreatedByYear('12', 'Fontainebleau');
+
+            $evolutionFontainebleau = [$evolutionFontainebleau1, $evolutionFontainebleau2, $evolutionFontainebleau3, $evolutionFontainebleau4, $evolutionFontainebleau5, $evolutionFontainebleau6, $evolutionFontainebleau7, $evolutionFontainebleau8, $evolutionFontainebleau9, $evolutionFontainebleau10, $evolutionFontainebleau11, $evolutionFontainebleau12];
+
+            $evoFontainebleau = [];
+
+            for ($i=0; $i < count($evolutionFontainebleau) ; $i++) {
+                array_push($evoFontainebleau, $evolutionFontainebleau[$i][0]['create']);
+            }
+
+            //Evolution Orleans
+
+            $evolutionOrleans1 = $repository->MeetupCreatedByYear('1', 'Orleans');
+            $evolutionOrleans2 = $repository->MeetupCreatedByYear('2', 'Orleans');
+            $evolutionOrleans3 = $repository->MeetupCreatedByYear('3', 'Orleans');
+            $evolutionOrleans4 = $repository->MeetupCreatedByYear('4', 'Orleans');
+            $evolutionOrleans5 = $repository->MeetupCreatedByYear('5', 'Orleans');
+            $evolutionOrleans6 = $repository->MeetupCreatedByYear('6', 'Orleans');
+            $evolutionOrleans7 = $repository->MeetupCreatedByYear('7', 'Orleans');
+            $evolutionOrleans8 = $repository->MeetupCreatedByYear('8', 'Orleans');
+            $evolutionOrleans9 = $repository->MeetupCreatedByYear('9', 'Orleans');
+            $evolutionOrleans10 = $repository->MeetupCreatedByYear('10', 'Orleans');
+            $evolutionOrleans11 = $repository->MeetupCreatedByYear('11', 'Orleans');
+            $evolutionOrleans12 = $repository->MeetupCreatedByYear('12', 'Orleans');
+
+            $evolutionOrleans = [$evolutionOrleans1, $evolutionOrleans2, $evolutionOrleans3, $evolutionOrleans4, $evolutionOrleans5, $evolutionOrleans6, $evolutionOrleans7, $evolutionOrleans8, $evolutionOrleans9, $evolutionOrleans10, $evolutionOrleans11, $evolutionOrleans12];
+
+            $evoOrleans = [];
+
+            for ($i=0; $i < count($evolutionOrleans) ; $i++) {
+                array_push($evoOrleans, $evolutionOrleans[$i][0]['create']);
+            }
+
+            //Evolution Lyon
+
+            $evolutionLyon1 = $repository->MeetupCreatedByYear('1', 'Lyon');
+            $evolutionLyon2 = $repository->MeetupCreatedByYear('2', 'Lyon');
+            $evolutionLyon3 = $repository->MeetupCreatedByYear('3', 'Lyon');
+            $evolutionLyon4 = $repository->MeetupCreatedByYear('4', 'Lyon');
+            $evolutionLyon5 = $repository->MeetupCreatedByYear('5', 'Lyon');
+            $evolutionLyon6 = $repository->MeetupCreatedByYear('6', 'Lyon');
+            $evolutionLyon7 = $repository->MeetupCreatedByYear('7', 'Lyon');
+            $evolutionLyon8 = $repository->MeetupCreatedByYear('8', 'Lyon');
+            $evolutionLyon9 = $repository->MeetupCreatedByYear('9', 'Lyon');
+            $evolutionLyon10 = $repository->MeetupCreatedByYear('10', 'Lyon');
+            $evolutionLyon11 = $repository->MeetupCreatedByYear('11', 'Lyon');
+            $evolutionLyon12 = $repository->MeetupCreatedByYear('12', 'Lyon');
+
+            $evolutionLyon = [$evolutionLyon1, $evolutionLyon2, $evolutionLyon3, $evolutionLyon4, $evolutionLyon5, $evolutionLyon6, $evolutionLyon7, $evolutionLyon8, $evolutionLyon9, $evolutionLyon10, $evolutionLyon11, $evolutionLyon12];
+
+            $evoLyon = [];
+
+            for ($i=0; $i < count($evolutionLyon) ; $i++) {
+                array_push($evoLyon, $evolutionLyon[$i][0]['create']);
+            }
+
+            //Evolution Toulouse
+
+            $evolutionToulouse1 = $repository->MeetupCreatedByYear('1', 'Toulouse');
+            $evolutionToulouse2 = $repository->MeetupCreatedByYear('2', 'Toulouse');
+            $evolutionToulouse3 = $repository->MeetupCreatedByYear('3', 'Toulouse');
+            $evolutionToulouse4 = $repository->MeetupCreatedByYear('4', 'Toulouse');
+            $evolutionToulouse5 = $repository->MeetupCreatedByYear('5', 'Toulouse');
+            $evolutionToulouse6 = $repository->MeetupCreatedByYear('6', 'Toulouse');
+            $evolutionToulouse7 = $repository->MeetupCreatedByYear('7', 'Toulouse');
+            $evolutionToulouse8 = $repository->MeetupCreatedByYear('8', 'Toulouse');
+            $evolutionToulouse9 = $repository->MeetupCreatedByYear('9', 'Toulouse');
+            $evolutionToulouse10 = $repository->MeetupCreatedByYear('10', 'Toulouse');
+            $evolutionToulouse11 = $repository->MeetupCreatedByYear('11', 'Toulouse');
+            $evolutionToulouse12 = $repository->MeetupCreatedByYear('12', 'Toulouse');
+
+            $evolutionToulouse = [$evolutionToulouse1, $evolutionToulouse2, $evolutionToulouse3, $evolutionToulouse4, $evolutionToulouse5, $evolutionToulouse6, $evolutionToulouse7, $evolutionToulouse8, $evolutionToulouse9, $evolutionToulouse10, $evolutionToulouse11, $evolutionToulouse12];
+
+            $evoToulouse = [];
+
+            for ($i=0; $i < count($evolutionToulouse) ; $i++) {
+                array_push($evoToulouse, $evolutionToulouse[$i][0]['create']);
+            }
+
+            //Evolution Strasbourg
+
+            $evolutionStrasbourg1 = $repository->MeetupCreatedByYear('1', 'Strasbourg');
+            $evolutionStrasbourg2 = $repository->MeetupCreatedByYear('2', 'Strasbourg');
+            $evolutionStrasbourg3 = $repository->MeetupCreatedByYear('3', 'Strasbourg');
+            $evolutionStrasbourg4 = $repository->MeetupCreatedByYear('4', 'Strasbourg');
+            $evolutionStrasbourg5 = $repository->MeetupCreatedByYear('5', 'Strasbourg');
+            $evolutionStrasbourg6 = $repository->MeetupCreatedByYear('6', 'Strasbourg');
+            $evolutionStrasbourg7 = $repository->MeetupCreatedByYear('7', 'Strasbourg');
+            $evolutionStrasbourg8 = $repository->MeetupCreatedByYear('8', 'Strasbourg');
+            $evolutionStrasbourg9 = $repository->MeetupCreatedByYear('9', 'Strasbourg');
+            $evolutionStrasbourg10 = $repository->MeetupCreatedByYear('10', 'Strasbourg');
+            $evolutionStrasbourg11 = $repository->MeetupCreatedByYear('11', 'Strasbourg');
+            $evolutionStrasbourg12 = $repository->MeetupCreatedByYear('12', 'Strasbourg');
+
+            $evolutionStrasbourg = [$evolutionStrasbourg1, $evolutionStrasbourg2, $evolutionStrasbourg3, $evolutionStrasbourg4, $evolutionStrasbourg5, $evolutionStrasbourg6, $evolutionStrasbourg7, $evolutionStrasbourg8, $evolutionStrasbourg9, $evolutionStrasbourg10, $evolutionStrasbourg11, $evolutionStrasbourg12];
+
+            $evoStrasbourg = [];
+
+            for ($i=0; $i < count($evolutionStrasbourg) ; $i++) {
+                array_push($evoStrasbourg, $evolutionStrasbourg[$i][0]['create']);
+            }
+
+            //Evolution Nantes
+
+            $evolutionNantes1 = $repository->MeetupCreatedByYear('1', 'Nantes');
+            $evolutionNantes2 = $repository->MeetupCreatedByYear('2', 'Nantes');
+            $evolutionNantes3 = $repository->MeetupCreatedByYear('3', 'Nantes');
+            $evolutionNantes4 = $repository->MeetupCreatedByYear('4', 'Nantes');
+            $evolutionNantes5 = $repository->MeetupCreatedByYear('5', 'Nantes');
+            $evolutionNantes6 = $repository->MeetupCreatedByYear('6', 'Nantes');
+            $evolutionNantes7 = $repository->MeetupCreatedByYear('7', 'Nantes');
+            $evolutionNantes8 = $repository->MeetupCreatedByYear('8', 'Nantes');
+            $evolutionNantes9 = $repository->MeetupCreatedByYear('9', 'Nantes');
+            $evolutionNantes10 = $repository->MeetupCreatedByYear('10', 'Nantes');
+            $evolutionNantes11 = $repository->MeetupCreatedByYear('11', 'Nantes');
+            $evolutionNantes12 = $repository->MeetupCreatedByYear('12', 'Nantes');
+
+            $evolutionNantes = [$evolutionNantes1, $evolutionNantes2, $evolutionNantes3, $evolutionNantes4, $evolutionNantes5, $evolutionNantes6, $evolutionNantes7, $evolutionNantes8, $evolutionNantes9, $evolutionNantes10, $evolutionNantes11, $evolutionNantes12];
+
+            $evoNantes = [];
+
+            for ($i=0; $i < count($evolutionNantes) ; $i++) {
+                array_push($evoNantes, $evolutionNantes[$i][0]['create']);
+            }
+
+            //Evolution Nice
+
+            $evolutionNice1 = $repository->MeetupCreatedByYear('1', 'Nice');
+            $evolutionNice2 = $repository->MeetupCreatedByYear('2', 'Nice');
+            $evolutionNice3 = $repository->MeetupCreatedByYear('3', 'Nice');
+            $evolutionNice4 = $repository->MeetupCreatedByYear('4', 'Nice');
+            $evolutionNice5 = $repository->MeetupCreatedByYear('5', 'Nice');
+            $evolutionNice6 = $repository->MeetupCreatedByYear('6', 'Nice');
+            $evolutionNice7 = $repository->MeetupCreatedByYear('7', 'Nice');
+            $evolutionNice8 = $repository->MeetupCreatedByYear('8', 'Nice');
+            $evolutionNice9 = $repository->MeetupCreatedByYear('9', 'Nice');
+            $evolutionNice10 = $repository->MeetupCreatedByYear('10', 'Nice');
+            $evolutionNice11 = $repository->MeetupCreatedByYear('11', 'Nice');
+            $evolutionNice12 = $repository->MeetupCreatedByYear('12', 'Nice');
+
+            $evolutionNice = [$evolutionNice1, $evolutionNice2, $evolutionNice3, $evolutionNice4, $evolutionNice5, $evolutionNice6, $evolutionNice7, $evolutionNice8, $evolutionNice9, $evolutionNice10, $evolutionNice11, $evolutionNice12];
+
+            $evoNice = [];
+
+            for ($i=0; $i < count($evolutionNice) ; $i++) {
+                array_push($evoNice, $evolutionNice[$i][0]['create']);
+            }
+
+            //Evolution Montpellier
+
+            $evolutionMontpellier1 = $repository->MeetupCreatedByYear('1', 'Montpellier');
+            $evolutionMontpellier2 = $repository->MeetupCreatedByYear('2', 'Montpellier');
+            $evolutionMontpellier3 = $repository->MeetupCreatedByYear('3', 'Montpellier');
+            $evolutionMontpellier4 = $repository->MeetupCreatedByYear('4', 'Montpellier');
+            $evolutionMontpellier5 = $repository->MeetupCreatedByYear('5', 'Montpellier');
+            $evolutionMontpellier6 = $repository->MeetupCreatedByYear('6', 'Montpellier');
+            $evolutionMontpellier7 = $repository->MeetupCreatedByYear('7', 'Montpellier');
+            $evolutionMontpellier8 = $repository->MeetupCreatedByYear('8', 'Montpellier');
+            $evolutionMontpellier9 = $repository->MeetupCreatedByYear('9', 'Montpellier');
+            $evolutionMontpellier10 = $repository->MeetupCreatedByYear('10', 'Montpellier');
+            $evolutionMontpellier11 = $repository->MeetupCreatedByYear('11', 'Montpellier');
+            $evolutionMontpellier12 = $repository->MeetupCreatedByYear('12', 'Montpellier');
+
+            $evolutionMontpellier = [$evolutionMontpellier1, $evolutionMontpellier2, $evolutionMontpellier3, $evolutionMontpellier4, $evolutionMontpellier5, $evolutionMontpellier6, $evolutionMontpellier7, $evolutionMontpellier8, $evolutionMontpellier9, $evolutionMontpellier10, $evolutionMontpellier11, $evolutionMontpellier12];
+
+            $evoMontpellier = [];
+
+            for ($i=0; $i < count($evolutionMontpellier) ; $i++) {
+                array_push($evoMontpellier, $evolutionMontpellier[$i][0]['create']);
+            }
+
+            //Evolution Rennes
+
+            $evolutionRennes1 = $repository->MeetupCreatedByYear('1', 'Rennes');
+            $evolutionRennes2 = $repository->MeetupCreatedByYear('2', 'Rennes');
+            $evolutionRennes3 = $repository->MeetupCreatedByYear('3', 'Rennes');
+            $evolutionRennes4 = $repository->MeetupCreatedByYear('4', 'Rennes');
+            $evolutionRennes5 = $repository->MeetupCreatedByYear('5', 'Rennes');
+            $evolutionRennes6 = $repository->MeetupCreatedByYear('6', 'Rennes');
+            $evolutionRennes7 = $repository->MeetupCreatedByYear('7', 'Rennes');
+            $evolutionRennes8 = $repository->MeetupCreatedByYear('8', 'Rennes');
+            $evolutionRennes9 = $repository->MeetupCreatedByYear('9', 'Rennes');
+            $evolutionRennes10 = $repository->MeetupCreatedByYear('10', 'Rennes');
+            $evolutionRennes11 = $repository->MeetupCreatedByYear('11', 'Rennes');
+            $evolutionRennes12 = $repository->MeetupCreatedByYear('12', 'Rennes');
+
+            $evolutionRennes = [$evolutionRennes1, $evolutionRennes2, $evolutionRennes3, $evolutionRennes4, $evolutionRennes5, $evolutionRennes6, $evolutionRennes7, $evolutionRennes8, $evolutionRennes9, $evolutionRennes10, $evolutionRennes11, $evolutionRennes12];
+
+            $evoRennes = [];
+
+            for ($i=0; $i < count($evolutionRennes) ; $i++) {
+                array_push($evoRennes, $evolutionRennes[$i][0]['create']);
+            }
+
+            //Evolution Lille
+
+            $evolutionLille1 = $repository->MeetupCreatedByYear('1', 'Lille');
+            $evolutionLille2 = $repository->MeetupCreatedByYear('2', 'Lille');
+            $evolutionLille3 = $repository->MeetupCreatedByYear('3', 'Lille');
+            $evolutionLille4 = $repository->MeetupCreatedByYear('4', 'Lille');
+            $evolutionLille5 = $repository->MeetupCreatedByYear('5', 'Lille');
+            $evolutionLille6 = $repository->MeetupCreatedByYear('6', 'Lille');
+            $evolutionLille7 = $repository->MeetupCreatedByYear('7', 'Lille');
+            $evolutionLille8 = $repository->MeetupCreatedByYear('8', 'Lille');
+            $evolutionLille9 = $repository->MeetupCreatedByYear('9', 'Lille');
+            $evolutionLille10 = $repository->MeetupCreatedByYear('10', 'Lille');
+            $evolutionLille11 = $repository->MeetupCreatedByYear('11', 'Lille');
+            $evolutionLille12 = $repository->MeetupCreatedByYear('12', 'Lille');
+
+            $evolutionLille = [$evolutionLille1, $evolutionLille2, $evolutionLille3, $evolutionLille4, $evolutionLille5, $evolutionLille6, $evolutionLille7, $evolutionLille8, $evolutionLille9, $evolutionLille10, $evolutionLille11, $evolutionLille12];
+
+            $evoLille = [];
+
+            for ($i=0; $i < count($evolutionLille) ; $i++) {
+                array_push($evoLille, $evolutionLille[$i][0]['create']);
+            }
+
+            //Evolution Bruxelles
+
+            $evolutionBruxelles1 = $repository->MeetupCreatedByYear('1', 'Brussels');
+            $evolutionBruxelles2 = $repository->MeetupCreatedByYear('2', 'Brussels');
+            $evolutionBruxelles3 = $repository->MeetupCreatedByYear('3', 'Brussels');
+            $evolutionBruxelles4 = $repository->MeetupCreatedByYear('4', 'Brussels');
+            $evolutionBruxelles5 = $repository->MeetupCreatedByYear('5', 'Brussels');
+            $evolutionBruxelles6 = $repository->MeetupCreatedByYear('6', 'Brussels');
+            $evolutionBruxelles7 = $repository->MeetupCreatedByYear('7', 'Brussels');
+            $evolutionBruxelles8 = $repository->MeetupCreatedByYear('8', 'Brussels');
+            $evolutionBruxelles9 = $repository->MeetupCreatedByYear('9', 'Brussels');
+            $evolutionBruxelles10 = $repository->MeetupCreatedByYear('10', 'Brussels');
+            $evolutionBruxelles11 = $repository->MeetupCreatedByYear('11', 'Brussels');
+            $evolutionBruxelles12 = $repository->MeetupCreatedByYear('12', 'Brussels');
+
+            $evolutionBruxelles = [$evolutionBruxelles1, $evolutionBruxelles2, $evolutionBruxelles3, $evolutionBruxelles4, $evolutionBruxelles5, $evolutionBruxelles6, $evolutionBruxelles7, $evolutionBruxelles8, $evolutionBruxelles9, $evolutionBruxelles10, $evolutionBruxelles11, $evolutionBruxelles12];
+
+            $evoBruxelles = [];
+
+            for ($i=0; $i < count($evolutionBruxelles) ; $i++) {
+                array_push($evoBruxelles, $evolutionBruxelles[$i][0]['create']);
+            }
+
+            //Evolution Luxembourg
+
+            $evolutionLuxembourg1 = $repository->MeetupCreatedByYear('1', 'Luxembourg');
+            $evolutionLuxembourg2 = $repository->MeetupCreatedByYear('2', 'Luxembourg');
+            $evolutionLuxembourg3 = $repository->MeetupCreatedByYear('3', 'Luxembourg');
+            $evolutionLuxembourg4 = $repository->MeetupCreatedByYear('4', 'Luxembourg');
+            $evolutionLuxembourg5 = $repository->MeetupCreatedByYear('5', 'Luxembourg');
+            $evolutionLuxembourg6 = $repository->MeetupCreatedByYear('6', 'Luxembourg');
+            $evolutionLuxembourg7 = $repository->MeetupCreatedByYear('7', 'Luxembourg');
+            $evolutionLuxembourg8 = $repository->MeetupCreatedByYear('8', 'Luxembourg');
+            $evolutionLuxembourg9 = $repository->MeetupCreatedByYear('9', 'Luxembourg');
+            $evolutionLuxembourg10 = $repository->MeetupCreatedByYear('10', 'Luxembourg');
+            $evolutionLuxembourg11 = $repository->MeetupCreatedByYear('11', 'Luxembourg');
+            $evolutionLuxembourg12 = $repository->MeetupCreatedByYear('12', 'Luxembourg');
+
+            $evolutionLuxembourg = [$evolutionLuxembourg1, $evolutionLuxembourg2, $evolutionLuxembourg3, $evolutionLuxembourg4, $evolutionLuxembourg5, $evolutionLuxembourg6, $evolutionLuxembourg7, $evolutionLuxembourg8, $evolutionLuxembourg9, $evolutionLuxembourg10, $evolutionLuxembourg11, $evolutionLuxembourg12];
+
+            $evoLuxembourg = [];
+
+            for ($i=0; $i < count($evolutionLuxembourg) ; $i++) {
+                array_push($evoLuxembourg, $evolutionLuxembourg[$i][0]['create']);
+            }
+
+            //Evolution Geneve
+
+            $evolutionGeneve1 = $repository->MeetupCreatedByYear('1', 'Geneve');
+            $evolutionGeneve2 = $repository->MeetupCreatedByYear('2', 'Geneve');
+            $evolutionGeneve3 = $repository->MeetupCreatedByYear('3', 'Geneve');
+            $evolutionGeneve4 = $repository->MeetupCreatedByYear('4', 'Geneve');
+            $evolutionGeneve5 = $repository->MeetupCreatedByYear('5', 'Geneve');
+            $evolutionGeneve6 = $repository->MeetupCreatedByYear('6', 'Geneve');
+            $evolutionGeneve7 = $repository->MeetupCreatedByYear('7', 'Geneve');
+            $evolutionGeneve8 = $repository->MeetupCreatedByYear('8', 'Geneve');
+            $evolutionGeneve9 = $repository->MeetupCreatedByYear('9', 'Geneve');
+            $evolutionGeneve10 = $repository->MeetupCreatedByYear('10', 'Geneve');
+            $evolutionGeneve11 = $repository->MeetupCreatedByYear('11', 'Geneve');
+            $evolutionGeneve12 = $repository->MeetupCreatedByYear('12', 'Geneve');
+
+            $evolutionGeneve = [$evolutionGeneve1, $evolutionGeneve2, $evolutionGeneve3, $evolutionGeneve4, $evolutionGeneve5, $evolutionGeneve6, $evolutionGeneve7, $evolutionGeneve8, $evolutionGeneve9, $evolutionGeneve10, $evolutionGeneve11, $evolutionGeneve12];
+
+            $evoGeneve = [];
+
+            for ($i=0; $i < count($evolutionGeneve) ; $i++) {
+                array_push($evoGeneve, $evolutionGeneve[$i][0]['create']);
+            }
+
             //Franck
 
             $em = $this->getDoctrine()->getManager();
@@ -556,14 +948,43 @@ class PageController extends Controller
 
             'membresGeneve'           =>$membresGeneve,
 
-            'requete' => $request,
+            'evoParis'                =>$evoParis,
+
+            'evoBordeaux'             =>$evoBordeaux,
+
+            'evoLoupe'                =>$evoLoupe,
+
+            'evoChartres'             =>$evoChartres,
+
+            'evoFontainebleau'        =>$evoFontainebleau,
+
+            'evoOrleans'              =>$evoOrleans,
+
+            'evoLyon'                 =>$evoLyon,
+
+            'evoToulouse'             =>$evoToulouse,
+
+            'evoStrasbourg'           =>$evoStrasbourg,
+
+            'evoNantes'               =>$evoNantes,
+
+            'evoNice'                 =>$evoNice,
+
+            'evoMontpellier'          =>$evoMontpellier,
+
+            'evoRennes'               =>$evoRennes,
+
+            'evoLille'                =>$evoLille,
+
+            'evoBruxelles'            =>$evoBruxelles,
+
+            'evoLuxembourg'           =>$evoLuxembourg,
+
+            'evoGeneve'               =>$evoGeneve,
+
+            'requete' => $request
         )
     );
-
-       
-
-       
-      
 
     }
 }
