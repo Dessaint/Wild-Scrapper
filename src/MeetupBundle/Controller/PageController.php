@@ -42,18 +42,27 @@ class PageController extends Controller
 
             if (empty($membresPHPLoupe)) {
                 $membresPHPLoupe = array('membresTotal' => 0 );
+            } else {
+                $membresPHPLoupe = $membresPHPLoupe[0];
             }
 
             if (empty($membresJavaScriptLoupe)) {
                 $membresJavaScriptLoupe = array('membresTotal' => 0 );
+            } else {
+                $membresJavaScriptLoupe = $membresJavaScriptLoupe[0];
             }
 
             if (empty($membresRubyLoupe)) {
                 $membresRubyLoupe = array('membresTotal' => 0 );
+            } else {
+                $membresRubyLoupe = $membresRubyLoupe[0];
             }
+
 
             if (empty($membresIOSLoupe)) {
                 $membresIOSLoupe = array('membresTotal' => 0 );
+            } else {
+                $membresIOSLoupe = $membressIOSLoupe[0];
             }
 
             $membresLoupe = [$membresPHPLoupe, $membresJavaScriptLoupe, $membresRubyLoupe, $membresIOSLoupe];
@@ -66,18 +75,26 @@ class PageController extends Controller
 
             if (empty($membresPHPChartres)) {
                 $membresPHPChartres = array('membresTotal' => 0 );
+            } else {
+                $membresPHPChartres = $membresPHPChartres[0];
             }
 
             if (empty($membresJavaScriptChartres)) {
                 $membresJavaScriptChartres = array('membresTotal' => 0 );
+            } else {
+                $membresJavaScriptChartres = $membresJavaScriptChartres[0];
             }
 
             if (empty($membresRubyChartres)) {
                 $membresRubyChartres = array('membresTotal' => 0 );
+            } else {
+                $membresRubyChartres = $membresRubyChartres[0];
             }
 
             if (empty($membresIOSChartres)) {
                 $membresIOSChartres = array('membresTotal' => 0 );
+            } else {
+                $membresIOSChartres = $membresIOSChartres[0];
             }
 
             $membresChartres = [$membresPHPChartres, $membresJavaScriptChartres, $membresRubyChartres, $membresIOSChartres];
@@ -90,23 +107,32 @@ class PageController extends Controller
 
             if (empty($membresPHPFontainebleau)) {
                 $membresPHPFontainebleau = array('membresTotal' => 0 );
+            } else {
+                $membresPHPFontainebleau = $membresPHPFontainebleau[0];
             }
 
             if (empty($membresJavaScriptFontainebleau)) {
                 $membresJavaScriptFontainebleau = array('membresTotal' => 0 );
+            } else {
+                $membresJavaScriptFontainebleau = $membresJavaScriptFontainebleau[0];
             }
 
             if (empty($membresRubyFontainebleau)) {
                 $membresRubyFontainebleau = array('membresTotal' => 0 );
+            } else {
+                $membresRubyFontainebleau = $membresRubyFontainebleau[0];
             }
 
             if (empty($membresIOSFontainebleau)) {
                 $membresIOSFontainebleau = array('membresTotal' => 0 );
+            } else {
+                $membresIOSFontainebleau = $membresIOSFontainebleau[0];
             }
 
             $membresFontainebleau = [$membresPHPFontainebleau, $membresJavaScriptFontainebleau, $membresRubyFontainebleau, $membresIOSFontainebleau];
 
-            //Ville de Orléans
+
+            //Ville de Orleans
             $membresPHPOrleans = $repository->MembersByCity('PHP', 'Orleans');
             $membresJavaScriptOrleans = $repository->MembersByCity('JavaScript', 'Orleans');
             $membresRubyOrleans = $repository->MembersByCity('Ruby', 'Orleans');
@@ -114,18 +140,26 @@ class PageController extends Controller
 
             if (empty($membresPHPOrleans)) {
                 $membresPHPOrleans = array('membresTotal' => 0 );
+            } else {
+                $membresPHPOrleans = $membresPHPOrleans[0];
             }
 
             if (empty($membresJavaScriptOrleans)) {
                 $membresJavaScriptOrleans = array('membresTotal' => 0 );
+            } else {
+                $membresJavaScriptOrleans = $membresJavaScriptOrleans[0];
             }
 
             if (empty($membresRubyOrleans)) {
                 $membresRubyOrleans = array('membresTotal' => 0 );
+            } else {
+                $membresRubyOrleans = $membresRubyOrleans[0];
             }
 
             if (empty($membresIOSOrleans)) {
                 $membresIOSOrleans = array('membresTotal' => 0 );
+            } else {
+                $membresIOSOrleans = $membresIOSOrleans[0];
             }
 
             $membresOrleans = [$membresPHPOrleans, $membresJavaScriptOrleans, $membresRubyOrleans, $membresIOSOrleans];
