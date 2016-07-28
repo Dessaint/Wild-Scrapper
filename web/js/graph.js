@@ -32,3 +32,6 @@ var myChart = new Chart(ctx).Doughnut(data, options);
 // e.g:
 
 document.getElementById('js-legend').innerHTML = myChart.generateLegend();
+
+
+console.log(55);

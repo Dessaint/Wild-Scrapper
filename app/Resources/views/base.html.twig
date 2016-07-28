@@ -7,11 +7,11 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="{{ asset('./bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset ('./bootstrap/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
   <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css') }}">
+  <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'>
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('css/AdminLTE.css') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -34,6 +34,7 @@
   <!-- Mon fichier Css-->
   <link rel="stylesheet" href="{{ asset('css/cedric.css') }}">
   <link rel="stylesheet" href="{{ asset('css/franck.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/cloud.css')}}">  
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,7 +43,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <!-- jQuery 2.2.0 -->
-  
+  <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
   {% block javascript %}{% endblock %}
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -196,7 +197,7 @@
 
 {% block javascript_end %}{% endblock %}
 <!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js') }}"></script>
+<script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -214,7 +215,7 @@
 <!-- jQuery Knob Chart -->
 <script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script>
 <!-- daterangepicker -->
-<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js') }}"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js'></script>
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- datepicker -->
 <script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
@@ -231,7 +232,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('js/demo.js') }}"></script>
 <!-- script pour les graphiques -->
-<script src="{{ asset('http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js') }}"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js'></script>
 <!-- <script src="{{ asset('js/graph.js') }}"></script> -->
 
 <!-- Mon script pour le graphique d'acceuil -->

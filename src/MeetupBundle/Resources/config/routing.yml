@@ -8,7 +8,7 @@ groupe:
 
 topic:
     path:     /topic
-    defaults: { _controller: MeetupBundle:Default:topic }
+    defaults: { _controller: MeetupBundle:Default:topics }
 
 groupeTopic:
     path:     /groupesTopics

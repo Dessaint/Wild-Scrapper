@@ -44,6 +44,13 @@ class Topics
     private $meetuptopicid;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", nullable=true)
+     */
+    private $ville;
+
+    /**
      * Get id
      *
      * @return integer
@@ -147,5 +154,29 @@ class Topics
     public function getMeetuptopicid()
     {
         return $this->meetuptopicid;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Topics
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }

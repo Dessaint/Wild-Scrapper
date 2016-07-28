@@ -96,7 +96,7 @@ class DefaultController extends Controller
                         $topics->setName($Data[$ville][$i]['results'][$j]['topics'][$k]['name']);
                         $topics->setMeetupgroupeid($Data[$ville][$i]['results'][$j]['id']);
                         $topics->setMeetuptopicid($Data[$ville][$i]['results'][$j]['topics'][$k]['id']);
-
+                        $topics->setVille($Data[$ville][$i]['results'][$j]['city']);
                         $em->persist($topics);
                     }
                 }
