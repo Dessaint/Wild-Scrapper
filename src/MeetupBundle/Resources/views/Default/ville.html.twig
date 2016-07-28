@@ -100,7 +100,7 @@
           <!-- Insertion diagramme Excel 1 -->
           <div class="nav-tabs-custom">
               <h2 class="text-center">Mots clés les plus utilisés</h2>
-              <img src="{{ asset('img/nuagesmots.svg') }}" alt="Un kiwi en SVG">
+              <div id="wordcloud" style="width: 580px; height: 380px; position: relative;"></div>
           </div>
           <!-- Insertion diagramme Excel 2 -->
           <div class="row evol">
@@ -119,7 +119,7 @@
           </div>
           <div class="box box-solid bg-yellow-gradient top">
             <div class="box-body ">
-                <h2>Dernier meetup crées</h2>
+                <h2>Derniers meetup crées</h2>
                   <table class="table table-hover">
                     <thead>
                       <tr>
@@ -159,7 +159,7 @@
           <!-- Insertion diagramme 5 -->
           <div class="box box-solid bg-light-blue-gradient">
             <div class="box-body repartition">
-                <h2>Répartition des languages sur Paris</h2>
+                <h2>Répartition des langages sur Paris</h2>
                 <div style="width: 100%; height: 100%;">
                     <canvas id="myChart" style="width: 100%; height: auto;"></canvas>
                 </div>
@@ -273,6 +273,120 @@
   </div>
   {% endblock section %}
   {% endblock body %}
+
+  {% block javascript_end %}
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
+    <script>
+    var data = [
+   {
+    value: {{ membresParisRepart[1]['membresTotal'] }},
+    color: "#f0db4f",
+    label: "Javascript"
+}, {
+    value: {{ membresParisRepart[0]['membresTotal'] }},
+    color: "#8694d1",
+    label: "Php"
+}, {
+    value: {{ membresParisRepart[2]['membresTotal'] }},
+    color: "#ec1622",
+    label: "Ruby"
+}, {
+    value: {{ membresParisRepart[3]['membresTotal'] }},
+    color: "#97c024",
+    label: "Ios"
+}];
+
+var options = {
+    segmentShowStroke: true,
+    animateRotate: true,
+    animateScale: true,
+    percentageInnerCutout: 50,
+    tooltipTemplate: "<%= value %> Membres"
+}
+
+var ctx = document.getElementById("myChart").getContext("2d");
+
+var myChart = new Chart(ctx).Doughnut(data, options);
+
+// Note - tooltipTemplate is for the string that shows in the tooltip
+
+// legendTemplate is if you want to generate an HTML legend for the chart and use somewhere else on the page
+
+// e.g:
+
+document.getElementById('js-legend').innerHTML = myChart.generateLegend();
+
+
+console.log(55);
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.js"></script>
+
+<script type="text/javascript">
+var word_list = [
+   {text: "{{ countParis[0].name }}", weight: {{ countParis[0].compte }}},
+   {text: "{{ countParis[1].name }}", weight: {{ countParis[1].compte }}},
+   {text: "{{ countParis[2].name }}", weight: {{ countParis[2].compte }}},
+   {text: "{{ countParis[3].name }}", weight: {{ countParis[3].compte }}},
+   {text: "{{ countParis[4].name }}", weight: {{ countParis[4].compte }}},
+   {text: "{{ countParis[5].name }}", weight: {{ countParis[5].compte }}},
+   {text: "{{ countParis[6].name }}", weight: {{ countParis[6].compte }}},
+   {text: "{{ countParis[7].name }}", weight: {{ countParis[7].compte }}},
+   {text: "{{ countParis[8].name }}", weight: {{ countParis[8].compte }}},
+   {text: "{{ countParis[9].name }}", weight: {{ countParis[9].compte }}},
+   {text: "{{ countParis[10].name }}", weight: {{ countParis[10].compte }}},
+   {text: "{{ countParis[11].name }}", weight: {{ countParis[11].compte }}},
+   {text: "{{ countParis[12].name }}", weight: {{ countParis[12].compte }}},
+   {text: "{{ countParis[13].name }}", weight: {{ countParis[13].compte }}},
+   {text: "{{ countParis[14].name }}", weight: {{ countParis[14].compte }}},
+   {text: "{{ countParis[15].name }}", weight: {{ countParis[15].compte }}},
+   {text: "{{ countParis[16].name }}", weight: {{ countParis[16].compte }}},
+   {text: "{{ countParis[17].name }}", weight: {{ countParis[17].compte }}},
+   {text: "{{ countParis[18].name }}", weight: {{ countParis[18].compte }}},
+   {text: "{{ countParis[19].name }}", weight: {{ countParis[19].compte }}},
+   {text: "{{ countParis[20].name }}", weight: {{ countParis[20].compte }}},
+   {text: "{{ countParis[21].name }}", weight: {{ countParis[21].compte }}},
+   {text: "{{ countParis[22].name }}", weight: {{ countParis[22].compte }}},
+   {text: "{{ countParis[23].name }}", weight: {{ countParis[23].compte }}},
+   {text: "{{ countParis[24].name }}", weight: {{ countParis[24].compte }}},
+   {text: "{{ countParis[25].name }}", weight: {{ countParis[25].compte }}},
+   {text: "{{ countParis[26].name }}", weight: {{ countParis[26].compte }}},
+   {text: "{{ countParis[27].name }}", weight: {{ countParis[27].compte }}},
+   {text: "{{ countParis[28].name }}", weight: {{ countParis[28].compte }}},
+   {text: "{{ countParis[29].name }}", weight: {{ countParis[29].compte }}},
+   {text: "{{ countParis[30].name }}", weight: {{ countParis[30].compte }}},
+   {text: "{{ countParis[31].name }}", weight: {{ countParis[31].compte }}},
+   {text: "{{ countParis[32].name }}", weight: {{ countParis[32].compte }}},
+   {text: "{{ countParis[33].name }}", weight: {{ countParis[33].compte }}},
+   {text: "{{ countParis[34].name }}", weight: {{ countParis[34].compte }}},
+   {text: "{{ countParis[35].name }}", weight: {{ countParis[35].compte }}},
+   {text: "{{ countParis[36].name }}", weight: {{ countParis[36].compte }}},
+   {text: "{{ countParis[37].name }}", weight: {{ countParis[37].compte }}},
+   {text: "{{ countParis[38].name }}", weight: {{ countParis[38].compte }}},
+   {text: "{{ countParis[39].name }}", weight: {{ countParis[39].compte }}},
+   {text: "{{ countParis[40].name }}", weight: {{ countParis[40].compte }}},
+   {text: "{{ countParis[41].name }}", weight: {{ countParis[41].compte }}},
+   {text: "{{ countParis[42].name }}", weight: {{ countParis[42].compte }}},
+   {text: "{{ countParis[43].name }}", weight: {{ countParis[43].compte }}},
+   {text: "{{ countParis[44].name }}", weight: {{ countParis[44].compte }}},
+   {text: "{{ countParis[45].name }}", weight: {{ countParis[45].compte }}},
+   {text: "{{ countParis[46].name }}", weight: {{ countParis[46].compte }}},
+   {text: "{{ countParis[47].name }}", weight: {{ countParis[47].compte }}},
+   {text: "{{ countParis[48].name }}", weight: {{ countParis[48].compte }}},
+   {text: "{{ countParis[49].name }}", weight: {{ countParis[49].compte }}},
+   
+   // ...other words
+];
+$(document).ready(function() {
+   $("#wordcloud").jQCloud(word_list);
+});
+
+
+</script>
+
+
+  {% endblock javascript_end %}
+
 
 
 

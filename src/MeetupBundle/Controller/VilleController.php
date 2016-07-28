@@ -87,6 +87,33 @@ class VilleController extends Controller
 
 		$result = $query2->getResult();
 
+		// Nuage de mots
+
+		$repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('MeetupBundle:Topics')
+            ;
+        $countParis = $repository->WordCloudByCity('Paris');
+
+       
+
+
+
+		// Repartition langage
+		$membresPHPParis = $membresPHPParis[0];
+        $membresJavaScriptParis = $membresJavaScriptParis[0];
+        $membresRubyParis = $membresRubyParis[0];
+        $membresIOSParis = $membresIOSParis[0];
+
+        $membresParisRepart = [$membresPHPParis, $membresJavaScriptParis, $membresRubyParis, $membresIOSParis];
+
+
+         // Boite 1
+            //Ville de Paris
+        
+
+
 		 //Last date Meetup
 		$request_last = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
 		$request_last 
@@ -101,6 +128,7 @@ class VilleController extends Controller
 		date_default_timezone_set('Europe/Paris');
 		$result_date = date("d-m-Y", $result_last[0]['created']/1000); 
 
+		
          // $membresParisLangage = 
     	return $this->render('MeetupBundle:Default:ville.html.twig', array(
     	     'requete' => $request,
@@ -110,6 +138,8 @@ class VilleController extends Controller
     	     'flopGroup' => $flopGroup1,
     	     'lastGroup' => $result_last,
     	     'dateGroup' => $result_date,
+    	     'membresParisRepart' => $membresParisRepart,
+    	     'countParis' => $countParis
     	     
     	 ));
     }

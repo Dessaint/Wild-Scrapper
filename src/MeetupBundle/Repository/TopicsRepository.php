@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class TopicsRepository extends EntityRepository
 {
+	public function WordCloudByCity($ville)
+   {
+       $qb = $this->createQueryBuilder('t');
+
+       $qb->select('COUNT(t.name) AS compte')
+       	   ->addSelect('t.name')
+           ->where('t.ville = ?1')
+           ->groupBy('t.name')
+           ->setMaxResults(50)
+           ->orderBy('compte', 'DESC' )
+           ->setParameters(array( 1 => $ville));
+
+       return $qb->getQuery()->getResult();
+   }
 }
