@@ -155,4 +155,28 @@ class Topics
     {
         return $this->meetuptopicid;
     }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Topics
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
 }

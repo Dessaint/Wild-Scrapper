@@ -49,8 +49,19 @@ class Event
      */
     private $created;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="topic", type="string", nullable=true)
+     */
+    private $topic;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", nullable=true)
+     */
+    private $ville;
 
     /**
      * Get id
@@ -72,7 +83,7 @@ class Event
     public function setIdGroupes($idGroupes)
     {
         $this->idGroupes = $idGroupes;
-    
+
         return $this;
     }
 
@@ -96,7 +107,7 @@ class Event
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -120,7 +131,7 @@ class Event
     public function setRsvp($rsvp)
     {
         $this->rsvp = $rsvp;
-    
+
         return $this;
     }
 
@@ -144,7 +155,7 @@ class Event
     public function setCreated($created)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 
