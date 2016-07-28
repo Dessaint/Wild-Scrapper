@@ -26,6 +26,10 @@
 
 /*Content*/
 
+.but-extr button {
+	margin-left: -75px;
+}
+
 .content-wrapper {
     background: url(../img/arrPlan.png);
 }

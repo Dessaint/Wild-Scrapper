@@ -15,15 +15,19 @@
         <li><a href="{{ path('user_accueil') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol>
-    </section>
     <!-- Liste déroulante : choix de semaine -->
-      <form>
-        <select>
-          <option>Semaine 25 - 2016
-          <option>Semaine 24 - 2016
-          <option>Semaine 23 - 2016
-        </select>
-      </form>
+      <div class="col-md-6">
+        <form>
+          <select>
+            <option>Semaine 25 - 2016
+            <option>Semaine 24 - 2016
+            <option>Semaine 23 - 2016
+          </select>
+        </form>
+      </div>
+      <div class="but-extr">
+        <button type="button" class="btn btn-success">Nouvelle extraction</button>
+      </div>
     </section>
 
     <!-- Main content -->
@@ -34,14 +38,13 @@
           <!-- small box -->
           <div class="small-box bg-aqua group">
             <div class="inner">
-              <h3>Javascript<sup style="font-size: 20px"></sup></h3>
+              <h3>{{ toplangage }} ({{ langagePourcent }}%) <sup style="font-size: 20px"></sup></h3>
 
               <p>Langage le mieux représenté</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">Plus d'infos <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -49,14 +52,13 @@
           <!-- small box -->
           <div class="small-box bg-green group">
             <div class="inner">
-              <h3>+90 membres</h3>
+              <h3>{{ topGroup }}</h3>
 
-              <p>Croissance membres: Le Wagon </p>
+              <p>Groupe avec la croissance Max </p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">Plus d'infos <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -64,14 +66,13 @@
           <!-- small box -->
           <div class="small-box bg-red group">
             <div class="inner">
-              <h3>-44 membres</h3>
+              <h3>{{ flopGroup }}</h3>
 
-              <p>Perte membres: Prestatshop</p>
+              <p>Groupe avec la croissance Min </p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">Plus dinfos <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -127,26 +128,12 @@
                       </tr>
                     </thead>
                     <tbody>
+                      {% for Group in lastGroup %}
                        <tr>
-                        <td>(Dé-)Coding Paris</td>
-                        <td>20/06/2016</td>
+                        <td>{{ Group.name }}</td>
+                        <td>{{ dateGroup }}</td>
                       </tr>
-                      <tr>
-                        <td>Hardware Heroes</td>
-                        <td>17/06/2016</td>
-                      </tr>
-                      <tr>
-                        <td>AZUG FR - Azure User Group France</td>
-                        <td>12/06/2016</td>
-                      </tr>
-                      <tr>
-                        <td>Paris Computational Art</td>
-                        <td>10/06/2016</td>
-                      </tr>
-                      <tr>
-                        <td>Unreal Engine Meetup Paris</td>
-                        <td>06/06/2016</td>
-                      </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
             </div>
