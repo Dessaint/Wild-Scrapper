@@ -35,7 +35,7 @@
       <!-- /.row -->
       <!-- Main row -->
       {# <div id="container" class="spark" style="min-width: 310px; height: 400px;"></div> #}
-
+      <div id="container" class="spark" style="min-width: 310px; height: 400px;"></div>
     </section>
     <!-- /.content -->
   </div>
@@ -47,12 +47,108 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-</div>
+
 
  {% endblock body %}
 
+ {% block javascript %}
+ <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+   <script src="https://code.highcharts.com/highcharts.js"></script>
+   <script src="https://code.highcharts.com/modules/exporting.js"></script>
+   <script type="text/JavaScript">
+   $(function () {
+     $('#container').highcharts({
+         title: {
+             text: 'Evolution du nombre de groupes créés sur la plateforme Meetup par ville',
+             x: -20 //center
+         },
+         subtitle: {
+             text: 'Source: Meetup',
+             x: -20
+         },
+         xAxis: {
+             categories: ['2005', '2006', '2007', '2008', '2009', '2010',
+                 '2011', '2012', '2013', '2014', '2015', '2016']
+         },
+         yAxis: {
+             title: {
+                 text: 'Membres'
+             },
+             plotLines: [{
+                 value: 0,
+                 width: 1,
+                 color: '#808080'
+             }]
+         },
+         tooltip: {
+             valueSuffix: 'Meetups Créés'
+         },
+         legend: {
+             layout: 'vertical',
+             align: 'right',
+             verticalAlign: 'middle',
+             borderWidth: 0
+         },
+         series: [{
+             name: 'La Loupe',
+             data: [ {{ evoLoupe[11] }}, {{ evoLoupe[10] }}, {{ evoLoupe[9] }},{{ evoLoupe[8] }}, {{ evoLoupe[7] }}, {{ evoLoupe[6] }}, {{ evoLoupe[5] }}, {{ evoLoupe[4]}}, {{ evoLoupe[3]}}, {{ evoLoupe[2]}}, {{ evoLoupe[1]}}, {{ evoLoupe[0]}}]
+         }, {
+         }, {
+             name: 'Chartres',
+             data: [ {{ evoChartres[11] }}, {{ evoChartres[10] }}, {{ evoChartres[9] }},{{ evoChartres[8] }}, {{ evoChartres[7] }}, {{ evoChartres[6] }}, {{ evoChartres[5] }}, {{ evoChartres[4]}}, {{ evoChartres[3]}}, {{ evoChartres[2]}}, {{ evoChartres[1]}}, {{ evoChartres[0]}}]
+         }, {
+             name: 'Fontainebleau',
+             data: [ {{ evoFontainebleau[11] }}, {{ evoFontainebleau[10] }}, {{ evoFontainebleau[9] }},{{ evoFontainebleau[8] }}, {{ evoFontainebleau[7] }}, {{ evoFontainebleau[6] }}, {{ evoFontainebleau[5] }}, {{ evoFontainebleau[4]}}, {{ evoFontainebleau[3]}}, {{ evoFontainebleau[2]}}, {{ evoFontainebleau[1]}}, {{ evoFontainebleau[0]}}]
+         }, {
+             name: 'Orléans',
+             data: [ {{ evoOrleans[11] }}, {{ evoOrleans[10] }}, {{ evoOrleans[9] }},{{ evoOrleans[8] }}, {{ evoOrleans[7] }}, {{ evoOrleans[6] }}, {{ evoOrleans[5] }}, {{ evoOrleans[4]}}, {{ evoOrleans[3]}}, {{ evoOrleans[2]}}, {{ evoOrleans[1]}}, {{ evoOrleans[0]}}]
+         }, {
+             name: 'Lyon',
+             data: [ {{ evoLyon[11] }}, {{ evoLyon[10] }}, {{ evoLyon[9] }},{{ evoLyon[8] }}, {{ evoLyon[7] }}, {{ evoLyon[6] }}, {{ evoLyon[5] }}, {{ evoLyon[4]}}, {{ evoLyon[3]}}, {{ evoLyon[2]}}, {{ evoLyon[1]}}, {{ evoLyon[0]}}]
+         }, {
+             name: 'Bordeaux',
+             data: [ {{ evoBordeaux[11] }}, {{ evoBordeaux[10] }}, {{ evoBordeaux[9] }},{{ evoBordeaux[8] }}, {{ evoBordeaux[7] }}, {{ evoBordeaux[6] }}, {{ evoBordeaux[5] }}, {{ evoBordeaux[4]}}, {{ evoBordeaux[3]}}, {{ evoBordeaux[2]}}, {{ evoBordeaux[1]}}, {{ evoBordeaux[0]}}]
+         }, {
+             name: 'Toulouse',
+             data: [ {{ evoToulouse[11] }}, {{ evoToulouse[10] }}, {{ evoToulouse[9] }},{{ evoToulouse[8] }}, {{ evoToulouse[7] }}, {{ evoToulouse[6] }}, {{ evoToulouse[5] }}, {{ evoToulouse[4]}}, {{ evoToulouse[3]}}, {{ evoToulouse[2]}}, {{ evoToulouse[1]}}, {{ evoToulouse[0]}}]
+         }, {
+             name: 'Paris',
+             data: [ {{ evoParis[11] }}, {{ evoParis[10] }}, {{ evoParis[9] }},{{ evoParis[8] }}, {{ evoParis[7] }}, {{ evoParis[6] }}, {{ evoParis[5] }}, {{ evoParis[4]}}, {{ evoParis[3]}}, {{ evoParis[2]}}, {{ evoParis[1]}}, {{ evoParis[0]}}]
+         }, {
+             name: 'Strasbourg',
+             data: [ {{ evoStrasbourg[11] }}, {{ evoStrasbourg[10] }}, {{ evoStrasbourg[9] }},{{ evoStrasbourg[8] }}, {{ evoStrasbourg[7] }}, {{ evoStrasbourg[6] }}, {{ evoStrasbourg[5] }}, {{ evoStrasbourg[4]}}, {{ evoStrasbourg[3]}}, {{ evoStrasbourg[2]}}, {{ evoStrasbourg[1]}}, {{ evoStrasbourg[0]}}]
+         }, {
+             name: 'Nantes',
+             data: [ {{ evoNantes[11] }}, {{ evoNantes[10] }}, {{ evoNantes[9] }},{{ evoNantes[8] }}, {{ evoNantes[7] }}, {{ evoNantes[6] }}, {{ evoNantes[5] }}, {{ evoNantes[4]}}, {{ evoNantes[3]}}, {{ evoNantes[2]}}, {{ evoNantes[1]}}, {{ evoNantes[0]}}]
+         }, {
+             name: 'Nice',
+             data: [ {{ evoNice[11] }}, {{ evoNice[10] }}, {{ evoNice[9] }},{{ evoNice[8] }}, {{ evoNice[7] }}, {{ evoNice[6] }}, {{ evoNice[5] }}, {{ evoNice[4]}}, {{ evoNice[3]}}, {{ evoNice[2]}}, {{ evoNice[1]}}, {{ evoNice[0]}}]
+         }, {
+             name: 'Montpellier',
+             data: [ {{ evoMontpellier[11] }}, {{ evoMontpellier[10] }}, {{ evoMontpellier[9] }},{{ evoMontpellier[8] }}, {{ evoMontpellier[7] }}, {{ evoMontpellier[6] }}, {{ evoMontpellier[5] }}, {{ evoMontpellier[4]}}, {{ evoMontpellier[3]}}, {{ evoMontpellier[2]}}, {{ evoMontpellier[1]}}, {{ evoMontpellier[0]}}]
+         }, {
+             name: 'Rennes',
+             data: [ {{ evoRennes[11] }}, {{ evoRennes[10] }}, {{ evoRennes[9] }},{{ evoRennes[8] }}, {{ evoRennes[7] }}, {{ evoRennes[6] }}, {{ evoRennes[5] }}, {{ evoRennes[4]}}, {{ evoRennes[3]}}, {{ evoRennes[2]}}, {{ evoRennes[1]}}, {{ evoRennes[0]}}]
+         }, {
+             name: 'Lille',
+             data: [ {{ evoLille[11] }}, {{ evoLille[10] }}, {{ evoLille[9] }},{{ evoLille[8] }}, {{ evoLille[7] }}, {{ evoLille[6] }}, {{ evoLille[5] }}, {{ evoLille[4]}}, {{ evoLille[3]}}, {{ evoLille[2]}}, {{ evoLille[1]}}, {{ evoLille[0]}}]
+         }, {
+             name: 'Bruxelles',
+             data: [ {{ evoBruxelles[11] }}, {{ evoBruxelles[10] }}, {{ evoBruxelles[9] }},{{ evoBruxelles[8] }}, {{ evoBruxelles[7] }}, {{ evoBruxelles[6] }}, {{ evoBruxelles[5] }}, {{ evoBruxelles[4]}}, {{ evoBruxelles[3]}}, {{ evoBruxelles[2]}}, {{ evoBruxelles[1]}}, {{ evoBruxelles[0]}}]
+         }, {
+             name: 'Luxembourg',
+             data: [ {{ evoLuxembourg[11] }}, {{ evoLuxembourg[10] }}, {{ evoLuxembourg[9] }},{{ evoLuxembourg[8] }}, {{ evoLuxembourg[7] }}, {{ evoLuxembourg[6] }}, {{ evoLuxembourg[5] }}, {{ evoLuxembourg[4]}}, {{ evoLuxembourg[3]}}, {{ evoLuxembourg[2]}}, {{ evoLuxembourg[1]}}, {{ evoLuxembourg[0]}}]
+         }, {
+             name: 'Genève',
+             data: [ {{ evoGeneve[11] }}, {{ evoGeneve[10] }}, {{ evoGeneve[9] }},{{ evoGeneve[8] }}, {{ evoGeneve[7] }}, {{ evoGeneve[6] }}, {{ evoGeneve[5] }}, {{ evoGeneve[4]}}, {{ evoGeneve[3]}}, {{ evoGeneve[2]}}, {{ evoGeneve[1]}}, {{ evoGeneve[0]}}]
+         }]
+     });
+ });
+ </script>
+ {% endblock %}
 
-{% block javascript_end%}
+
+{% block javascript_end %}
 
 {# <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -310,7 +406,7 @@ var freqData=[
 ,{State:'LYON',freq:{php:{{membresLyon[0].membresTotal}}, JavaScript:{{membresLyon[1].membresTotal}}, Ruby:{{membresLyon[2].membresTotal}}, Ios:{{membresLyon[3].membresTotal}}}}
 ,{State:'BDX',freq:{php:{{membresBordeaux[0].membresTotal}}, JavaScript:{{membresBordeaux[1].membresTotal}}, Ruby:{{membresBordeaux[2].membresTotal}}, Ios:{{membresBordeaux[3].membresTotal}}}}
 ,{State:'TLS',freq:{php:{{membresToulouse[0].membresTotal}}, JavaScript:{{membresToulouse[1].membresTotal}}, Ruby:{{membresToulouse[2].membresTotal}}, Ios:{{membresToulouse[3].membresTotal}}}}
-//,{State:'PAR',freq:{php:{{ membresParis[0].membresTotal }}, JavaScript: {{membresParis[1].membresTotal}}, Ruby:{{membresParis[2].membresTotal}}, Ios:{{membresParis[3].membresTotal}}}}
+,{State:'PAR',freq:{php:{{ membresParis[0].membresTotal }}, JavaScript: {{membresParis[1].membresTotal}}, Ruby:{{membresParis[2].membresTotal}}, Ios:{{membresParis[3].membresTotal}}}}
 ,{State:'STBG',freq:{php:{{ membresStrasbourg[0].membresTotal }}, JavaScript: {{membresStrasbourg[1].membresTotal}}, Ruby:{{membresStrasbourg[2].membresTotal}}, Ios:{{membresStrasbourg[3].membresTotal}}}}
 ,{State:'NAN',freq:{php:{{ membresNantes[0].membresTotal }}, JavaScript: {{membresNantes[1].membresTotal}}, Ruby:{{membresNantes[2].membresTotal}}, Ios:{{membresNantes[3].membresTotal}}}}
 ,{State:'NIC',freq:{php:{{ membresNice[0].membresTotal }}, JavaScript: {{membresNice[1].membresTotal}}, Ruby:{{membresNice[2].membresTotal}}, Ios:{{membresNice[3].membresTotal}}}}
@@ -328,95 +424,5 @@ dashboard('#dashboard',freqData);
 
 
 
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  <script type="text/JavaScript">
-  $(function () {
-    $('#container').highcharts({
-        title: {
-            text: 'Evolution par ville',
-            x: -20 //center
-        },
-        subtitle: {
-            text: 'Source: Meetup',
-            x: -20
-        },
-        xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        },
-        yAxis: {
-            title: {
-                text: 'Membres'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
-        },
-        tooltip: {
-            valueSuffix: '°C'
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        series: [{
-            name: 'La Loupe',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-        }, {
-            name: 'Chartres',
-            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
-        }, {
-            name: 'Fontainebleau',
-            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-        }, {
-            name: 'Orléans',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Lyon',
-            data: [3.9, 4.2, 16.6, 14.2, 10.3, 6.6, 4.8, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Bordeaux',
-            data: [3.9, 16.6, 14.2, 10.3, 6.6, 4.8, 16.6, 14.2, 10.3, 6.6, 10.3, 4.8]
-        }, {
-            name: 'Toulouse',
-            data: [4.2, 6.6, 4.8, 16.6, 6.6, 4.8, 16.6, 14.2, 10.3, 6.6, 14.2, 4.8]
-        }, {
-            name: 'Paris',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Strasbourg',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Nantes',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Nice',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Montpellier',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Rennes',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Lille',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Bruxelles',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Luxembourg',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }, {
-            name: 'Genève',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }]
-    });
-});
-</script>
+
 {% endblock %}

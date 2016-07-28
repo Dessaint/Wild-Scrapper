@@ -10,6 +10,7 @@ namespace MeetupBundle\Repository;
  */
 class GroupesPHPRepository extends \Doctrine\ORM\EntityRepository
 {
+    //Nombre de membres par topic par ville
     public function MembersByCity($topic, $ville)
    {
        $qb = $this->createQueryBuilder('g');
@@ -23,6 +24,8 @@ class GroupesPHPRepository extends \Doctrine\ORM\EntityRepository
 
        return $qb->getQuery()->getResult();
    }
+
+
    public function Graph()
   {
       $qb = $this->createQueryBuilder('g');
@@ -35,4 +38,21 @@ class GroupesPHPRepository extends \Doctrine\ORM\EntityRepository
 
       return $qb->getQuery()->getResult();
   }
+
+  //Nombre de Meetup crées par année
+  public function MeetupCreatedByYear($year, $city)
+ {
+     $dateDeb = round(microtime(true) * 1000) - $year * 31536000000;
+     $dateFin = $dateDeb + 31536000000;
+
+     $qb = $this->createQueryBuilder('g');
+
+     $qb->select('COUNT (g) as create')
+        ->where('g.created > ?1')
+        ->andwhere('g.created < ?2')
+        ->andwhere('g.city = ?3')
+        ->setParameters(array(1=> $dateDeb, 2=> $dateFin, 3=> $city));
+
+     return $qb->getQuery()->getResult();
+ }
 }
