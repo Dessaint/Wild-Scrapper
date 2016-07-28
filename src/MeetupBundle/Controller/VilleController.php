@@ -75,17 +75,41 @@ class VilleController extends Controller
 
          // Boite 4
             //Ville Paris
-        
+		$request3 = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
+		$request3
+			->select('g.members')
+			->addSelect('g.name')
+			->addSelect('g.id')
+			->orderBy('g.members', 'DESC')
+			->setMaxResults(50);
 
-		
+		$query2 = $request3->getQuery();
 
-            // $membresParisLangage = 
+		$result = $query2->getResult();
+
+		 //Last date Meetup
+		$request_last = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
+		$request_last 
+			->select('g.created')
+			->addSelect('g.name')
+			->orderBy('g.created', 'DESC')
+			->setMaxResults(5);
+
+		$query_last = $request_last->getQuery();
+		$result_last = $query_last->getResult();
+
+		date_default_timezone_set('Europe/Paris');
+		$result_date = date("d-m-Y", $result_last[0]['created']/1000); 
+
+         // $membresParisLangage = 
     	return $this->render('MeetupBundle:Default:ville.html.twig', array(
     	     'requete' => $request,
     	     'toplangage' => $membresParisLangage,
     	     'langagePourcent' => $membresParisLangagePourcent,
     	     'topGroup' => $topGroup1,
     	     'flopGroup' => $flopGroup1,
+    	     'lastGroup' => $result_last,
+    	     'dateGroup' => $result_date,
     	     
     	 ));
     }

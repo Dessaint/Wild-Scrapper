@@ -128,26 +128,12 @@
                       </tr>
                     </thead>
                     <tbody>
+                      {% for Group in lastGroup %}
                        <tr>
-                        <td>(Dé-)Coding Paris</td>
-                        <td>20/06/2016</td>
+                        <td>{{ Group.name }}</td>
+                        <td>{{ dateGroup }}</td>
                       </tr>
-                      <tr>
-                        <td>Hardware Heroes</td>
-                        <td>17/06/2016</td>
-                      </tr>
-                      <tr>
-                        <td>AZUG FR - Azure User Group France</td>
-                        <td>12/06/2016</td>
-                      </tr>
-                      <tr>
-                        <td>Paris Computational Art</td>
-                        <td>10/06/2016</td>
-                      </tr>
-                      <tr>
-                        <td>Unreal Engine Meetup Paris</td>
-                        <td>06/06/2016</td>
-                      </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
             </div>
