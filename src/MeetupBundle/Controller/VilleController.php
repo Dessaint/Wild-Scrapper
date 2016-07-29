@@ -143,4 +143,11 @@ class VilleController extends Controller
     	     
     	 ));
     }
+    public function testAction($test)
+    {
+        $villes = '';
+        return $this->render('MeetupBundle:Default:test.html.twig', array(
+            'villes'=>$villes
+            ));
+    }
 }
