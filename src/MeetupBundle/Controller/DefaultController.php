@@ -8,6 +8,7 @@ use MeetupBundle\Entity\Topics;
 use MeetupBundle\Entity\Villes;
 use MeetupBundle\Entity\GroupesTopics;
 use MeetupBundle\Entity\GroupesPHP;
+use MeetupBundle\Entity\Event;
 
 class DefaultController extends Controller
 {
@@ -58,6 +59,60 @@ class DefaultController extends Controller
             $em->persist($villes);
         }
 
+        $em->flush();
+
+        return $this->render('MeetupBundle:Default:index.html.twig');
+    }
+
+    public function eventAction()
+    {
+        ini_set('max_execution_time', 1200);
+        // J'initie un tableau et je place mes villes
+        $tabVilles = ["paris", "chartres", "la+loupe", "fontainebleau", "orleans", "lyon", "bordeaux", "toulouse", "strasbourg", "nantes", "nice", "montpellier", "rennes", "lille"];
+        $topicUrls = ["php", "javascript", "ruby", "ios"];
+
+        $pays = "fr";
+
+        foreach ($tabVilles as $ville) {
+            foreach ($topicUrls as $topicUrl) {
+
+
+            $jsonData0 = file_get_contents("https://api.meetup.com/2/open_events?&sign=true&photo-host=public&country=".$pays."&city=".$ville."&topic=".$topicUrl."&category=34&fields=self&key=17662761a2d418394102b53502864&offset=0");
+            $jsonData1 = file_get_contents("https://api.meetup.com/2/open_events?&sign=true&photo-host=public&country=".$pays."&city=".$ville."&topic=".$topicUrl."&category=34&fields=self&key=17662761a2d418394102b53502864&offset=1");
+
+            $Data0 = json_decode($jsonData0, true);
+            $Data1 = json_decode($jsonData1, true);
+
+
+            $Data[$ville] = [$Data0, $Data1];
+
+            $em = $this->getDoctrine()->getManager();
+
+            for ($i=0, $c = count($Data[$ville]); $i< $c; $i++) {
+
+                for($j=0, $c2 = count($Data[$ville][$i]['results']); $j < $c2; $j++) {
+
+                    $event = new Event();
+                    $event->setVille($ville);
+                    $event->setName($Data[$ville][$i]['results'][$j]['name']);
+                    $event->setIdGroupes($Data[$ville][$i]['results'][$j]['group']['id']);
+                    $event->setRsvp($Data[$ville][$i]['results'][$j]['yes_rsvp_count']);
+                    $event->setTopic($topicUrl);
+
+
+                    $event->setCreated($Data[$ville][$i]['results'][$j]['created']);
+
+
+
+
+                    $em->persist($event);
+                }
+
+            }
+
+
+        }
+        }
         $em->flush();
 
         return $this->render('MeetupBundle:Default:index.html.twig');
@@ -151,16 +206,6 @@ class DefaultController extends Controller
         return $this->render('MeetupBundle:Default:index.html.twig');
     }
 
-
-
-    public function EventAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $groupes = $em->getRepository('MeetupBundle:Groupes')->findAll();
-
-        return $this->render('MeetupBundle:Default:index.html.twig', array('groupes' => $groupes));
-    }
-
     public function groupesPHPAction()
     {
         ini_set('max_execution_time', 1200);
@@ -172,7 +217,7 @@ class DefaultController extends Controller
             foreach ($tabVilles as $ville) {
 
                 if ($ville === 'brussels') {
-                    
+
                     $jsonData0 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=be&topic=".$topicUrl."&city=".$ville."&key=17662761a2d418394102b53502864&offset=0");
                     $jsonData1 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=be&topic=".$topicUrl."&city=".$ville."&key=17662761a2d418394102b53502864&offset=1");
                     $jsonData2 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=be&topic=".$topicUrl."&city=".$ville."&key=17662761a2d418394102b53502864&offset=2");

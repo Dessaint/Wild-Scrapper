@@ -24,7 +24,7 @@ class Event
     /**
      * @var int
      *
-     * @ORM\Column(name="id_groupes", type="integer", unique=true)
+     * @ORM\Column(name="id_groupes", type="integer", nullable=true)
      */
     private $idGroupes;
 
@@ -45,12 +45,23 @@ class Event
     /**
      * @var int
      *
-     * @ORM\Column(name="created", type="integer", nullable=true)
+     * @ORM\Column(name="created", type="bigint", nullable=true)
      */
     private $created;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="topic", type="string", nullable=true)
+     */
+    private $topic;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", nullable=true)
+     */
+    private $ville;
 
     /**
      * Get id
@@ -72,7 +83,7 @@ class Event
     public function setIdGroupes($idGroupes)
     {
         $this->idGroupes = $idGroupes;
-    
+
         return $this;
     }
 
@@ -96,7 +107,7 @@ class Event
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -120,7 +131,7 @@ class Event
     public function setRsvp($rsvp)
     {
         $this->rsvp = $rsvp;
-    
+
         return $this;
     }
 
@@ -144,7 +155,7 @@ class Event
     public function setCreated($created)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 
@@ -156,5 +167,53 @@ class Event
     public function getCreated()
     {
         return $this->created;
+    }
+
+    /**
+     * Set topic
+     *
+     * @param string $topic
+     *
+     * @return Event
+     */
+    public function setTopic($topic)
+    {
+        $this->topic = $topic;
+
+        return $this;
+    }
+
+    /**
+     * Get topic
+     *
+     * @return string
+     */
+    public function getTopic()
+    {
+        return $this->topic;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Event
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }
