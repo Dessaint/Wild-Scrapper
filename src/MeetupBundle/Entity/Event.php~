@@ -5,12 +5,12 @@ namespace MeetupBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Topics
+ * Event
  *
- * @ORM\Table(name="topics")
- * @ORM\Entity(repositoryClass="MeetupBundle\Repository\TopicsRepository")
+ * @ORM\Table(name="event")
+ * @ORM\Entity(repositoryClass="MeetupBundle\Repository\EventRepository")
  */
-class Topics
+class Event
 {
     /**
      * @var int
@@ -24,7 +24,7 @@ class Topics
     /**
      * @var int
      *
-     * @ORM\Column(name="id_groupes", type="integer", nullable=true, unique=true)
+     * @ORM\Column(name="id_groupes", type="integer", unique=true)
      */
     private $idGroupes;
 
@@ -35,11 +35,25 @@ class Topics
      */
     private $name;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="rsvp", type="integer", nullable=true)
+     */
+    private $rsvp;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="created", type="integer", nullable=true)
+     */
+    private $created;
+
 
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -50,7 +64,8 @@ class Topics
      * Set idGroupes
      *
      * @param integer $idGroupes
-     * @return Topics
+     *
+     * @return Event
      */
     public function setIdGroupes($idGroupes)
     {
@@ -62,7 +77,7 @@ class Topics
     /**
      * Get idGroupes
      *
-     * @return integer
+     * @return int
      */
     public function getIdGroupes()
     {
@@ -73,7 +88,8 @@ class Topics
      * Set name
      *
      * @param string $name
-     * @return Topics
+     *
+     * @return Event
      */
     public function setName($name)
     {
@@ -91,50 +107,52 @@ class Topics
     {
         return $this->name;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $groupes;
 
     /**
-     * Constructor
+     * Set rsvp
+     *
+     * @param string $rsvp
+     *
+     * @return Event
      */
-    public function __construct()
+    public function setRsvp($rsvp)
     {
-        $this->groupes = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+        $this->rsvp = $rsvp;
 
-    /**
-     * Add groupe
-     *
-     * @param \MeetupBundle\Entity\Groupes $groupe
-     *
-     * @return Topics
-     */
-    public function addGroupe(\MeetupBundle\Entity\Groupes $groupe)
-    {
-        $this->groupes[] = $groupe;
-    
         return $this;
     }
 
     /**
-     * Remove groupe
+     * Get rsvp
      *
-     * @param \MeetupBundle\Entity\Groupes $groupe
+     * @return string
      */
-    public function removeGroupe(\MeetupBundle\Entity\Groupes $groupe)
+    public function getRsvp()
     {
-        $this->groupes->removeElement($groupe);
+        return $this->rsvp;
     }
 
     /**
-     * Get groupes
+     * Set created
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param integer $created
+     *
+     * @return Event
      */
-    public function getGroupes()
+    public function setCreated($created)
     {
-        return $this->groupes;
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return int
+     */
+    public function getCreated()
+    {
+        return $this->created;
     }
 }
