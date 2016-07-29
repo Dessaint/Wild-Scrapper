@@ -8,7 +8,7 @@ use MeetupBundle\Entity\GroupesPHP;
 
 class VilleController extends Controller
 {
-    public function showAction()
+    public function showAction($ville)
     {
         
     	 $em = $this->getDoctrine()->getManager();
@@ -24,19 +24,39 @@ class VilleController extends Controller
             ;
          // Boite 1
             //Ville de Paris
-        $membresPHPParis = $repository->MembersByCity('PHP', 'paris');
-        $membresJavaScriptParis = $repository->MembersByCity('JavaScript', 'paris');
-        $membresRubyParis = $repository->MembersByCity('Ruby', 'paris');
-        $membresIOSParis = $repository->MembersByCity('IOS', 'paris');
+        $membresPHPParis = $repository->MembersByCity('PHP', $ville);
+        $membresJavaScriptParis = $repository->MembersByCity('JavaScript', $ville);
+        $membresRubyParis = $repository->MembersByCity('Ruby', $ville);
+        $membresIOSParis = $repository->MembersByCity('IOS', $ville);
         	
         $membresParis = [];
-        $membresParis['PHP'] = $membresPHPParis[0]['membresTotal'];
-        $membresParis['Javascript'] = $membresJavaScriptParis[0]['membresTotal'];
-        $membresParis['Ruby'] = $membresRubyParis[0]['membresTotal'];
-        $membresParis['Ios'] = $membresIOSParis[0]['membresTotal'];
+        if (empty($membresPHPParis)) {
+            $membresPHPParis = array('membresTotal' => 0);
+        } else {
+            $membresPHPParis = $membresPHPParis[0]['membresTotal'];    
+        }
 
-        $membresParis['total'] = $membresParis['PHP']+$membresParis['Javascript']+$membresParis['Ruby']+$membresParis['Ios'];
-        $membresParisTotal =  $membresPHPParis[0]['membresTotal']+$membresJavaScriptParis[0]['membresTotal']+$membresRubyParis[0]['membresTotal']+$membresIOSParis[0]['membresTotal'];
+        if (empty($membresJavaScriptParis)) {
+            $membresJavaScriptParis = array('membresTotal' => 0);
+        } else {
+            $membresJavaScriptParis = $membresJavaScriptParis[0]['membresTotal'];        
+        }
+
+        if (empty($membresRubyParis)) {
+            $membresRubyParis = array('membresTotal' => 0);
+        } else {
+            $membresRubyParis = $membresRubyParis[0]['membresTotal'];             
+        }
+
+        if (empty($membresIOSParis)) {
+            $membresIOSParis = array('membresTotal' => 0);
+        } else {
+            $membresIOSParis = $membresIOSParis[0]['membresTotal'];                  
+        }
+        
+
+        $membresParis['total'] = $membresPHPParis+$membresJavaScriptParis+$membresRubyParis+$membresIosParis;
+        $membresParisTotal =  $membresPHPParis['membresTotal']+$membresJavaScriptParis['membresTotal']+$membresRubyParis['membresTotal']+$membresIOSParis['membresTotal'];
         $membresParisMax = max($membresPHPParis[0]['membresTotal'], $membresJavaScriptParis[0]['membresTotal'], $membresRubyParis[0]['membresTotal'], $membresIOSParis[0]['membresTotal']);
         $membresParisLangageNb = arsort($membresParis);
         $membresParisLangage = array_keys($membresParis)[1];
@@ -94,7 +114,7 @@ class VilleController extends Controller
             ->getManager()
             ->getRepository('MeetupBundle:Topics')
             ;
-        $countParis = $repository->WordCloudByCity('Paris');
+        $countParis = $repository->WordCloudByCity($ville);
 
        
 
@@ -143,11 +163,5 @@ class VilleController extends Controller
     	     
     	 ));
     }
-    public function testAction($test)
-    {
-        $villes = '';
-        return $this->render('MeetupBundle:Default:test.html.twig', array(
-            'villes'=>$villes
-            ));
-    }
+    
 }
