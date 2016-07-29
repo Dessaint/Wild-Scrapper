@@ -24,7 +24,7 @@ class Event
     /**
      * @var int
      *
-     * @ORM\Column(name="id_groupes", type="integer", unique=true)
+     * @ORM\Column(name="id_groupes", type="integer", nullable=true)
      */
     private $idGroupes;
 
@@ -45,7 +45,7 @@ class Event
     /**
      * @var int
      *
-     * @ORM\Column(name="created", type="integer", nullable=true)
+     * @ORM\Column(name="created", type="bigint", nullable=true)
      */
     private $created;
 
@@ -167,5 +167,53 @@ class Event
     public function getCreated()
     {
         return $this->created;
+    }
+
+    /**
+     * Set topic
+     *
+     * @param string $topic
+     *
+     * @return Event
+     */
+    public function setTopic($topic)
+    {
+        $this->topic = $topic;
+
+        return $this;
+    }
+
+    /**
+     * Get topic
+     *
+     * @return string
+     */
+    public function getTopic()
+    {
+        return $this->topic;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Event
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }

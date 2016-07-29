@@ -45,7 +45,7 @@ class Event
     /**
      * @var int
      *
-     * @ORM\Column(name="created", type="integer", nullable=true)
+     * @ORM\Column(name="created", type="bigint", nullable=true)
      */
     private $created;
 

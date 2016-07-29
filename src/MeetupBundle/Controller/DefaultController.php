@@ -77,8 +77,8 @@ class DefaultController extends Controller
             foreach ($topicUrls as $topicUrl) {
 
 
-            $jsonData0 = file_get_contents("https://api.meetup.com/2/open_events?&sign=true&photo-host=public&country=".$pays."&city=".$ville."&topic=".$topicUrl."&category=34&key=17662761a2d418394102b53502864&offset=0");
-            $jsonData1 = file_get_contents("https://api.meetup.com/2/open_events?&sign=true&photo-host=public&country=".$pays."&city=".$ville."&topic=".$topicUrl."&category=34&key=17662761a2d418394102b53502864&offset=1");
+            $jsonData0 = file_get_contents("https://api.meetup.com/2/open_events?&sign=true&photo-host=public&country=".$pays."&city=".$ville."&topic=".$topicUrl."&category=34&fields=self&key=17662761a2d418394102b53502864&offset=0");
+            $jsonData1 = file_get_contents("https://api.meetup.com/2/open_events?&sign=true&photo-host=public&country=".$pays."&city=".$ville."&topic=".$topicUrl."&category=34&fields=self&key=17662761a2d418394102b53502864&offset=1");
 
             $Data0 = json_decode($jsonData0, true);
             $Data1 = json_decode($jsonData1, true);
@@ -96,7 +96,7 @@ class DefaultController extends Controller
                     $event->setVille($ville);
                     $event->setName($Data[$ville][$i]['results'][$j]['name']);
                     $event->setIdGroupes($Data[$ville][$i]['results'][$j]['group']['id']);
-
+                    $event->setRsvp($Data[$ville][$i]['results'][$j]['yes_rsvp_count']);
                     $event->setTopic($topicUrl);
 
 
