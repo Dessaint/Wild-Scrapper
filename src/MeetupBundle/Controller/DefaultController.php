@@ -79,10 +79,7 @@ class DefaultController extends Controller
 
             $jsonData0 = file_get_contents("https://api.meetup.com/2/open_events?&sign=true&photo-host=public&country=".$pays."&city=".$ville."&topic=".$topicUrl."&category=34&fields=self&time=-6m,1d&status=past&key=32474d2b14207838611a722d10416842&offset=0");
 
-
             $Data0 = json_decode($jsonData0, true);
-
-
 
             $Data[$ville] = [$Data0];
 
@@ -96,7 +93,9 @@ class DefaultController extends Controller
                     $event->setVille($ville);
                     $event->setName($Data[$ville][$i]['results'][$j]['name']);
                     $event->setIdGroupes($Data[$ville][$i]['results'][$j]['group']['id']);
+                    $event->setNameGroup($Data[$ville][$i]['results'][$j]['group']['name']);
                     $event->setRsvp($Data[$ville][$i]['results'][$j]['yes_rsvp_count']);
+                    $event->setRating($Data[$ville][$i]['results'][$j]['rating']['average']);
                     $event->setTopic($topicUrl);
 
                     $event->setCreated($Data[$ville][$i]['results'][$j]['created']);

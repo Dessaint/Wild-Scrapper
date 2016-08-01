@@ -25,7 +25,6 @@ class VilleController extends Controller
          // Boite 1
             //Ville de Paris
 
-
         $membresPHPParis = $repository->MembersByCity('PHP', $ville);
         $membresJavaScriptParis = $repository->MembersByCity('JavaScript', $ville);
         $membresRubyParis = $repository->MembersByCity('Ruby', $ville);
@@ -131,13 +130,6 @@ class VilleController extends Controller
 
         $countVille = $repository->WordCloudByCity($ville);
 
-
-
-         // Boite 1
-            //Ville de Paris
-
-
-
 		 //Last date Meetup
 		$request_last = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
 		$request_last
@@ -157,12 +149,6 @@ class VilleController extends Controller
             $result_date = date("d-m-Y", $result_last[0]['created']/1000);
         }
 
-
-
-
-
-
-
          // $membresParisLangage =
     	return $this->render('MeetupBundle:Default:ville.html.twig', array(
     	     'requete' => $request,
@@ -173,11 +159,6 @@ class VilleController extends Controller
     	     'lastGroup' => $result_last,
     	     'dateGroup' => $result_date,
     	     'countParis' => $countVille
-
     	 ));
     }
-
-
-}
-
 }
