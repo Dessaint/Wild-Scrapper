@@ -149,9 +149,15 @@ class VilleController extends Controller
 
 		$query_last = $request_last->getQuery();
 		$result_last = $query_last->getResult();
+        if (empty($result_last)) {
+            $result_date = 'Aucun groupe crée';
+        } else {
+            date_default_timezone_set('Europe/Paris');
+            $result_date = date("d-m-Y", $result_last[0]['created']/1000);      
+        }
 
-		date_default_timezone_set('Europe/Paris');
-		$result_date = date("d-m-Y", $result_last[0]['created']/1000); 
+
+		 
 
 		
          // $membresParisLangage = 
