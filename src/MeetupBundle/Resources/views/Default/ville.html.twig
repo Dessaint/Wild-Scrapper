@@ -8,8 +8,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tableau de bord
-        <small>Ville de Paris</small>
+        Tableau de bord :
+        <b>{{ toplangage[0]['city'] }}</b>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ path('user_accueil') }}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -38,7 +38,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua group">
             <div class="inner">
-              <h3>{{ toplangage }} ({{ langagePourcent }}%) <sup style="font-size: 20px"></sup></h3>
+              <h3>{{ toplangage[0]['topic'] }} ({{ langagePourcent }}%) <sup style="font-size: 20px"></sup></h3>
 
               <p>Langage le mieux représenté</p>
             </div>
@@ -159,7 +159,7 @@
           <!-- Insertion diagramme 5 -->
           <div class="box box-solid bg-light-blue-gradient">
             <div class="box-body repartition">
-                <h2>Répartition des langages sur Paris</h2>
+                <h2>Répartition des langages sur {{toplangage[0]['city']}}</h2>
                 <div style="width: 100%; height: 100%;">
                     <canvas id="myChart" style="width: 100%; height: auto;"></canvas>
                 </div>
@@ -279,21 +279,21 @@
     <script>
     var data = [
    {
-    value: {{ membresParisRepart[1]['membresTotal'] }},
+    value: {{ toplangage[0]['membresTotal'] }},
     color: "#f0db4f",
-    label: "Javascript"
+    label: "{{ toplangage[0]['topic'] }}"
 }, {
-    value: {{ membresParisRepart[0]['membresTotal'] }},
+    value: {{ toplangage[1]['membresTotal'] }},
     color: "#8694d1",
-    label: "Php"
+    label: "{{ toplangage[1]['topic'] }}"
 }, {
-    value: {{ membresParisRepart[2]['membresTotal'] }},
+    value: {{ toplangage[2]['membresTotal'] }},
     color: "#ec1622",
-    label: "Ruby"
+    label: "{{ toplangage[2]['topic'] }}"
 }, {
-    value: {{ membresParisRepart[3]['membresTotal'] }},
+    value: {{ toplangage[3]['membresTotal'] }},
     color: "#97c024",
-    label: "Ios"
+    label: "{{ toplangage[3]['topic'] }}"
 }];
 
 var options = {
@@ -321,59 +321,12 @@ console.log(55);
     </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.js"></script>
-
+{% if countParis %}
 <script type="text/javascript">
 var word_list = [
-   {text: "{{ countParis[0].name }}", weight: {{ countParis[0].compte }}},
-   {text: "{{ countParis[1].name }}", weight: {{ countParis[1].compte }}},
-   {text: "{{ countParis[2].name }}", weight: {{ countParis[2].compte }}},
-   {text: "{{ countParis[3].name }}", weight: {{ countParis[3].compte }}},
-   {text: "{{ countParis[4].name }}", weight: {{ countParis[4].compte }}},
-   {text: "{{ countParis[5].name }}", weight: {{ countParis[5].compte }}},
-   {text: "{{ countParis[6].name }}", weight: {{ countParis[6].compte }}},
-   {text: "{{ countParis[7].name }}", weight: {{ countParis[7].compte }}},
-   {text: "{{ countParis[8].name }}", weight: {{ countParis[8].compte }}},
-   {text: "{{ countParis[9].name }}", weight: {{ countParis[9].compte }}},
-   {text: "{{ countParis[10].name }}", weight: {{ countParis[10].compte }}},
-   {text: "{{ countParis[11].name }}", weight: {{ countParis[11].compte }}},
-   {text: "{{ countParis[12].name }}", weight: {{ countParis[12].compte }}},
-   {text: "{{ countParis[13].name }}", weight: {{ countParis[13].compte }}},
-   {text: "{{ countParis[14].name }}", weight: {{ countParis[14].compte }}},
-   {text: "{{ countParis[15].name }}", weight: {{ countParis[15].compte }}},
-   {text: "{{ countParis[16].name }}", weight: {{ countParis[16].compte }}},
-   {text: "{{ countParis[17].name }}", weight: {{ countParis[17].compte }}},
-   {text: "{{ countParis[18].name }}", weight: {{ countParis[18].compte }}},
-   {text: "{{ countParis[19].name }}", weight: {{ countParis[19].compte }}},
-   {text: "{{ countParis[20].name }}", weight: {{ countParis[20].compte }}},
-   {text: "{{ countParis[21].name }}", weight: {{ countParis[21].compte }}},
-   {text: "{{ countParis[22].name }}", weight: {{ countParis[22].compte }}},
-   {text: "{{ countParis[23].name }}", weight: {{ countParis[23].compte }}},
-   {text: "{{ countParis[24].name }}", weight: {{ countParis[24].compte }}},
-   {text: "{{ countParis[25].name }}", weight: {{ countParis[25].compte }}},
-   {text: "{{ countParis[26].name }}", weight: {{ countParis[26].compte }}},
-   {text: "{{ countParis[27].name }}", weight: {{ countParis[27].compte }}},
-   {text: "{{ countParis[28].name }}", weight: {{ countParis[28].compte }}},
-   {text: "{{ countParis[29].name }}", weight: {{ countParis[29].compte }}},
-   {text: "{{ countParis[30].name }}", weight: {{ countParis[30].compte }}},
-   {text: "{{ countParis[31].name }}", weight: {{ countParis[31].compte }}},
-   {text: "{{ countParis[32].name }}", weight: {{ countParis[32].compte }}},
-   {text: "{{ countParis[33].name }}", weight: {{ countParis[33].compte }}},
-   {text: "{{ countParis[34].name }}", weight: {{ countParis[34].compte }}},
-   {text: "{{ countParis[35].name }}", weight: {{ countParis[35].compte }}},
-   {text: "{{ countParis[36].name }}", weight: {{ countParis[36].compte }}},
-   {text: "{{ countParis[37].name }}", weight: {{ countParis[37].compte }}},
-   {text: "{{ countParis[38].name }}", weight: {{ countParis[38].compte }}},
-   {text: "{{ countParis[39].name }}", weight: {{ countParis[39].compte }}},
-   {text: "{{ countParis[40].name }}", weight: {{ countParis[40].compte }}},
-   {text: "{{ countParis[41].name }}", weight: {{ countParis[41].compte }}},
-   {text: "{{ countParis[42].name }}", weight: {{ countParis[42].compte }}},
-   {text: "{{ countParis[43].name }}", weight: {{ countParis[43].compte }}},
-   {text: "{{ countParis[44].name }}", weight: {{ countParis[44].compte }}},
-   {text: "{{ countParis[45].name }}", weight: {{ countParis[45].compte }}},
-   {text: "{{ countParis[46].name }}", weight: {{ countParis[46].compte }}},
-   {text: "{{ countParis[47].name }}", weight: {{ countParis[47].compte }}},
-   {text: "{{ countParis[48].name }}", weight: {{ countParis[48].compte }}},
-   {text: "{{ countParis[49].name }}", weight: {{ countParis[49].compte }}},
+{% for countPari in countParis %}
+   {text: "{{ countPari.name }}", weight: {{ countPari.compte }}},
+{% endfor %}
    
    // ...other words
 ];
@@ -383,7 +336,7 @@ $(document).ready(function() {
 
 
 </script>
-
+{% endif %}
 
   {% endblock javascript_end %}
 

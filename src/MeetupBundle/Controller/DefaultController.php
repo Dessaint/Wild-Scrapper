@@ -373,6 +373,7 @@ class DefaultController extends Controller
 
                     $Data[$ville] = [$Data0, $Data1, $Data2, $Data3];
 
+
                     $em = $this->getDoctrine()->getManager();
 
                     for ($i=0, $c = count($Data[$ville]); $i< $c; $i++) {
