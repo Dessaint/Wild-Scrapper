@@ -108,18 +108,21 @@ class VilleController extends Controller
         }
 
          // Boite 4
-            //Ville Paris
-		$request3 = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
+    
+		$request3 = $em->getRepository('MeetupBundle:Event')->createQueryBuilder('e');
 		$request3
-			->select('g.members')
-			->addSelect('g.name')
-			->addSelect('g.id')
-			->orderBy('g.members', 'DESC')
-			->setMaxResults(50);
+			->select('e.name')
+			->addSelect('e.rsvp')
+            ->where('e.ville = ?1')
+			->orderBy('e.rsvp', 'DESC')
+            ->setParameters(array( 1=> $ville))
+			->setMaxResults(1);
 
 		$query2 = $request3->getQuery();
 
 		$result = $query2->getResult();
+
+        var_dump($query2);exit;
 
 		// Nuage de mots
 
@@ -180,4 +183,4 @@ class VilleController extends Controller
 
 }
 
-}
+
