@@ -77,14 +77,14 @@ class DefaultController extends Controller
             foreach ($topicUrls as $topicUrl) {
 
 
-            $jsonData0 = file_get_contents("https://api.meetup.com/2/open_events?&sign=true&photo-host=public&country=".$pays."&city=".$ville."&topic=".$topicUrl."&category=34&fields=self&key=17662761a2d418394102b53502864&offset=0");
-            $jsonData1 = file_get_contents("https://api.meetup.com/2/open_events?&sign=true&photo-host=public&country=".$pays."&city=".$ville."&topic=".$topicUrl."&category=34&fields=self&key=17662761a2d418394102b53502864&offset=1");
+            $jsonData0 = file_get_contents("https://api.meetup.com/2/open_events?&sign=true&photo-host=public&country=".$pays."&city=".$ville."&topic=".$topicUrl."&category=34&fields=self&time=-6m,1d&status=past&key=32474d2b14207838611a722d10416842&offset=0");
+
 
             $Data0 = json_decode($jsonData0, true);
-            $Data1 = json_decode($jsonData1, true);
 
 
-            $Data[$ville] = [$Data0, $Data1];
+
+            $Data[$ville] = [$Data0];
 
             $em = $this->getDoctrine()->getManager();
 
@@ -99,18 +99,12 @@ class DefaultController extends Controller
                     $event->setRsvp($Data[$ville][$i]['results'][$j]['yes_rsvp_count']);
                     $event->setTopic($topicUrl);
 
-
                     $event->setCreated($Data[$ville][$i]['results'][$j]['created']);
-
-
-
 
                     $em->persist($event);
                 }
 
             }
-
-
         }
         }
         $em->flush();
@@ -120,45 +114,83 @@ class DefaultController extends Controller
 
     public function topicsAction()
     {
-        ini_set('max_execution_time', 300);
+
         // J'initie un tableau et je place mes villes
-        $tabVilles = ["paris", "chartres", "la+loupe", "fontainebleau", "orleans", "lyon", "bordeaux", "toulouse", "strasbourg", "nantes", "nice", "montpellier", "rennes", "lille"];
+        $cities = ["paris" => "fr"];
+        $api_key = "17662761a2d418394102b53502864";
+        foreach ($cities as $city => $pays) {
+            $per_page = 200;
 
-        foreach ($tabVilles as $ville) {
+            $result_we_got = $per_page;
 
-            $jsonData0 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=0");
-            $jsonData1 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=1");
-            $jsonData2 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=2");
-            $jsonData3 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=3");
+            $offset = 0;
 
-            $Data0 = json_decode($jsonData0, true);
-            $Data1 = json_decode($jsonData1, true);
-            $Data2 = json_decode($jsonData2, true);
-            $Data3 = json_decode($jsonData3, true);
 
-            $Data[$ville] = [$Data0, $Data1, $Data2, $Data3];
+            function get_results($pays, $city, $api_key, $offset) {
+                return file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=".$pays."&city=".$city."&key=".$api_key."&offset=".$offset."");
+            }
 
-            $em = $this->getDoctrine()->getManager();
+            while ($result_we_got === $per_page) {
+                $jsonResponse = get_results($pays, $city, $api_key, $offset);
+                $response = json_decode($jsonResponse, true);
+                $offset++;
+                $result_we_got = $response['meta']['count'];
+                $em = $this->getDoctrine()->getManager();
 
-            for ($i=0, $c = count($Data[$ville]); $i< $c; $i++) {
+                    for ($i=0, $c = count($response); $i< $c; $i++) {
 
-                for($j=0, $c2 = count($Data[$ville][$i]['results']); $j < $c2; $j++) {
+                        for($j=0, $c2 = count($response['results']); $j < $c2; $j++) {
 
-                    for ($k=0, $c3 = count($Data[$ville][$i]['results'][$j]['topics']); $k< $c3 ; $k++) {
+                            for ($k=0, $c3 = count($response['results'][$j]['topics']); $k< $c3 ; $k++) {
 
-                        $topics = new Topics();
+                                $topics = new Topics();
 
-                        $topics->setName($Data[$ville][$i]['results'][$j]['topics'][$k]['name']);
-                        $topics->setMeetupgroupeid($Data[$ville][$i]['results'][$j]['id']);
-                        $topics->setMeetuptopicid($Data[$ville][$i]['results'][$j]['topics'][$k]['id']);
-                        $topics->setVille($Data[$ville][$i]['results'][$j]['city']);
-                        $em->persist($topics);
+                                $topics->setName($response['results'][$j]['topics'][$k]['name']);
+                                $topics->setMeetupgroupeid($response['results'][$j]['id']);
+                                $topics->setMeetuptopicid($response['results'][$j]['topics'][$k]['id']);
+                                $topics->setVille($response['results'][$j]['city']);
+                                $em->persist($topics);
+                            }
+                        }
                     }
                 }
-            }
-        }
 
-        $em->flush();
+            }
+            $em->flush();
+
+        //     $jsonData0 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=0");
+        //     $jsonData1 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=1");
+        //     $jsonData2 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=2");
+        //     $jsonData3 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=3");
+        //
+        //     $Data0 = json_decode($jsonData0, true);
+        //     $Data1 = json_decode($jsonData1, true);
+        //     $Data2 = json_decode($jsonData2, true);
+        //     $Data3 = json_decode($jsonData3, true);
+        //
+        //     $Data[$ville] = [$Data0, $Data1, $Data2, $Data3];
+        //
+        //     $em = $this->getDoctrine()->getManager();
+        //
+        //     for ($i=0, $c = count($Data[$ville]); $i< $c; $i++) {
+        //
+        //         for($j=0, $c2 = count($Data[$ville][$i]['results']); $j < $c2; $j++) {
+        //
+        //             for ($k=0, $c3 = count($Data[$ville][$i]['results'][$j]['topics']); $k< $c3 ; $k++) {
+        //
+        //                 $topics = new Topics();
+        //
+        //                 $topics->setName($Data[$ville][$i]['results'][$j]['topics'][$k]['name']);
+        //                 $topics->setMeetupgroupeid($Data[$ville][$i]['results'][$j]['id']);
+        //                 $topics->setMeetuptopicid($Data[$ville][$i]['results'][$j]['topics'][$k]['id']);
+        //                 $topics->setVille($Data[$ville][$i]['results'][$j]['city']);
+        //                 $em->persist($topics);
+        //             }
+        //         }
+        //     }
+        // }
+        //
+        // $em->flush();
 
         return $this->render('MeetupBundle:Default:index.html.twig');
     }

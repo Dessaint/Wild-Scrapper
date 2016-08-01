@@ -10,7 +10,7 @@ class VilleController extends Controller
 {
     public function showAction($ville)
     {
-        
+
     	 $em = $this->getDoctrine()->getManager();
 
     	 $user = $this->container->get('security.context')->getToken()->getUser();
@@ -24,12 +24,19 @@ class VilleController extends Controller
             ;
          // Boite 1
             //Ville de Paris
+
+
+        $membresPHPParis = $repository->MembersByCity('PHP', $ville);
+        $membresJavaScriptParis = $repository->MembersByCity('JavaScript', $ville);
+        $membresRubyParis = $repository->MembersByCity('Ruby', $ville);
+        $membresIOSParis = $repository->MembersByCity('IOS', $ville);
+
         $membresVille = $repository->MembersOrderByCity($ville);
         $membresPHPVille = $repository->MembersByCity('php', $ville);
         if (empty($membresPHPVille)) {
             $array[0] = array('membresTotal' => 0, 'topic' => 'php', 'city' => $ville);
             $membresVille = array_merge($membresVille, $array);
-        } 
+        }
          $membresJavaScriptVille = $repository->MembersByCity('javascript', $ville);
         if (empty($membresJavaScriptVille)) {
             $array[0] = array('membresTotal' => 0, 'topic' => 'javascript', 'city' => $ville);
@@ -44,20 +51,18 @@ class VilleController extends Controller
         if (empty($membresIOSVille)) {
             $array[0] = array('membresTotal' => 0, 'topic' => 'ios', 'city' => $ville);
             $membresVille = array_merge($membresVille, $array);
-        } 
-   
-        
+        }
+
+
         //var_dump($membresPHPVille); exit;
         $membresVilleTotal = $membresVille[0]['membresTotal'] + $membresVille[1]['membresTotal'] + $membresVille[2]['membresTotal'] + $membresVille[3]['membresTotal'];
-        
-     
 
-    
+
         if (!empty($membresVilleTotal)) {
             $membresVilleLangagePourcent = round((($membresVille[0]['membresTotal']/$membresVilleTotal)*100), 2);
         } else {
             $membresVilleLangagePourcent = 0;
-        } 
+        }
 
          // Boite 2
         $request1 = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
@@ -70,7 +75,7 @@ class VilleController extends Controller
 		   	->setMaxResults(1);
 
 		$query = $request1->getQuery();
-		
+
 		$result = $query->getResult();
 
         if (empty($result)) {
@@ -92,7 +97,7 @@ class VilleController extends Controller
 		   	->setMaxResults(1);
 
 		$query = $request2->getQuery();
-		
+
 		$result = $query->getResult();
         if (empty($result)) {
             $flopGroup1 = 'Aucune données';
@@ -123,23 +128,19 @@ class VilleController extends Controller
             ->getManager()
             ->getRepository('MeetupBundle:Topics')
             ;
-        
+
         $countVille = $repository->WordCloudByCity($ville);
 
-       
 
-
-
-		
 
          // Boite 1
             //Ville de Paris
-        
+
 
 
 		 //Last date Meetup
 		$request_last = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
-		$request_last 
+		$request_last
 			->select('g.created')
 			->addSelect('g.name')
             ->where('g.city = ?1')
@@ -153,14 +154,16 @@ class VilleController extends Controller
             $result_date = 'Aucun groupe crée';
         } else {
             date_default_timezone_set('Europe/Paris');
-            $result_date = date("d-m-Y", $result_last[0]['created']/1000);      
+            $result_date = date("d-m-Y", $result_last[0]['created']/1000);
         }
 
 
-		 
 
-		
-         // $membresParisLangage = 
+
+
+
+
+         // $membresParisLangage =
     	return $this->render('MeetupBundle:Default:ville.html.twig', array(
     	     'requete' => $request,
     	     'toplangage' => $membresVille,
@@ -169,10 +172,12 @@ class VilleController extends Controller
     	     'flopGroup' => $flopGroup1,
     	     'lastGroup' => $result_last,
     	     'dateGroup' => $result_date,
-    	   
     	     'countParis' => $countVille
-    	     
+
     	 ));
     }
-    
+
+
+}
+
 }
