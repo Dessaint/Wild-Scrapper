@@ -74,7 +74,7 @@ class VilleController extends Controller
 		$result = $query->getResult();
 
         if (empty($result)) {
-            $topGroup1 = 'aucun groupe';
+            $topGroup1 = 'Aucune données';
         } else {
 		$topGroup = ($result[0]["name"]);
 
@@ -95,7 +95,7 @@ class VilleController extends Controller
 		
 		$result = $query->getResult();
         if (empty($result)) {
-            $flopGroup1 = 'aucun groupe';
+            $flopGroup1 = 'Aucune données';
         } else {
 		$flopGroup = ($result[0]["name"]);
 
