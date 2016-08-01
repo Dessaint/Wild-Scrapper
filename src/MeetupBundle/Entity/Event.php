@@ -64,6 +64,20 @@ class Event
     private $ville;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="rating", type="float", nullable=true)
+     */
+    private $rating;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="namegroup", type="string", nullable=true)
+     */
+    private $nameGroup;
+
+    /**
      * Get id
      *
      * @return integer
@@ -215,5 +229,53 @@ class Event
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Set rating
+     *
+     * @param float $rating
+     *
+     * @return Event
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Get rating
+     *
+     * @return float
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * Set nameGroup
+     *
+     * @param string $nameGroup
+     *
+     * @return Event
+     */
+    public function setNameGroup($nameGroup)
+    {
+        $this->nameGroup = $nameGroup;
+
+        return $this;
+    }
+
+    /**
+     * Get nameGroup
+     *
+     * @return string
+     */
+    public function getNameGroup()
+    {
+        return $this->nameGroup;
     }
 }
