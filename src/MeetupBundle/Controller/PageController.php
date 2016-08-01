@@ -4,9 +4,7 @@ namespace MeetupBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use UserBundle\Entity\User;
-
 use Symfony\Component\HttpFoundation\Response;
-
 use UserBundle\Entity\Datauser;
 
 class PageController extends Controller
@@ -31,8 +29,6 @@ class PageController extends Controller
             $membresIOSParis = $membresIOSParis[0];
 
             $membresParis = [$membresPHPParis, $membresJavaScriptParis, $membresRubyParis, $membresIOSParis];
-
-
 
             //Ville de la Loupe
             $membresPHPLoupe = $repository->MembersByCity('PHP', 'la+loupe');

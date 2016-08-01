@@ -10,7 +10,7 @@ class VilleController extends Controller
 {
     public function showAction()
     {
-        
+
     	 $em = $this->getDoctrine()->getManager();
 
     	 $user = $this->container->get('security.context')->getToken()->getUser();
@@ -28,7 +28,7 @@ class VilleController extends Controller
         $membresJavaScriptParis = $repository->MembersByCity('JavaScript', 'paris');
         $membresRubyParis = $repository->MembersByCity('Ruby', 'paris');
         $membresIOSParis = $repository->MembersByCity('IOS', 'paris');
-        	
+
         $membresParis = [];
         $membresParis['PHP'] = $membresPHPParis[0]['membresTotal'];
         $membresParis['Javascript'] = $membresJavaScriptParis[0]['membresTotal'];
@@ -42,7 +42,7 @@ class VilleController extends Controller
         $membresParisLangage = array_keys($membresParis)[1];
 
         $membresParisLangagePourcent = round((($membresParisMax/$membresParisTotal)*100), 2);
- 
+
          // Boite 2
         $request1 = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
         $request1
@@ -52,7 +52,7 @@ class VilleController extends Controller
 		   	->setMaxResults(1);
 
 		$query = $request1->getQuery();
-		
+
 		$result = $query->getResult();
 		$topGroup = ($result[0]["name"]);
 
@@ -67,7 +67,7 @@ class VilleController extends Controller
 		   	->setMaxResults(1);
 
 		$query = $request2->getQuery();
-		
+
 		$result = $query->getResult();
 		$flopGroup = ($result[0]["name"]);
 
@@ -96,10 +96,6 @@ class VilleController extends Controller
             ;
         $countParis = $repository->WordCloudByCity('Paris');
 
-       
-
-
-
 		// Repartition langage
 		$membresPHPParis = $membresPHPParis[0];
         $membresJavaScriptParis = $membresJavaScriptParis[0];
@@ -111,12 +107,12 @@ class VilleController extends Controller
 
          // Boite 1
             //Ville de Paris
-        
+
 
 
 		 //Last date Meetup
 		$request_last = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
-		$request_last 
+		$request_last
 			->select('g.created')
 			->addSelect('g.name')
 			->orderBy('g.created', 'DESC')
@@ -126,10 +122,10 @@ class VilleController extends Controller
 		$result_last = $query_last->getResult();
 
 		date_default_timezone_set('Europe/Paris');
-		$result_date = date("d-m-Y", $result_last[0]['created']/1000); 
+		$result_date = date("d-m-Y", $result_last[0]['created']/1000);
 
-		
-         // $membresParisLangage = 
+
+         // $membresParisLangage =
     	return $this->render('MeetupBundle:Default:ville.html.twig', array(
     	     'requete' => $request,
     	     'toplangage' => $membresParisLangage,
@@ -140,14 +136,8 @@ class VilleController extends Controller
     	     'dateGroup' => $result_date,
     	     'membresParisRepart' => $membresParisRepart,
     	     'countParis' => $countParis
-    	     
+
     	 ));
     }
-    public function testAction($test)
-    {
-        $villes = '';
-        return $this->render('MeetupBundle:Default:test.html.twig', array(
-            'villes'=>$villes
-            ));
-    }
+
 }
