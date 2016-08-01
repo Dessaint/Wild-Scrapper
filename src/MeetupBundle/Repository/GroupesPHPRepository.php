@@ -55,4 +55,21 @@ class GroupesPHPRepository extends \Doctrine\ORM\EntityRepository
 
      return $qb->getQuery()->getResult();
  }
+  //Nombre de membres par topic par ville
+    public function MembersOrderByCity($ville)
+   {
+       $qb = $this->createQueryBuilder('g');
+
+       $qb->select('SUM(g.members) AS membresTotal')
+           ->addSelect('g.topic')
+           ->addSelect('g.city')
+           ->where('g.city = ?1')
+           ->groupBy('g.topic')
+           ->orderBy('membresTotal', 'DESC')
+           ->setParameters(array(1 => $ville));
+
+
+       return $qb->getQuery()->getResult();
+   }
+
 }
