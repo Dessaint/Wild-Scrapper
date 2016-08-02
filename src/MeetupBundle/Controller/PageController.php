@@ -941,6 +941,17 @@ class PageController extends Controller
         	$user = $this->container->get('security.context')->getToken()->getUser();
         	 $request = $em->getRepository('UserBundle:Datauser')->findOneByUserId($user->getId());
 
+             //Evolution
+             $year = date('Y');
+             $year1 = date('Y', strtotime("-1 year"));
+             $year2 = date('Y', strtotime("-2 year"));
+             $year3 = date('Y', strtotime("-3 year"));
+             $year4 = date('Y', strtotime("-4 year"));
+             $year5 = date('Y', strtotime("-5 year"));
+             $year6 = date('Y', strtotime("-6 year"));
+
+             $datte = [$year, $year1, $year2, $year3, $year4, $year5, $year6];
+
 
         return $this->render('MeetupBundle:Default:accueil.html.twig',
         array(
@@ -1011,6 +1022,8 @@ class PageController extends Controller
             'evoLuxembourg'           =>$evoLuxembourg,
 
             'evoGeneve'               =>$evoGeneve,
+
+            'datte'               =>$datte,
 
             'requete' => $request
         )
