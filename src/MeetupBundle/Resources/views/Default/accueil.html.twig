@@ -52,7 +52,7 @@
  {% endblock body %}
 
  {% block javascript %}
- 
+ <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
    <script src="https://code.highcharts.com/highcharts.js"></script>
    <script src="https://code.highcharts.com/modules/exporting.js"></script>
    <script type="text/JavaScript">
@@ -67,7 +67,7 @@
              x: -20
          },
          xAxis: {
-             categories: ['2010', '2011', '2012', '2013', '2014', '2015', '2016']
+             categories: ['{{ datte[6] }}', '{{ datte[5] }}', '{{ datte[4] }}', '{{ datte[3] }}', '{{ datte[2] }}', '{{ datte[1] }}', '{{ datte[0] }}']
          },
          yAxis: {
              title: {
@@ -91,7 +91,6 @@
          series: [{
              name: 'La Loupe',
              data: [ {{ evoLoupe[6] }}, {{ evoLoupe[5] }}, {{ evoLoupe[4]}}, {{ evoLoupe[3]}}, {{ evoLoupe[2]}}, {{ evoLoupe[1]}}, {{ evoLoupe[0]}}]
-         }, {
          }, {
              name: 'Chartres',
              data: [ {{ evoChartres[6] }}, {{ evoChartres[5] }}, {{ evoChartres[4]}}, {{ evoChartres[3]}}, {{ evoChartres[2]}}, {{ evoChartres[1]}}, {{ evoChartres[0]}}]
@@ -127,19 +126,19 @@
              data: [ {{ evoMontpellier[6] }}, {{ evoMontpellier[5] }}, {{ evoMontpellier[4]}}, {{ evoMontpellier[3]}}, {{ evoMontpellier[2]}}, {{ evoMontpellier[1]}}, {{ evoMontpellier[0]}}]
          }, {
              name: 'Rennes',
-             data: [ {{ evoRennes[6] }}, {{ evoRennes[5] }}, {{ evoRennes[4]}}, {{ evoRennes[3]}}, {{ evoRennes[2]}}, {{ evoRennes[1]}}, {{ evoRennes[0]}}]
+             data: [ {{ evoRennes[6] }}, {{ evoRennes[5] }}, {{ evoRennes[4]}}, {{ evoRennes[3]}}, {{ evoNantes[2]}}, {{ evoNantes[1]}}, {{ evoNantes[0]}}]
          }, {
              name: 'Lille',
-             data: [ {{ evoLille[6] }}, {{ evoLille[5] }}, {{ evoLille[4]}}, {{ evoLille[3]}}, {{ evoLille[2]}}, {{ evoLille[1]}}, {{ evoLille[0]}}]
+             data: [ {{ evoNantes[6] }}, {{ evoNantes[5] }}, {{ evoNantes[4]}}, {{ evoNantes[3]}}, {{ evoNantes[2]}}, {{ evoNantes[1]}}, {{ evoNantes[0]}}]
          }, {
              name: 'Bruxelles',
-             data: [ {{ evoBruxelles[6] }}, {{ evoBruxelles[5] }}, {{ evoBruxelles[4]}}, {{ evoBruxelles[3]}}, {{ evoBruxelles[2]}}, {{ evoBruxelles[1]}}, {{ evoBruxelles[0]}}]
+             data: [ {{ evoNantes[6] }}, {{ evoNantes[5] }}, {{ evoNantes[4]}}, {{ evoNantes[3]}}, {{ evoNantes[2]}}, {{ evoNantes[1]}}, {{ evoNantes[0]}}]
          }, {
              name: 'Luxembourg',
-             data: [ {{ evoLuxembourg[6] }}, {{ evoLuxembourg[5] }}, {{ evoLuxembourg[4]}}, {{ evoLuxembourg[3]}}, {{ evoLuxembourg[2]}}, {{ evoLuxembourg[1]}}, {{ evoLuxembourg[0]}}]
+             data: [ {{ evoNantes[6] }}, {{ evoNantes[5] }}, {{ evoNantes[4]}}, {{ evoNantes[3]}}, {{ evoNantes[2]}}, {{ evoNantes[1]}}, {{ evoNantes[0]}}]
          }, {
              name: 'Genève',
-             data: [ {{ evoGeneve[6] }}, {{ evoGeneve[5] }}, {{ evoGeneve[4]}}, {{ evoGeneve[3]}}, {{ evoGeneve[2]}}, {{ evoGeneve[1]}}, {{ evoGeneve[0]}}]
+             data: [ {{ evoNantes[6] }}, {{ evoNantes[5] }}, {{ evoNantes[4]}}, {{ evoNantes[3]}}, {{ evoNantes[2]}}, {{ evoNantes[1]}}, {{ evoNantes[0]}}]
          }]
      });
  });
@@ -198,7 +197,7 @@
 <script>
 function dashboard(id, fData){
     var barColor = 'steelblue';
-    function segColor(c){ return {php:"#8694D1", JavaScript:"#F0DB4F", Ruby:"#EC1622", Ios:"#97C024"}[c]; }
+    function segColor(c){ return {php:"#8694D1", JavaScript:"#F0DB4F",Ruby:"#EC1622", Ios:"#97C024"}[c]; }
 
     // compute total for each state.
     fData.forEach(function(d){d.total=d.freq.php+d.freq.JavaScript+d.freq.Ruby+d.freq.Ios;});

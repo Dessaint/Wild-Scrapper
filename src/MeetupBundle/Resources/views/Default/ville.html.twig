@@ -106,16 +106,14 @@
           <div class="row evol">
             <!-- Franck -->
               <h2 class="text-center">Evolution des meetups par langage</h2>
-              <div class="col-lg-7">
+              <div class="col-lg-12">
                 <div class="chart">
                   <!-- Sales Chart Canvas -->
-                  <canvas id="salesChart" style="height: 180px;"></canvas>
+                  <div id="container" class="spark" style="min-width: 310px; height: 400px;"></div>
                 </div>
                 <!-- /.chart-responsive -->
               </div>
-            <div>
-              <div class="col-md-3 legende1"><img src="{{ asset('img/legende.png') }}"></div>
-            </div>
+
           </div>
           <div class="box box-solid bg-yellow-gradient top">
             <div class="box-body ">
@@ -275,6 +273,64 @@
   {% endblock body %}
 
   {% block javascript_end %}
+    <!-- Script Cédric pour l'évolution des meetups -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/JavaScript">
+    $(function () {
+      $('#container').highcharts({
+          title: {
+              text: 'Evolution du nombre d\'évenements créés sur la plateforme Meetup par langage',
+              x: -20 //center
+          },
+          subtitle: {
+              text: 'Source: Meetup',
+              x: -20
+          },
+          xAxis: {
+              categories: ['{{datte[6]}}', '{{datte[5]}}', '{{datte[4]}}', '{{datte[3]}}', '{{datte[2]}}', '{{datte[1]}}', '{{datte[0]}}']
+          },
+          yAxis: {
+              title: {
+                  text: 'Membres'
+              },
+              plotLines: [{
+                  value: 0,
+                  width: 1,
+                  color: '#808080'
+              }]
+          },
+          tooltip: {
+              valueSuffix: ' évènements créés'
+          },
+          legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'middle',
+              borderWidth: 0
+          },
+          series: [{
+              name: '{{ evoPhpVille[0]['topic'] }}',
+              data: [ {{ evoPhpVille[6]['create']}}, {{ evoPhpVille[5]['create'] }}, {{ evoPhpVille[4]['create']}}, {{ evoPhpVille[3]['create']}}, {{ evoPhpVille[2]['create']}}, {{ evoPhpVille[1]['create']}}, {{ evoPhpVille[0]['create']}}]
+          },
+          {
+              name: '{{ evoJavascriptVille[0]['topic'] }}',
+              data: [ {{ evoJavascriptVille[6]['create']}}, {{ evoJavascriptVille[5]['create'] }}, {{ evoJavascriptVille[4]['create']}}, {{ evoJavascriptVille[3]['create']}}, {{ evoJavascriptVille[2]['create']}}, {{ evoJavascriptVille[1]['create']}}, {{ evoJavascriptVille[0]['create']}}]
+          },
+          {
+              name: '{{ evoRubyVille[0]['topic'] }}',
+              data: [ {{ evoRubyVille[6]['create']}}, {{ evoRubyVille[5]['create'] }}, {{ evoRubyVille[4]['create']}}, {{ evoRubyVille[3]['create']}}, {{ evoRubyVille[2]['create']}}, {{ evoRubyVille[1]['create']}}, {{ evoRubyVille[0]['create']}}]
+          },
+          {
+              name: '{{ evoIosVille[0]['topic'] }}',
+              data: [ {{ evoIosVille[6]['create']}}, {{ evoIosVille[5]['create'] }}, {{ evoIosVille[4]['create']}}, {{ evoIosVille[3]['create']}}, {{ evoIosVille[2]['create']}}, {{ evoIosVille[1]['create']}}, {{ evoIosVille[0]['create']}}]
+          }]
+      });
+    });
+    </script>
+
+
+
     <script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
     <script>
     var data = [
@@ -327,7 +383,7 @@ var word_list = [
 {% for countPari in countParis %}
    {text: "{{ countPari.name }}", weight: {{ countPari.compte }}},
 {% endfor %}
-   
+
    // ...other words
 ];
 $(document).ready(function() {
@@ -339,8 +395,3 @@ $(document).ready(function() {
 {% endif %}
 
   {% endblock javascript_end %}
-
-
-
-
-

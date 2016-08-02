@@ -10,4 +10,22 @@ namespace MeetupBundle\Repository;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
+    //Evènements crées par mois
+    public function MeetupCreatedByMonth($month, $city, $topic)
+   {
+       $dateDeb = round(microtime(true) * 1000) - $month * 2592000000;
+       $dateFin = $dateDeb + 2592000000;
+
+       $qb = $this->createQueryBuilder('e');
+
+       $qb->select('COUNT (e) as create')
+          ->addselect('e.topic')
+          ->where('e.created > ?1')
+          ->andwhere('e.created < ?2')
+          ->andwhere('e.ville = ?3')
+          ->andwhere('e.topic = ?4')
+          ->setParameters(array(1=> $dateDeb, 2=> $dateFin, 3=> $city, 4=>$topic));
+
+       return $qb->getQuery()->getResult();
+   }
 }

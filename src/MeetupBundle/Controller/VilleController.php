@@ -5,6 +5,7 @@ namespace MeetupBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use UserBundle\Entity\User;
 use MeetupBundle\Entity\GroupesPHP;
+use MeetupBundle\Entity\Event;
 
 class VilleController extends Controller
 {
@@ -149,7 +150,73 @@ class VilleController extends Controller
             $result_date = date("d-m-Y", $result_last[0]['created']/1000);
         }
 
-         // $membresParisLangage =
+        //Evolution
+        $repository55 = $this
+           ->getDoctrine()
+           ->getManager()
+           ->getRepository('MeetupBundle:Event')
+           ;
+        $evolutionPhpVille1 = $repository55->MeetupCreatedByMonth('1', $ville, 'PHP');
+        $evolutionPhpVille2 = $repository55->MeetupCreatedByMonth('2', $ville, 'PHP');
+        $evolutionPhpVille3 = $repository55->MeetupCreatedByMonth('3', $ville, 'PHP');
+        $evolutionPhpVille4 = $repository55->MeetupCreatedByMonth('4', $ville, 'PHP');
+        $evolutionPhpVille5 = $repository55->MeetupCreatedByMonth('5', $ville, 'PHP');
+        $evolutionPhpVille6 = $repository55->MeetupCreatedByMonth('6', $ville, 'PHP');
+        $evolutionPhpVille7 = $repository55->MeetupCreatedByMonth('7', $ville, 'PHP');
+
+        $evolutionJavascriptVille1 = $repository55->MeetupCreatedByMonth('1', $ville, 'javascript');
+        $evolutionJavascriptVille2 = $repository55->MeetupCreatedByMonth('2', $ville, 'javascript');
+        $evolutionJavascriptVille3 = $repository55->MeetupCreatedByMonth('3', $ville, 'javascript');
+        $evolutionJavascriptVille4 = $repository55->MeetupCreatedByMonth('4', $ville, 'javascript');
+        $evolutionJavascriptVille5 = $repository55->MeetupCreatedByMonth('5', $ville, 'javascript');
+        $evolutionJavascriptVille6 = $repository55->MeetupCreatedByMonth('6', $ville, 'javascript');
+        $evolutionJavascriptVille7 = $repository55->MeetupCreatedByMonth('7', $ville, 'javascript');
+
+        $evolutionRubyVille1 = $repository55->MeetupCreatedByMonth('1', $ville, 'ruby');
+        $evolutionRubyVille2 = $repository55->MeetupCreatedByMonth('2', $ville, 'ruby');
+        $evolutionRubyVille3 = $repository55->MeetupCreatedByMonth('3', $ville, 'ruby');
+        $evolutionRubyVille4 = $repository55->MeetupCreatedByMonth('4', $ville, 'ruby');
+        $evolutionRubyVille5 = $repository55->MeetupCreatedByMonth('5', $ville, 'ruby');
+        $evolutionRubyVille6 = $repository55->MeetupCreatedByMonth('6', $ville, 'ruby');
+        $evolutionRubyVille7 = $repository55->MeetupCreatedByMonth('7', $ville, 'ruby');
+
+        $evolutionIosVille1 = $repository55->MeetupCreatedByMonth('1', $ville, 'ios');
+        $evolutionIosVille2 = $repository55->MeetupCreatedByMonth('2', $ville, 'ios');
+        $evolutionIosVille3 = $repository55->MeetupCreatedByMonth('3', $ville, 'ios');
+        $evolutionIosVille4 = $repository55->MeetupCreatedByMonth('4', $ville, 'ios');
+        $evolutionIosVille5 = $repository55->MeetupCreatedByMonth('5', $ville, 'ios');
+        $evolutionIosVille6 = $repository55->MeetupCreatedByMonth('6', $ville, 'ios');
+        $evolutionIosVille7 = $repository55->MeetupCreatedByMonth('7', $ville, 'ios');
+
+        if ($evolutionPhpVille1[0]['topic'] === null) {
+            $evolutionPhpVille1[0]['topic'] = 'Php';
+        }
+        if ($evolutionJavascriptVille1[0]['topic'] === null) {
+            $evolutionJavascriptVille1[0]['topic'] = 'Javascript';
+        }
+        if ($evolutionRubyVille1[0]['topic'] === null) {
+            $evolutionRubyVille1[0]['topic'] = 'Ruby';
+        }
+        if ($evolutionIosVille1[0]['topic'] === null) {
+            $evolutionIosVille1[0]['topic'] = 'Ios';
+        }
+
+        $evoPhpVille = [$evolutionPhpVille1[0], $evolutionPhpVille2[0], $evolutionPhpVille3[0], $evolutionPhpVille4[0], $evolutionPhpVille5[0], $evolutionPhpVille6[0], $evolutionPhpVille7[0]];
+        $evoJavascriptVille = [$evolutionJavascriptVille1[0], $evolutionJavascriptVille2[0], $evolutionJavascriptVille3[0], $evolutionJavascriptVille4[0], $evolutionJavascriptVille5[0], $evolutionJavascriptVille6[0], $evolutionJavascriptVille7[0]];
+        $evoRubyVille = [$evolutionRubyVille1[0], $evolutionRubyVille2[0], $evolutionRubyVille3[0], $evolutionRubyVille4[0], $evolutionRubyVille5[0], $evolutionRubyVille6[0], $evolutionRubyVille7[0]];
+        $evoIosVille = [$evolutionIosVille1[0], $evolutionIosVille2[0], $evolutionIosVille3[0], $evolutionIosVille4[0], $evolutionIosVille5[0], $evolutionIosVille6[0], $evolutionIosVille7[0]];
+
+
+        $month = date('M');
+        $month1 = date('M', strtotime("-1 month"));
+        $month2 = date('M', strtotime("-2 month"));
+        $month3 = date('M', strtotime("-3 month"));
+        $month4 = date('M', strtotime("-4 month"));
+        $month5 = date('M', strtotime("-5 month"));
+        $month6 = date('M', strtotime("-6 month"));
+
+        $datte = [$month, $month1, $month2, $month3, $month4, $month5, $month6];
+
     	return $this->render('MeetupBundle:Default:ville.html.twig', array(
     	     'requete' => $request,
     	     'toplangage' => $membresVille,
@@ -158,7 +225,12 @@ class VilleController extends Controller
     	     'flopGroup' => $flopGroup1,
     	     'lastGroup' => $result_last,
     	     'dateGroup' => $result_date,
-    	     'countParis' => $countVille
+    	     'countParis' => $countVille,
+             'evoPhpVille' => $evoPhpVille,
+             'evoJavascriptVille' => $evoJavascriptVille,
+             'evoRubyVille' => $evoRubyVille,
+             'evoIosVille' => $evoIosVille,
+             'datte' => $datte
     	 ));
     }
 }
