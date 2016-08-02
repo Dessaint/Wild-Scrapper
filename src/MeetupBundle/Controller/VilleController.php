@@ -146,6 +146,7 @@ class VilleController extends Controller
         $request_dyn
             ->select ('e.rsvp')
             ->addSelect('e.name')
+            ->distinct('e.id')
             ->where('e.ville = ?1')
             ->orderBy('e.rsvp', 'DESC')
             ->setParameters(array( 1=> $ville))
@@ -183,6 +184,7 @@ class VilleController extends Controller
         $request_nodyn
             ->select ('e.rsvp')
             ->addSelect('e.name')
+            ->distinct('e.id')
             ->where('e.ville = ?1')
             ->orderBy('e.rsvp', 'ASC')
             ->setParameters(array( 1=> $ville))
@@ -212,11 +214,14 @@ class VilleController extends Controller
         $result_nodyn[0]['name'] = 'vide';    
         } 
         $flopevent = $result_nodyn;
+
 		 //Last date Meetup
+
 		$request_last = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
 		$request_last
 			->select('g.created')
 			->addSelect('g.name')
+            ->distinct('g.id')
             ->where('g.city = ?1')
 			->orderBy('g.created', 'DESC')
             ->setParameters(array( 1=> $ville))
