@@ -107,7 +107,7 @@ class DefaultController extends Controller
         }
         $em->flush();
 
-        return $this->redirectToRoute('groupePHP');;
+        return $this->redirectToRoute('groupePHP');
     }
 
     public function topicsAction()
@@ -195,7 +195,7 @@ class DefaultController extends Controller
         //
         // $em->flush();
 
-        return $this->redirectToRoute('event');;
+        return $this->redirectToRoute('event');
     }
 
     public function groupesTopicsAction()
@@ -243,16 +243,19 @@ class DefaultController extends Controller
 
     public function groupesPHPAction()
     {
-        ini_set('max_execution_time', 1200);
+        ini_set('max_execution_time', 120);
         ini_set('memory_limit', '256M');
         // J'initie un tableau et je place mes villes
         $tabVilles = ["paris", "chartres", "la+loupe", "fontainebleau", "orleans", "lyon", "bordeaux", "toulouse", "strasbourg", "nantes", "nice", "montpellier", "rennes", "lille", "brussels", "luxembourg", "geneve"];
         $topicUrls = ["php", "javascript", "ruby", "ios"];
 
-        foreach($topicUrls as $topicUrl) {
-            foreach ($tabVilles as $ville) {
+        foreach($topicUrls as $topicUrl)
+        {
+            foreach ($tabVilles as $ville)
+            {
 
-                if ($ville === 'brussels') {
+                if ($ville === 'brussels')
+                {
 
                     $jsonData0 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=be&topic=".$topicUrl."&city=".$ville."&key=17662761a2d418394102b53502864&offset=0");
                     $jsonData1 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=be&topic=".$topicUrl."&city=".$ville."&key=17662761a2d418394102b53502864&offset=1");
@@ -268,10 +271,10 @@ class DefaultController extends Controller
 
                     $em = $this->getDoctrine()->getManager();
 
-                    for ($i=0, $c = count($Data[$ville]); $i< $c; $i++) {
-
-                        for($j=0, $c2 = count($Data[$ville][$i]['results']); $j < $c2; $j++) {
-
+                    for ($i=0, $c = count($Data[$ville]); $i< $c; $i++)
+                    {
+                        for($j=0, $c2 = count($Data[$ville][$i]['results']); $j < $c2; $j++)
+                        {
                             $groupesPHP = new GroupesPHP();
 
                             $groupesPHP->setName($Data[$ville][$i]['results'][$j]['name']);
@@ -411,7 +414,7 @@ class DefaultController extends Controller
 
         $em->flush();
 
-        return $this->redirectToRoute('user_accueil');;
+        return $this->redirectToRoute('user_accueil');
     }
 
 
