@@ -67,6 +67,7 @@ class DefaultController extends Controller
     public function eventAction()
     {
         ini_set('max_execution_time', 1200);
+        ini_set('memory_limit', '256M');
         // J'initie un tableau et je place mes villes
         $tabVilles = ["paris", "chartres", "la+loupe", "fontainebleau", "orleans", "lyon", "bordeaux", "toulouse", "strasbourg", "nantes", "nice", "montpellier", "rennes", "lille"];
         $topicUrls = ["php", "javascript", "ruby", "ios"];
@@ -108,14 +109,18 @@ class DefaultController extends Controller
         }
         $em->flush();
 
-        return $this->render('MeetupBundle:Default:index.html.twig');
+        return $this->redirectToRoute('groupePHP');;
     }
 
     public function topicsAction()
     {
-
+        ini_set('memory_limit', '256M');
+          function get_results($pays, $city, $api_key, $offset) {
+                return file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=".$pays."&city=".$city."&key=".$api_key."&offset=".$offset."");
+            }
         // J'initie un tableau et je place mes villes
-        $cities = ["paris" => "fr"];
+        $cities = ["paris" => "fr", "la+loupe" => "fr", "chartres" => "fr", "fontainebleau" => "fr", "orleans" => "fr", "lyon" => "fr", "bordeaux" => "fr", "toulouse" => "fr", "strasbourg" => "fr", "nantes" => "fr", "nice" => "fr", "montpellier" => "fr", "rennes" => "fr", "lille" => "fr", "brussels" => "be", "luxembourg" => "lu", "geneve" => "ch"];
+
         $api_key = "17662761a2d418394102b53502864";
         foreach ($cities as $city => $pays) {
             $per_page = 200;
@@ -125,9 +130,7 @@ class DefaultController extends Controller
             $offset = 0;
 
 
-            function get_results($pays, $city, $api_key, $offset) {
-                return file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=".$pays."&city=".$city."&key=".$api_key."&offset=".$offset."");
-            }
+          
 
             while ($result_we_got === $per_page) {
                 $jsonResponse = get_results($pays, $city, $api_key, $offset);
@@ -149,6 +152,7 @@ class DefaultController extends Controller
                                 $topics->setMeetuptopicid($response['results'][$j]['topics'][$k]['id']);
                                 $topics->setVille($response['results'][$j]['city']);
                                 $em->persist($topics);
+                                
                             }
                         }
                     }
@@ -191,7 +195,7 @@ class DefaultController extends Controller
         //
         // $em->flush();
 
-        return $this->render('MeetupBundle:Default:index.html.twig');
+        return $this->redirectToRoute('event');;
     }
 
     public function groupesTopicsAction()
@@ -240,6 +244,7 @@ class DefaultController extends Controller
     public function groupesPHPAction()
     {
         ini_set('max_execution_time', 1200);
+        ini_set('memory_limit', '256M');
         // J'initie un tableau et je place mes villes
         $tabVilles = ["paris", "chartres", "la+loupe", "fontainebleau", "orleans", "lyon", "bordeaux", "toulouse", "strasbourg", "nantes", "nice", "montpellier", "rennes", "lille", "brussels", "luxembourg", "geneve"];
         $topicUrls = ["php", "javascript", "ruby", "ios"];
@@ -406,7 +411,7 @@ class DefaultController extends Controller
 
         $em->flush();
 
-        return $this->render('MeetupBundle:Default:index.html.twig');
+        return $this->redirectToRoute('user_accueil');;
     }
 
 

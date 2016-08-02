@@ -30,8 +30,11 @@
           </select>
         </form>
       </div>
-      <div class="but-extr">
+      <div class="col-md-5 but-extr">
         <button type="button" class="btn btn-success">Nouvelle extraction</button>
+      </div>
+      <div class="">
+        <a href="#" onclick="window.print(); return false;"><img src="{{ asset('img/pdf.png') }}"></a>
       </div>
     </section>
 
@@ -59,7 +62,7 @@
             <div class="inner">
               <h3>{{ topGroup }}</h3>
 
-              <p>Groupe avec la croissance Max </p>
+              <p>Groupe avec le + de membres</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -73,7 +76,7 @@
             <div class="inner">
               <h3>{{ flopGroup }}</h3>
 
-              <p>Groupe avec la croissance Min </p>
+              <p>Groupe avec le - de membres</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
