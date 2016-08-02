@@ -110,18 +110,25 @@ class VilleController extends Controller
     
 		$request3 = $em->getRepository('MeetupBundle:Event')->createQueryBuilder('e');
 		$request3
-			->select('e.name')
-			->addSelect('e.rsvp')
+			->select('SUM(e.rsvp) AS groupesDyn')
+            ->addSelect('e.nameGroup')
             ->where('e.ville = ?1')
-			->orderBy('e.rsvp', 'DESC')
+            ->groupBy('e.nameGroup')
+			->orderBy('groupesDyn', 'DESC')
             ->setParameters(array( 1=> $ville))
 			->setMaxResults(1);
 
 		$query2 = $request3->getQuery();
 
 		$result = $query2->getResult();
+        if (empty($result)) {
+            $dynagroupe1 = "Aucune données";
+        } else {
+        $dynagroupe = ($result[0]["nameGroup"]);
+        
+        $dynagroupe1 = substr($dynagroupe,0, 14 );    
+        }
 
-        var_dump($query2);exit;
 
 		// Nuage de mots
 
@@ -133,6 +140,78 @@ class VilleController extends Controller
 
         $countVille = $repository->WordCloudByCity($ville);
 
+        // Evenements TOP
+
+        $request_dyn = $em->getRepository('MeetupBundle:Event')->createQueryBuilder('e');
+        $request_dyn
+            ->select ('e.rsvp')
+            ->addSelect('e.name')
+            ->where('e.ville = ?1')
+            ->orderBy('e.rsvp', 'DESC')
+            ->setParameters(array( 1=> $ville))
+            ->setMaxResults(5);
+
+        $query_dyn = $request_dyn->getQuery();
+
+        $result_dyn = $query_dyn->getResult();
+        if (empty($result_dyn[4])) {
+        $result_dyn[4]['rsvp'] = 0;
+        $result_dyn[4]['name'] = 'vide';
+        }   
+        if (empty($result_dyn[3])) {
+        $result_dyn[3]['rsvp'] = 0;
+        $result_dyn[3]['name'] = 'vide';
+        }
+        if (empty($result_dyn[2])) {
+        $result_dyn[2]['rsvp'] = 0;
+        $result_dyn[2]['name'] = 'vide';
+        }
+        if (empty($result_dyn[1])) {
+        $result_dyn[1]['rsvp'] = 0;
+        $result_dyn[1]['name'] = 'vide';
+        } 
+        if (empty($result_dyn[0])) {
+        $result_dyn[0]['rsvp'] = 0;
+        $result_dyn[0]['name'] = 'vide';    
+        } 
+        $topevent = $result_dyn;
+        
+       
+        // Evenements FLOP
+
+        $request_nodyn = $em->getRepository('MeetupBundle:Event')->createQueryBuilder('e');
+        $request_nodyn
+            ->select ('e.rsvp')
+            ->addSelect('e.name')
+            ->where('e.ville = ?1')
+            ->orderBy('e.rsvp', 'ASC')
+            ->setParameters(array( 1=> $ville))
+            ->setMaxResults(5);
+
+        $query_nodyn = $request_nodyn->getQuery();
+
+        $result_nodyn = $query_nodyn->getResult();
+        if (empty($result_nodyn[4])) {
+        $result_nodyn[4]['rsvp'] = 0;
+        $result_nodyn[4]['name'] = 'vide';
+        }   
+        if (empty($result_nodyn[3])) {
+        $result_nodyn[3]['rsvp'] = 0;
+        $result_nodyn[3]['name'] = 'vide';
+        }
+        if (empty($result_nodyn[2])) {
+        $result_nodyn[2]['rsvp'] = 0;
+        $result_nodyn[2]['name'] = 'vide';
+        }
+        if (empty($result_nodyn[1])) {
+        $result_nodyn[1]['rsvp'] = 0;
+        $result_nodyn[1]['name'] = 'vide';
+        } 
+        if (empty($result_nodyn[0])) {
+        $result_nodyn[0]['rsvp'] = 0;
+        $result_nodyn[0]['name'] = 'vide';    
+        } 
+        $flopevent = $result_nodyn;
 		 //Last date Meetup
 		$request_last = $em->getRepository('MeetupBundle:GroupesPHP')->createQueryBuilder('g');
 		$request_last
@@ -161,7 +240,10 @@ class VilleController extends Controller
     	     'flopGroup' => $flopGroup1,
     	     'lastGroup' => $result_last,
     	     'dateGroup' => $result_date,
-    	     'countParis' => $countVille
+    	     'countParis' => $countVille,
+             'dynagroupe' => $dynagroupe1,
+             'topevent' => $result_dyn,
+             'flopevent' => $result_nodyn,
     	 ));
     }
 }
