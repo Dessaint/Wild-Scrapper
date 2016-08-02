@@ -25,3 +25,5 @@ user_accueil:
 user_ville:
     path:     /user/{ville}
     defaults: { _controller: MeetupBundle:Ville:show }
+
+

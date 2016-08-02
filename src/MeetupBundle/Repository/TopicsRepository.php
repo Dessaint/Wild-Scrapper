@@ -26,4 +26,19 @@ class TopicsRepository extends EntityRepository
 
        return $qb->getQuery()->getResult();
    }
+
+   public function WordCloudByCity1($ville)
+   {
+       $qb = $this->createQueryBuilder('t');
+
+       $qb->select('COUNT(t.name) AS compte')
+           ->addSelect('t.name')
+           ->where('t.ville = ?1')
+           ->groupBy('t.name')
+           ->setMaxResults(10)
+           ->orderBy('compte', 'DESC' )
+           ->setParameters(array( 1 => $ville));
+
+       return $qb->getQuery()->getResult();
+   }
 }

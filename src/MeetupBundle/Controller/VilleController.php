@@ -323,8 +323,10 @@ class VilleController extends Controller
              'dynagroupe' => $dynagroupe1,
              'topevent' => $result_dyn,
              'flopevent' => $result_nodyn,
+             'ville' => $ville,
     	 ));
     }
+
 
     public function pdfAction($ville)
     {
