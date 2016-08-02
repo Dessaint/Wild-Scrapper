@@ -68,12 +68,10 @@ class DefaultController extends Controller
     {
         ini_set('max_execution_time', 1200);
         // J'initie un tableau et je place mes villes
-        $tabVilles = ["paris", "chartres", "la+loupe", "fontainebleau", "orleans", "lyon", "bordeaux", "toulouse", "strasbourg", "nantes", "nice", "montpellier", "rennes", "lille"];
+        $tabVilles = ["paris" => "fr", "chartres" => "fr", "la+loupe" => "fr", "fontainebleau" => "fr", "orleans" => "fr", "lyon" => "fr", "bordeaux" => "fr", "toulouse" => "fr", "strasbourg" => "fr", "nantes" => "fr", "nice" => "fr", "montpellier" => "fr", "rennes" => "fr", "lille" => "fr", "brussels" => "be", "luxembourg" => "lu", "geneve" => "ch"];
         $topicUrls = ["php", "javascript", "ruby", "ios"];
 
-        $pays = "fr";
-
-        foreach ($tabVilles as $ville) {
+        foreach ($tabVilles as $ville => $pays) {
             foreach ($topicUrls as $topicUrl) {
 
 
@@ -113,7 +111,7 @@ class DefaultController extends Controller
 
     public function topicsAction()
     {
-
+        ini_set('max_execution_time', 12000);
         // J'initie un tableau et je place mes villes
         $cities = ["paris" => "fr"];
         $api_key = "17662761a2d418394102b53502864";
@@ -124,7 +122,6 @@ class DefaultController extends Controller
 
             $offset = 0;
 
-
             function get_results($pays, $city, $api_key, $offset) {
                 return file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=".$pays."&city=".$city."&key=".$api_key."&offset=".$offset."");
             }
@@ -132,6 +129,7 @@ class DefaultController extends Controller
             while ($result_we_got === $per_page) {
                 $jsonResponse = get_results($pays, $city, $api_key, $offset);
                 $response = json_decode($jsonResponse, true);
+
                 $offset++;
                 $result_we_got = $response['meta']['count'];
                 $em = $this->getDoctrine()->getManager();
@@ -145,18 +143,26 @@ class DefaultController extends Controller
                                 $topics = new Topics();
 
                                 $topics->setName($response['results'][$j]['topics'][$k]['name']);
+
                                 $topics->setMeetupgroupeid($response['results'][$j]['id']);
+
                                 $topics->setMeetuptopicid($response['results'][$j]['topics'][$k]['id']);
+
                                 $topics->setVille($response['results'][$j]['city']);
+
                                 $em->persist($topics);
+
+                                $em->flush();
+
+
+
                             }
                         }
                     }
                 }
-
             }
-            $em->flush();
 
+        //      Ancienne méthode
         //     $jsonData0 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=0");
         //     $jsonData1 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=1");
         //     $jsonData2 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=2");

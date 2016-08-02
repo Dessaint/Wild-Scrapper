@@ -319,7 +319,7 @@ class VilleController extends Controller
              'evoJavascriptVille' => $evoJavascriptVille,
              'evoRubyVille' => $evoRubyVille,
              'evoIosVille' => $evoIosVille,
-             'datte' => $datte
+             'datte' => $datte,
              'dynagroupe' => $dynagroupe1,
              'topevent' => $result_dyn,
              'flopevent' => $result_nodyn,
@@ -424,7 +424,7 @@ class VilleController extends Controller
         }
 
          // Boite 4
-    
+
         $request3 = $em->getRepository('MeetupBundle:Event')->createQueryBuilder('e');
         $request3
             ->select('SUM(e.rsvp) AS groupesDyn')
@@ -442,8 +442,8 @@ class VilleController extends Controller
             $dynagroupe1 = "Aucune données";
         } else {
         $dynagroupe = ($result[0]["nameGroup"]);
-        
-        $dynagroupe1 = substr($dynagroupe,0, 14 );    
+
+        $dynagroupe1 = substr($dynagroupe,0, 14 );
         }
 
 
@@ -475,7 +475,7 @@ class VilleController extends Controller
         if (empty($result_dyn[4])) {
         $result_dyn[4]['rsvp'] = 0;
         $result_dyn[4]['name'] = 'vide';
-        }   
+        }
         if (empty($result_dyn[3])) {
         $result_dyn[3]['rsvp'] = 0;
         $result_dyn[3]['name'] = 'vide';
@@ -487,14 +487,14 @@ class VilleController extends Controller
         if (empty($result_dyn[1])) {
         $result_dyn[1]['rsvp'] = 0;
         $result_dyn[1]['name'] = 'vide';
-        } 
+        }
         if (empty($result_dyn[0])) {
         $result_dyn[0]['rsvp'] = 0;
-        $result_dyn[0]['name'] = 'vide';    
-        } 
+        $result_dyn[0]['name'] = 'vide';
+        }
         $topevent = $result_dyn;
-        
-       
+
+
         // Evenements FLOP
 
         $request_nodyn = $em->getRepository('MeetupBundle:Event')->createQueryBuilder('e');
@@ -513,7 +513,7 @@ class VilleController extends Controller
         if (empty($result_nodyn[4])) {
         $result_nodyn[4]['rsvp'] = 0;
         $result_nodyn[4]['name'] = 'vide';
-        }   
+        }
         if (empty($result_nodyn[3])) {
         $result_nodyn[3]['rsvp'] = 0;
         $result_nodyn[3]['name'] = 'vide';
@@ -525,11 +525,11 @@ class VilleController extends Controller
         if (empty($result_nodyn[1])) {
         $result_nodyn[1]['rsvp'] = 0;
         $result_nodyn[1]['name'] = 'vide';
-        } 
+        }
         if (empty($result_nodyn[0])) {
         $result_nodyn[0]['rsvp'] = 0;
-        $result_nodyn[0]['name'] = 'vide';    
-        } 
+        $result_nodyn[0]['name'] = 'vide';
+        }
         $flopevent = $result_nodyn;
 
          //Last date Meetup
@@ -563,8 +563,8 @@ class VilleController extends Controller
              'countParis' => $countVille,
              'dynagroupe' => $dynagroupe1,
              'topevent' => $result_dyn,
-             'flopevent' => $result_nodyn, 
+             'flopevent' => $result_nodyn,
         ));
-        
+
     }
 }
