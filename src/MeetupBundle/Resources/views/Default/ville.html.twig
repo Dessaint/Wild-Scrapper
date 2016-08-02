@@ -1,4 +1,9 @@
 {% extends 'base.html.twig' %}
+{# {% if topevent is null %}
+{% set topevent[0]['name'] = 'vide' %}
+{% set topevent[0]['rsvp'] = 0 %}
+{% endif %} #}
+
 
 {% block body %}
   {% block section %}
@@ -80,7 +85,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow group">
             <div class="inner">
-              <h3>M'IT UP BNP Paribas</h3>
+              <h3>{{ dynagroupe }}</h3>
 
               <p>Groupe le plus dynamique</p>
             </div>
@@ -168,46 +173,40 @@
           <!-- Insertion diagramme 6 -->
           <div class="box box-solid bg-green-gradient top">
             <div class="box-body ">
-                <h2>Top 5 : Évenements avec le plus de participants (M/M-1)</h2>
+                <h2>Top 5 : Évenements avec le plus de participants</h2>
                   <table class="table table-hover">
                     <thead>
                       <tr>
-                        <th>Position</th>
+                        <th></th>
                         <th>Nom de l'évènement</th>
                         <th>Nombre de participants</th>
-                        <th>Evolution</th>
                       </tr>
                     </thead>
                     <tbody>
-                       <tr>
-                        <td>1</td>
-                        <td>M'IT UP BNP Paribas</td>
-                        <td>189</td>
-                        <td>+ 17%</td>
+                      <tr>
+                        <td>1</td> 
+                          <td>{{ topevent[0]['name'] }}</td>
+                          <td>{{ topevent[0]['rsvp'] }}</td>   
                       </tr>
                       <tr>
                         <td>2</td>
-                        <td>Xamarin - Learn & Code in Paris</td>
-                        <td>163</td>
-                        <td>+ 8%</td>
+                          <td>{{ topevent[1]['name'] }}</td>
+                          <td>{{ topevent[1]['rsvp'] }}</td>
                       </tr>
                       <tr>
                         <td>3</td>
-                        <td>Les Off de Partech</td>
-                        <td>156</td>
-                        <td>+ 8%</td>
+                          <td>{{ topevent[2]['name'] }}</td>
+                          <td>{{ topevent[2]['rsvp'] }}</td>   
                       </tr>
                       <tr>
                         <td>4</td>
-                        <td>LaFrenchMobile</td>
-                        <td>93</td>
-                        <td>+ 4%</td>
+                          <td>{{ topevent[3]['name'] }}</td>
+                          <td>{{ topevent[3]['rsvp'] }}</td>      
                       </tr>
                       <tr>
                         <td>5</td>
-                        <td>Meteor Paris</td>
-                        <td>75</td>
-                        <td>+ 2%</td>
+                          <td>{{ topevent[4]['name'] }}</td>
+                          <td>{{ topevent[4]['rsvp'] }}</td> 
                       </tr>
                     </tbody>
                   </table>
@@ -217,46 +216,65 @@
           <!-- Insertion diagramme 7 -->
           <div class="box box-solid bg-red-gradient top">
             <div class="box-body">
-              <h2>Meetup qui perd le plus d'abonnés (M/M-1)</h2>
+              <h2>Meetup qui perd le plus d'abonnés</h2>
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>Position</th>
+                      <th></th>
                       <th>Nom de l'évènement</th>
                       <th>Nombre de participants</th>
-                      <th>Evolution</th>
                     </tr>
                   </thead>
                   <tbody>
                      <tr>
                       <td>1</td>
-                      <td>StartupBlink Paris</td>
-                      <td>-39</td>
-                      <td>-12%</td>
+                      {% if flopevent[0]['name'] is null %}
+                          <td>{{ flopevent[0]['name'] == 'vide' }}</td>
+                          <td>{{ flopevent[0]['rsvp'] == 0 }}</td> 
+                        {% else %} 
+                          <td>{{ flopevent[0]['name'] }}</td>
+                          <td>{{ flopevent[0]['rsvp'] }}</td>
+                        {% endif %}
                     </tr>
                     <tr>
                       <td>2</td>
-                      <td>ClubStartups - Paris</td>
-                      <td>-31</td>
-                      <td>-10%</td>
+                      {% if flopevent[1]['name'] is null %}
+                          <td>{{ flopevent[1]['name'] == 'vide' }}</td>
+                          <td>{{ flopevent[1]['rsvp'] == 0 }}</td> 
+                        {% else %} 
+                          <td>{{ flopevent[1]['name'] }}</td>
+                          <td>{{ flopevent[1]['rsvp'] }}</td>
+                        {% endif %}
                     </tr>
                     <tr>
                       <td>3</td>
-                      <td>Paris Ruby Workshop</td>
-                      <td>-23</td>
-                      <td>-8%</td>
+                      {% if flopevent[2]['name'] is null %}
+                          <td>{{ flopevent[2]['name'] == 'vide' }}</td>
+                          <td>{{ flopevent[2]['rsvp'] == 0 }}</td> 
+                        {% else %} 
+                          <td>{{ flopevent[2]['name'] }}</td>
+                          <td>{{ flopevent[2]['rsvp'] }}</td>
+                        {% endif %}
                     </tr>
                     <tr>
                       <td>4</td>
-                      <td>Power Hiking Paris</td>
-                      <td>-19</td>
-                      <td>-8%</td>
+                      {% if flopevent[3]['name'] is null %}
+                          <td>{{ flopevent[3]['name'] == 'vide' }}</td>
+                          <td>{{ flopevent[3]['rsvp'] == 0 }}</td> 
+                        {% else %} 
+                          <td>{{ flopevent[3]['name'] }}</td>
+                          <td>{{ flopevent[3]['rsvp'] }}</td>
+                        {% endif %}
                     </tr>
                     <tr>
                       <td>5</td>
-                      <td>ReactJS and React Native Paris</td>
-                      <td>-13</td>
-                      <td>-6%</td>
+                      {% if flopevent[4]['name'] is null %}
+                          <td>{{ flopevent[4]['name'] == 'vide' }}</td>
+                          <td>{{ flopevent[4]['rsvp'] == 0 }}</td> 
+                        {% else %} 
+                          <td>{{ flopevent[4]['name'] }}</td>
+                          <td>{{ flopevent[4]['rsvp'] }}</td>
+                        {% endif %}
                     </tr>
                   </tbody>
                 </table>
