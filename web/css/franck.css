@@ -198,6 +198,24 @@ p .titre {
 	margin-left: -20px;
 }
 
+.photo_w1 img {
+	margin-left: 400px;
+	margin-top: -280px;
+	width: 170%;
+}
+
+.photo_w1 p{
+	margin-left: 620px;
+	margin-top: -220px;
+	width: 150px;
+	font-size: 17px;
+
+}
+
+.photo_w1 p span{
+	color: red;
+}
+
 /*Gestion des utilisateurs*/
 
 .user_gest {

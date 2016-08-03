@@ -78,13 +78,24 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle boite_nav" data-toggle="dropdown">
+
+              {% if requete.userImage == false %}
+              <img src="{{ asset('uploads/datausers/deer.png')}}" class="user-image" alt="User Image">
+              {% else %}
               <img src="{{ asset('uploads/datausers/' ~ requete.userImage ~ '')}}" class="user-image" alt="User Image">
+              {% endif %}
+
               <span class="hidden-xs">{{ requete.userNom }} {{ requete.userPrenom }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
+
+                {% if requete.userImage == false %}
+                <img src="{{ asset('uploads/datausers/deer.png')}}" class="img-circle" alt="User Image">
+                {% else %}
                 <img src="{{ asset('uploads/datausers/' ~ requete.userImage ~ '')}}" class="img-circle" alt="User Image">
+                {% endif %}
 
                 <p>
                   {{ requete.userNom }} {{ requete.userPrenom }} - {{ requete.userFonction }}
@@ -117,7 +128,13 @@
       <!-- Sidebar user panel -->
       <div class="user-panel photoid2">
         <div class="pull-left image">
+
+          {% if requete.userImage == false %}
+          <img src="{{ asset('uploads/datausers/deer.png')}}" class="img-circle" alt="User Image">
+          {% else %}
           <img src="{{ asset('uploads/datausers/' ~ requete.userImage ~ '')}}" class="img-circle" alt="User Image">
+          {% endif %}
+          
         </div>
         <div class="pull-left info">
           <p>{{ requete.userNom }} {{ requete.userPrenom }}</p>

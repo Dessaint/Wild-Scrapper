@@ -13,6 +13,9 @@ user_register:
 user_confirmed:
     path:     confirmed
     defaults: { _controller: UserBundle:Registration:confirmed }
+user_logout:
+    path:     logout
+    defaults: { _controller: UserBundle:Security:logout }
 
 user_espace:
     path:     espace

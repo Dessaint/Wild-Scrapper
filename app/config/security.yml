@@ -21,7 +21,8 @@ security:
                 check_path:     user_login_check
                 default_target_path:    user_accueil
 
-            logout:       true
+            logout:       
+                target: user_login        
             anonymous:    true
 
     access_control:

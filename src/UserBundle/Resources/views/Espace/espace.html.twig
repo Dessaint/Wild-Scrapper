@@ -19,9 +19,15 @@
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-md-12 esp-utilisateur">
+      <div class="">
+        <div class="col-md-3 esp-utilisateur">
+
+          {% if requete.userImage == false %}
+          <p><img src="{{ asset('uploads/datausers/deer.png')}}" class="img-circle photoid"></p>
+          {% else %}
           <p><img src="{{ asset('uploads/datausers/' ~ requete.userImage ~ '')}}" class="img-circle photoid"></p>
+          {% endif %}
+
           <p>{{ app.user.email }} 
           <p>{{ requete.userNom }} {{ requete.userPrenom }}</br>
           {{ requete.userVille }}</br>
@@ -31,6 +37,12 @@
           <button type="button" class="btn btn-warning">Modifier mes informations</button>
           </a>
         </div>
+        {% if requete.userImage == false %}
+        <div class="col-md-3 photo_w1"><img src="{{ asset('img/wilder.png')}}"><p><span>Actualise tes infos !!</span></p></div>
+        {% else %}
+        <div class="col-md-3 photo_w1"><img src="{{ asset('img/wilder.png')}}"><p>Tout est OK !!</p></div>
+        {% endif %}
+      </div>
 
       <!-- Gestion des utilisateurs -->
       {% if is_granted('ROLE_ADMIN') %}
@@ -53,7 +65,10 @@
                     {% for allUser in allUsers %}
                 <tbody>
                   <tr>
+                    {% if allUser.image == false %}
+                    <td><img src="{{ asset('uploads/datausers/deer.png')}}" class="img-circle photoid"></td>{% else %}
                     <td><img src="{{ asset('uploads/datausers/' ~ allUser.image ~ '')}}" class="img-circle photoid"></td>
+                    {% endif %}
                     <td>{{ allUser.pseudo }}</td>
                     <td>{{ allUser.email }}</td> 
                     <td>{{ allUser.nom }}</td>
