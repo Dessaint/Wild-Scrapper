@@ -96,7 +96,7 @@ class DefaultController extends Controller
                     $event->setRsvp($Data[$ville][$i]['results'][$j]['yes_rsvp_count']);
                     $event->setRating($Data[$ville][$i]['results'][$j]['rating']['average']);
                     $event->setTopic($topicUrl);
-
+                    
                     $event->setCreated($Data[$ville][$i]['results'][$j]['created']);
 
                     $em->persist($event);

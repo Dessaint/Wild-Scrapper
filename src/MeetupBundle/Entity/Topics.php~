@@ -51,6 +51,18 @@ class Topics
     private $ville;
 
     /**
+     * @var datetime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $date;
+
+    public function __construct()
+    {
+    $this->date = new \DateTime('now');    
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -178,5 +190,29 @@ class Topics
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Topics
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

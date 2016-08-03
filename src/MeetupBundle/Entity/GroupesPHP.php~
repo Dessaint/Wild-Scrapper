@@ -85,7 +85,7 @@ class GroupesPHP
     private $meetupid;
 
     /**
-     * @var datetime $date
+     * @var datetime
      *
      * @ORM\Column(name="createdAt", type="datetime")
      */
@@ -93,7 +93,7 @@ class GroupesPHP
 
     public function __construct()
     {
-    $this->date = new \DateTime('now');    
+    $this->date = new \DateTime('now');   
     }
 
     /**

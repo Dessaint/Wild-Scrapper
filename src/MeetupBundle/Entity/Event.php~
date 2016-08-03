@@ -78,6 +78,18 @@ class Event
     private $nameGroup;
 
     /**
+     * @var datetime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+     */
+    private $date;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime('now');     
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -253,5 +265,53 @@ class Event
     public function getRating()
     {
         return $this->rating;
+    }
+
+    /**
+     * Set nameGroup
+     *
+     * @param string $nameGroup
+     *
+     * @return Event
+     */
+    public function setNameGroup($nameGroup)
+    {
+        $this->nameGroup = $nameGroup;
+
+        return $this;
+    }
+
+    /**
+     * Get nameGroup
+     *
+     * @return string
+     */
+    public function getNameGroup()
+    {
+        return $this->nameGroup;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Event
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }
