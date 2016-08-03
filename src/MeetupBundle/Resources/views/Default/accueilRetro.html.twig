@@ -20,9 +20,8 @@
     </section>
         <!-- Liste déroulante : choix de semaine -->
       <div class="col-md-6">
-
         {% for dated in datedFormat %}
-        <a href='{{ path("user_accueil_retro", { 'retroFin': datedExtract[loop.index0]['dateExtract'], 'retroDeb': datedExtract[loop.index]['dateExtract'] }) }}'>{{dated}}</a><br/>
+            <a href='{{ path("user_accueil_retro", { 'retroFin': datedExtract[loop.index0]['dateExtract'], 'retroDeb': datedExtract[loop.index]['dateExtract'] }) }}'>{{dated}}</a> <br/>
         {% endfor %}
       </div>
     <div class="col-md-5"></div>

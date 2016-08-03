@@ -22,6 +22,11 @@ user_accueil:
     path:     /user/accueil
     defaults: { _controller: MeetupBundle:Page:show }
 
+user_accueil_retro:
+    path:     /user/accueil/{retroFin}/{retroDeb}
+    defaults: { _controller: MeetupBundle:Page:showRetro }
+
+
 user_accueilParis:
     path:     /user/accueil-paris
     defaults: { _controller: MeetupBundle:Page:showParis }
@@ -29,3 +34,7 @@ user_accueilParis:
 user_ville:
     path:     /user/{ville}
     defaults: { _controller: MeetupBundle:Ville:show }
+
+extract:
+    path:   /extract
+    defaults: { _controller: MeetupBundle:Default:extract }

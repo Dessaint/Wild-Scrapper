@@ -51,15 +51,15 @@ class Topics
     private $ville;
 
     /**
-     * @var datetime
+     * @var int
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="createdAt", type="bigint", nullable=true)
      */
     private $date;
 
     public function __construct()
     {
-    $this->date = new \DateTime('now');    
+        $this->date = time();    
     }
 
     /**

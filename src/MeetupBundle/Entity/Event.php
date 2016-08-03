@@ -78,15 +78,15 @@ class Event
     private $nameGroup;
 
     /**
-     * @var datetime
+     * @var int
      *
-     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+     * @ORM\Column(name="createdAt", type="bigint", nullable=true)
      */
     private $date;
 
     public function __construct()
     {
-        $this->date = new \DateTime('now');     
+     $this->date = time();    
     }
 
     /**

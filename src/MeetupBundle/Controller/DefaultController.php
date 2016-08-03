@@ -9,6 +9,7 @@ use MeetupBundle\Entity\Villes;
 use MeetupBundle\Entity\GroupesTopics;
 use MeetupBundle\Entity\GroupesPHP;
 use MeetupBundle\Entity\Event;
+use MeetupBundle\Entity\Extract;
 
 class DefaultController extends Controller
 {
@@ -411,6 +412,19 @@ class DefaultController extends Controller
 
 
         }
+
+        $em->flush();
+
+        return $this->redirectToRoute('extract');
+    }
+    public function ExtractAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $date = new Extract();
+        $date->setDateExtract(time());
+        
+        $em->persist($date);
+        
 
         $em->flush();
 

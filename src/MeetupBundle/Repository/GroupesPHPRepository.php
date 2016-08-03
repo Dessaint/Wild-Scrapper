@@ -25,6 +25,34 @@ class GroupesPHPRepository extends \Doctrine\ORM\EntityRepository
        return $qb->getQuery()->getResult();
    }
 
+   public function MembersByCityRetro($topic, $ville, $retroFin, $retroDeb)
+   {
+       $qb = $this->createQueryBuilder('g');
+
+       $qb->select('SUM(g.members) AS membresTotal')
+           ->addSelect('g.topic')
+           ->where('g.topic = ?1')
+           ->andwhere('g.city = ?2')
+           ->andwhere('g.date >= ?4')
+           ->andwhere('g.date <= ?3')
+           ->groupBy('g.topic')
+           ->setParameters(array( 1 => $topic, 2 => $ville, 3 => $retroFin, 4 => $retroDeb));
+
+       return $qb->getQuery()->getResult();
+   }
+    public function Retro()
+   {
+       $qb = $this->createQueryBuilder('g');
+
+       $qb->select('g.date')
+          ->orderBy('membresTotal', 'DESC')
+          ->setMaxResults(1);           
+           
+           
+
+       return $qb->getQuery()->getResult();
+   }
+
 
    public function Graph()
   {
@@ -71,5 +99,7 @@ class GroupesPHPRepository extends \Doctrine\ORM\EntityRepository
 
        return $qb->getQuery()->getResult();
    }
+
+
 
 }
