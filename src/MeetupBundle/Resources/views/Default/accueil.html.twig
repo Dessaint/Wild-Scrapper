@@ -19,12 +19,17 @@
       </ol>
     </section>
         <!-- Liste déroulante : choix de semaine -->
-      <div class="col-md-6">
-
-        {% for dated in datedFormat %}
-        <a href='{{ path("user_accueil_retro", { 'retroFin': datedExtract[loop.index0]['dateExtract'], 'retroDeb': datedExtract[loop.index]['dateExtract'] }) }}'>{{dated}}</a><br/>
-        {% endfor %}
-      </div>
+        <div class="dropdown list_date">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Archives
+            <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                {% for dated in datedFormat %}
+                <li><a href="{{ path("user_accueil_retro", { 'retroFin': datedExtract[loop.index0]['dateExtract'], 'retroDeb': datedExtract[loop.index]['dateExtract'] }) }}">{{dated}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
     <div class="col-md-5"></div>
     <div class="col-md-5 but-extr">
         <a href="{{ path('topic') }}"><button type="button" class="btn btn-success">Nouvelle extraction</button></a>
@@ -38,7 +43,7 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-md-12">
-            <a href="{{ path('user_accueilParis') }}"><button type="button" class="btn btn-success">Retirer Paris</button></a>
+            <a href="{{ path('user_accueilParis') }}"><button type="button" class="btn btn-danger">Retirer Paris</button></a>
           <div id="dashboard">
             <div class="titre-spark">
               <h2 class="titre-dash1">Répartition des membres</h2>

@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Bienvenu sur votre espace {% if is_granted('ROLE_ADMIN') %}administrateur {{ app.user.username }}{% else %}utilisateur{% endif %}
+        Bienvenue sur votre espace {% if is_granted('ROLE_ADMIN') %}administrateur {{ app.user.username }}{% else %}utilisateur{% endif %}
         <small>Panneau de contrôle</small>
       </h1>
       <ol class="breadcrumb">

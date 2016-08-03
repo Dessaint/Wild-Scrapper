@@ -19,14 +19,20 @@
       </ol>
     </section>
         <!-- Liste déroulante : choix de semaine -->
-      <div class="col-md-6">
-        {% for dated in datedFormat %}
-            <a href='{{ path("user_accueil_retro", { 'retroFin': datedExtract[loop.index0]['dateExtract'], 'retroDeb': datedExtract[loop.index]['dateExtract'] }) }}'>{{dated}}</a> <br/>
-        {% endfor %}
-      </div>
+    <div class="dropdown list_date">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Archives
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            {% for dated in datedFormat %}
+            <li><a href="{{ path("user_accueil_retro", { 'retroFin': datedExtract[loop.index0]['dateExtract'], 'retroDeb': datedExtract[loop.index]['dateExtract'] }) }}">{{dated}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>      
     <div class="col-md-5"></div>
     <div class="col-md-5 but-extr">
-        <a href="{{ path('topic') }}"><button type="button" class="btn btn-success">Nouvelle extraction</button></a>
+        <a href="{{ path('topic') }}"><button type="button" class="btn btn-danger">Nouvelle extraction</button></a>
     </div>
     <div class="">
         <a href="#" onclick="window.print(); return false;"><img src="{{ asset('img/pdf.png') }}"></a>
