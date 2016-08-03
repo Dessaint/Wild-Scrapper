@@ -32,12 +32,11 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-md-12">
-            <a href="{{ path('user_accueilParis') }}"><button type="button" class="btn btn-success">Retirer Paris</button></a>
+            <a href="{{ path('user_accueil') }}"><button type="button" class="btn btn-success">Ajouter Paris</button></a>
           <div id="dashboard">
             <div class="titre-spark">
               <h2 class="titre-dash1">Répartition des membres</h2>
-            </div>
-
+          </div>
           </div>
         </div>
       </div>
@@ -413,7 +412,7 @@ var freqData=[
 ,{State:'LYON',freq:{php:{{membresLyon[0].membresTotal}}, JavaScript:{{membresLyon[1].membresTotal}}, Ruby:{{membresLyon[2].membresTotal}}, Ios:{{membresLyon[3].membresTotal}}}}
 ,{State:'BDX',freq:{php:{{membresBordeaux[0].membresTotal}}, JavaScript:{{membresBordeaux[1].membresTotal}}, Ruby:{{membresBordeaux[2].membresTotal}}, Ios:{{membresBordeaux[3].membresTotal}}}}
 ,{State:'TLS',freq:{php:{{membresToulouse[0].membresTotal}}, JavaScript:{{membresToulouse[1].membresTotal}}, Ruby:{{membresToulouse[2].membresTotal}}, Ios:{{membresToulouse[3].membresTotal}}}}
-,{State:'PAR',freq:{php:{{ membresParis[0].membresTotal }}, JavaScript: {{membresParis[1].membresTotal}}, Ruby:{{membresParis[2].membresTotal}}, Ios:{{membresParis[3].membresTotal}}}}
+//,{State:'PAR',freq:{php:{{ membresParis[0].membresTotal }}, JavaScript: {{membresParis[1].membresTotal}}, Ruby:{{membresParis[2].membresTotal}}, Ios:{{membresParis[3].membresTotal}}}}
 ,{State:'STBG',freq:{php:{{ membresStrasbourg[0].membresTotal }}, JavaScript: {{membresStrasbourg[1].membresTotal}}, Ruby:{{membresStrasbourg[2].membresTotal}}, Ios:{{membresStrasbourg[3].membresTotal}}}}
 ,{State:'NAN',freq:{php:{{ membresNantes[0].membresTotal }}, JavaScript: {{membresNantes[1].membresTotal}}, Ruby:{{membresNantes[2].membresTotal}}, Ios:{{membresNantes[3].membresTotal}}}}
 ,{State:'NIC',freq:{php:{{ membresNice[0].membresTotal }}, JavaScript: {{membresNice[1].membresTotal}}, Ruby:{{membresNice[2].membresTotal}}, Ios:{{membresNice[3].membresTotal}}}}
