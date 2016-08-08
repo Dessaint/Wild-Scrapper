@@ -25,7 +25,7 @@ class DefaultController extends Controller
             $jsonData1 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=1");
             $jsonData2 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=2");
             $jsonData3 = file_get_contents("https://api.meetup.com/2/groups?&sign=true&photo-host=public&category_id=34&country=fr&city=".$ville."&key=17662761a2d418394102b53502864&offset=3");
-
+var_dump($jsonData0);exit;
             $Data0 = json_decode($jsonData0, true);
             $Data1 = json_decode($jsonData1, true);
             $Data2 = json_decode($jsonData2, true);
