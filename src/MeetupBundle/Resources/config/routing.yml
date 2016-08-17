@@ -26,7 +26,6 @@ user_accueil_retro:
     path:     /user/accueil/{retroFin}/{retroDeb}
     defaults: { _controller: MeetupBundle:Page:showRetro }
 
-
 user_accueilParis:
     path:     /user/accueil-paris
     defaults: { _controller: MeetupBundle:Page:showParis }

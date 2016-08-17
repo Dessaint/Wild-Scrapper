@@ -956,19 +956,24 @@ class PageController extends Controller
              //Archivage Date
              $extract = $em->getRepository('MeetupBundle:Extract')->createQueryBuilder('e');
         $extract
-            ->select('e.dateExtract')            
-            ->orderBy('e.dateExtract', 'DESC')            
+            ->select('e.dateExtract')
+            ->orderBy('e.dateExtract', 'DESC')
             ;
 
         $query = $extract->getQuery();
 
         $datedExtract = $query->getResult();
 
-        $datedFormat[0] = date("Y-m-d H:m", $datedExtract[0]['dateExtract']);           
-        $datedFormat[1] = date("Y-m-d H:m", $datedExtract[1]['dateExtract']);     
 
 
-
+        if (isset($datedExtract[0])) {
+            $datedFormat[0] = date("Y-m-d H:m", $datedExtract[0]['dateExtract']);
+            $datedFormat[1] = date("Y-m-d H:m", $datedExtract[1]['dateExtract']);
+        }
+        else {
+            $datedFormat[0]['dateExtract'] = 0;
+            $datedFormat[1]['dateExtract'] = 0;
+        }
 
         return $this->render('MeetupBundle:Default:accueil.html.twig',
         array(
@@ -3018,18 +3023,18 @@ class PageController extends Controller
               //Archivage Date
              $extract = $em->getRepository('MeetupBundle:Extract')->createQueryBuilder('e');
         $extract
-            ->select('e.dateExtract')            
-            ->orderBy('e.dateExtract', 'DESC')            
+            ->select('e.dateExtract')
+            ->orderBy('e.dateExtract', 'DESC')
             ;
 
         $query = $extract->getQuery();
 
         $datedExtract = $query->getResult();
 
-       
+
         $datedFormat[0] = date("Y-m-d H:m", $datedExtract[0]['dateExtract']);
         $datedFormat[1] = date("Y-m-d H:m", $datedExtract[1]['dateExtract']);
-     
+
 
 
 
