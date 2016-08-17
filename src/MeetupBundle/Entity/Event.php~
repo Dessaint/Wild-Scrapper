@@ -86,7 +86,7 @@ class Event
 
     public function __construct()
     {
-     $this->date = time();    
+        $this->date = time();    
     }
 
     /**
