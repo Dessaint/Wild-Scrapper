@@ -53,7 +53,7 @@ var_dump($jsonData0);exit;
                     $groupes->setMembers($Data[$ville][$i]['results'][$j]['members']);
                     $groupes->setMeetupid($Data[$ville][$i]['results'][$j]['id']);
                     $groupes->setVilles($villes);
-                    $em->remove($groupes)
+                    $em->remove($groupes);
                     $em->persist($groupes);
                 }
 
@@ -289,7 +289,7 @@ var_dump($jsonData0);exit;
                             $groupesPHP->setLat($Data[$ville][$i]['results'][$j]['lat']);
                             $groupesPHP->setMembers($Data[$ville][$i]['results'][$j]['members']);
                             $groupesPHP->setMeetupid($Data[$ville][$i]['results'][$j]['id']);
-                            $em->remove($groupePHP);
+                            $em->remove($groupesPHP);
 
                             $em->persist($groupesPHP);
                         }
@@ -327,7 +327,7 @@ var_dump($jsonData0);exit;
                             $groupesPHP->setLat($Data[$ville][$i]['results'][$j]['lat']);
                             $groupesPHP->setMembers($Data[$ville][$i]['results'][$j]['members']);
                             $groupesPHP->setMeetupid($Data[$ville][$i]['results'][$j]['id']);
-                            $em->remove($groupePHP);
+                            $em->remove($groupesPHP);
                             $em->persist($groupesPHP);
                         }
 
@@ -364,7 +364,7 @@ var_dump($jsonData0);exit;
                             $groupesPHP->setLat($Data[$ville][$i]['results'][$j]['lat']);
                             $groupesPHP->setMembers($Data[$ville][$i]['results'][$j]['members']);
                             $groupesPHP->setMeetupid($Data[$ville][$i]['results'][$j]['id']);
-                            $em->remove($groupePHP);
+                            
                             $em->persist($groupesPHP);
                         }
 
@@ -391,19 +391,47 @@ var_dump($jsonData0);exit;
 
                         for($j=0, $c2 = count($Data[$ville][$i]['results']); $j < $c2; $j++) {
 
-                            $groupesPHP = new GroupesPHP();
+                            $idMeetup = $Data[$ville][$i]['results'][$j]['id'];
 
-                            $groupesPHP->setName($Data[$ville][$i]['results'][$j]['name']);
-                            $groupesPHP->setCountry($Data[$ville][$i]['results'][$j]['country']);
-                            $groupesPHP->setCity($Data[$ville][$i]['results'][$j]['city']);
-                            $groupesPHP->setTopic($topicUrl);
-                            $groupesPHP->setCreated($Data[$ville][$i]['results'][$j]['created']);
-                            $groupesPHP->setLon($Data[$ville][$i]['results'][$j]['lon']);
-                            $groupesPHP->setLat($Data[$ville][$i]['results'][$j]['lat']);
-                            $groupesPHP->setMembers($Data[$ville][$i]['results'][$j]['members']);
-                            $groupesPHP->setMeetupid($Data[$ville][$i]['results'][$j]['id']);
-                            $em->remove($groupePHP);
-                            $em->persist($groupesPHP);
+                            $idBdd = $this
+                                ->getDoctrine()
+                                ->getManager()
+                                ->getRepository('MeetupBundle:GroupesPHP')
+                                ->findOneByMeetupid($idMeetup)
+                                ;
+                                
+                            if ( empty($idBdd)) {
+
+                                $groupesPHPN = new GroupesPHP();
+                                $groupesPHPN->setName($Data[$ville][$i]['results'][$j]['name']);
+                                $groupesPHPN->setCountry($Data[$ville][$i]['results'][$j]['country']);
+                                $groupesPHPN->setCity($Data[$ville][$i]['results'][$j]['city']);
+                                $groupesPHPN->setTopic($topicUrl);
+                                $groupesPHPN->setCreated($Data[$ville][$i]['results'][$j]['created']);
+                                $groupesPHPN->setLon(2);
+                                $groupesPHPN->setLat($Data[$ville][$i]['results'][$j]['lat']);
+                                $groupesPHPN->setMembers($Data[$ville][$i]['results'][$j]['members']);
+                                $groupesPHPN->setMeetupid($Data[$ville][$i]['results'][$j]['id']);
+                              
+                                $em->persist($groupesPHPN);
+
+                            } else {
+                                foreach ($idBdd as $groupesPHP) {
+                                    $groupesPHP->setName($Data[$ville][$i]['results'][$j]['name']);
+                                    $groupesPHP->setCountry($Data[$ville][$i]['results'][$j]['country']);
+                                    $groupesPHP->setCity($Data[$ville][$i]['results'][$j]['city']);
+                                    $groupesPHP->setTopic($topicUrl);
+                                    $groupesPHP->setCreated($Data[$ville][$i]['results'][$j]['created']);
+                                    $groupesPHP->setLon(8);
+                                    $groupesPHP->setLat($Data[$ville][$i]['results'][$j]['lat']);
+                                    $groupesPHP->setMembers($Data[$ville][$i]['results'][$j]['members']);
+                                    $groupesPHP->setMeetupid($Data[$ville][$i]['results'][$j]['id']);
+                                    
+                                    $em->persist($groupesPHP);
+                                    
+                                }
+                            }
+                            
                         }
 
                     }
